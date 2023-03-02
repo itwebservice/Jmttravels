@@ -1,0 +1,1 @@
+ALTER TABLE `visa_master_entries` ADD `mother_name` VARCHAR(100) NULL DEFAULT NULL AFTER `pan_card_url`, ADD `father_name` VARCHAR(100) NULL DEFAULT NULL AFTER `mother_name`;

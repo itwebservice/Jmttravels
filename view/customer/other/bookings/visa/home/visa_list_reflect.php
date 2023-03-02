@@ -101,6 +101,7 @@ $customer_id = $_SESSION['customer_id'];
 				<td><?= get_visa_booking_id($row_visa['visa_id'],$year) ?></td>
 				<td><?php echo $sq_total_member; ?></td>
 				<td>
+				<button class="btn btn-info btn-sm" onclick="visa_edit_modal(<?= $row_visa['visa_id'] ?>)" title="Edit Details" id="visaEdit-<?= $row_visa['visa_id'] ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
 					<button class="btn btn-info btn-sm" onclick="visa_display_modal(<?= $row_visa['visa_id'] ?>)" title="View Details" id="visa-<?= $row_visa['visa_id'] ?>"><i class="fa fa-eye" aria-hidden="true"></i></button>
 				</td>
 				<td class="info text-right"><?php echo $sale_total_amount; ?></td>
