@@ -1118,14 +1118,13 @@ Please contact for more details : ' . $contact);
 		$nationality = $_POST['nationality'];
 		$mother_name = $_POST['mother_name'];
 		$father_name = $_POST['father_name'];
-		$id_proff = $this->fileUploadAll($_FILES['id_proff'], 'visa_id_proff/');
+		$id_proff = $this->fileUploadAll($_FILES['id_proff'], 'visa_id_proff');
 		foreach ($ids as $key => $id) {
 			$query = "UPDATE `visa_master_entries` SET `first_name`='" . $first_name[$key] . "',
 			`middle_name`='" . $middle_name[$key] . "',`last_name`='" . $last_name[$key] . "',`birth_date`='" . $birth_date[$key] . "',
 			`nationality`='" . $nationality[$key] . "',`mother_name`='" . $mother_name[$key] . "',`father_name`='" . $father_name[$key] . "'";
-			if(!empty($id_proff[$key]))
-			{
-				$query .= ",id_proff_url='".$id_proff[$key]."'";
+			if (!empty($id_proff[$key])) {
+				$query .= ",id_proff_url='" . $id_proff[$key] . "'";
 			}
 			$query .= " WHERE entry_id='" . $id . "'";
 			mysqlQuery($query);
@@ -1143,9 +1142,22 @@ Please contact for more details : ' . $contact);
 				$file_name = $fileMain['name'][$i];
 				$file_size = $fileMain['size'][$i];
 				$file_tmp = $fileMain['tmp_name'][$i];
-				
+
 				$file_type = $fileMain['type'][$i];
-				$storageUrl = '../../../uploads/' . $storeUrl;
+				//dir
+				$year = date("Y");
+				$month = date("M");
+				$day = date("d");
+				$timestamp = date('U');
+				$current_dir = '../../../uploads/';
+				$current_dir = $this->check_dir($current_dir, 'company_QR');
+				$current_dir = $this->check_dir($current_dir, $year);
+				$current_dir = $this->check_dir($current_dir, $month);
+				$current_dir = $this->check_dir($current_dir, $day);
+				$current_dir = $this->check_dir($current_dir, $timestamp);
+				$file_name = str_replace(' ','_',basename($file_name));
+				$fileMainName = $current_dir.$file_name; 
+
 				$file_ext = strtolower(end(explode('.', $fileMain['name'][$i])));
 
 				$extensions = array("jpeg", "jpg", "png");
@@ -1159,15 +1171,11 @@ Please contact for more details : ' . $contact);
 				}
 
 				if (empty($errors) == true) {
-					if(move_uploaded_file($file_tmp, $storageUrl . $file_name))
-					{
+					if (move_uploaded_file($file_tmp, $fileMainName)) {
 
-						$urlArr[] = $storageUrl . $file_name;
-					}
-					else
-					{
+						$urlArr[] = $fileMainName;
+					} else {
 						$urlArr[] = 0;
-
 					}
 				} else {
 					//  return ($errors);
@@ -1178,5 +1186,18 @@ Please contact for more details : ' . $contact);
 			}
 		}
 		return $urlArr;
+	}
+	public function check_dir($current_dir, $type)
+
+	{
+
+		if (!is_dir($current_dir . "/" . $type)) {
+
+			mkdir($current_dir . "/" . $type);
+		}
+
+		$current_dir = $current_dir . "/" . $type . "/";
+
+		return $current_dir;
 	}
 }

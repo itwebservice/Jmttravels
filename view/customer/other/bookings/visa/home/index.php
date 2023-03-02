@@ -122,7 +122,7 @@ $customer_id = $_SESSION['customer_id'];
 		$('#btn_update').button('update');
 		$('#btn_update').removeAttr("disabled");
 			$('#visa_edit_modal').modal('hide');
-			success_msg_alert("Visa Updated");
+			success_msg_alert("Visa Details Updated");
 		});
 
 

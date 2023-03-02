@@ -61,7 +61,7 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                     <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="First Name"  name="first_name[]" value="<?= $db['first_name'] ?>" id="" class="form-control" title="First Name">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="Middle Name"  name="middle_name[]" value="<?= $db['middle_name'] ?>" id="" class="form-control" title="Middle Name">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text"  placeholder="Middle Name"  name="middle_name[]" value="<?= $db['middle_name'] ?>" id="" class="form-control" title="Middle Name">
                                                                     </div>
 
                                                                     <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="Last Name"  name="last_name[]" value="<?= $db['last_name'] ?>" id="" class="form-control" title="Last Name">
@@ -82,10 +82,10 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                     <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="Nationality"  name="nationality[]" value="<?= $db['nationality'] ?>" id="" class="form-control" title="Nationality">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="Mother Name"  name="mother_name[]" value="<?= $db['mother_name'] ?>" id="" class="form-control" title="Mother Name">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text"  placeholder="Mother Name"  name="mother_name[]" value="<?= $db['mother_name'] ?>" id="" class="form-control" title="Mother Name">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="Father Name"  name="father_name[]" value="<?= $db['father_name'] ?>" id="" class="form-control" title="Father Name">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text"  placeholder="Father Name"  name="father_name[]" value="<?= $db['father_name'] ?>" id="" class="form-control" title="Father Name">
                                                                     </div>
 
                                                                     <div class="col-md-4 mg_tp_10"> <input type="file" multiple placeholder=""  name="id_proff[]" value="<?= $db['id_proff'] ?>" id="" class="form-control" title="ID PROOF">
@@ -152,13 +152,13 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                 $('#btn_update').button('update');
                 $('#btn_update').removeAttr("disabled");
                 $('#visa_edit_modal').modal('hide');
-                success_msg_alert("Visa Updated");
+                success_msg_alert("Visa Details Updated");
             },
             error: function(data) {
                 $('#btn_update').button('update');
                 $('#btn_update').removeAttr("disabled");
                 $('#visa_edit_modal').modal('hide');
-                error_msg_alert("Visa Error");
+                error_msg_alert("Visa Details Error");
                 console.log(data);
             }
         });
