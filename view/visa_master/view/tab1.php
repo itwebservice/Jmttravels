@@ -22,6 +22,14 @@
 	                  <i class="fa fa-angle-double-right cost_arrow" aria-hidden="true"></i>
 	                  <?php echo "<label>Markup cost<em>:</em></label> ".number_format($sq_visa['markup'],2) ?>
 	            </span>
+				<span class="main_block">
+	                  <i class="fa fa-angle-double-right cost_arrow" aria-hidden="true"></i>
+	                  <?php echo "<label>Basic Amount B2B<em>:</em></label> ".number_format($sq_visa['fees_b2b'],2) ?>
+	            </span>
+	            <span class="main_block">
+	                  <i class="fa fa-angle-double-right cost_arrow" aria-hidden="true"></i>
+	                  <?php echo "<label>Markup cost B2B<em>:</em></label> ".number_format($sq_visa['markup_b2b'],2) ?>
+	            </span>
 	            <span class="main_block">
 	                  <i class="fa fa-angle-double-right cost_arrow" aria-hidden="true"></i>
 	                  <?php echo "<label>Time Taken <em>:</em></label> ".$sq_visa['time_taken'] ?>

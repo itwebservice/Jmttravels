@@ -2,8 +2,7 @@
 include "../../model/model.php";
 ?>
 
-<div class="modal fade" id="save_modal" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static"
-    data-keyboard="false">
+<div class="modal fade" id="save_modal" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
 
     <div class="modal-dialog modal-lg" role="document">
 
@@ -11,8 +10,7 @@ include "../../model/model.php";
 
             <div class="modal-header">
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
                 <h4 class="modal-title" id="myModalLabel">Visa Information</h4>
 
@@ -28,8 +26,7 @@ include "../../model/model.php";
 
                         <div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10">
 
-                            <select name="visa_country_name" id="visa_country_name" class="form-control"
-                                title="Visa Country Name" style="width:100%">
+                            <select name="visa_country_name" id="visa_country_name" class="form-control" title="Visa Country Name" style="width:100%">
 
                                 <option value="">*Visa Country</option>
 
@@ -41,8 +38,8 @@ include "../../model/model.php";
 
                                 ?>
 
-                                <option value="<?= $row_country['country_name'] ?>"><?= $row_country['country_name'] ?>
-                                </option>
+                                    <option value="<?= $row_country['country_name'] ?>"><?= $row_country['country_name'] ?>
+                                    </option>
 
                                 <?php
 
@@ -56,8 +53,7 @@ include "../../model/model.php";
 
                         <div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10">
 
-                            <select name="visa_type" id="visa_type" class="form-control" title="Visa Type"
-                                style="width:100%">
+                            <select name="visa_type" id="visa_type" class="form-control" title="Visa Type" style="width:100%">
 
                                 <option value="">*Visa Type</option>
 
@@ -69,8 +65,8 @@ include "../../model/model.php";
 
                                 ?>
 
-                                <option value="<?= $row_visa_type['visa_type'] ?>"><?= $row_visa_type['visa_type'] ?>
-                                </option>
+                                    <option value="<?= $row_visa_type['visa_type'] ?>"><?= $row_visa_type['visa_type'] ?>
+                                    </option>
 
                                 <?php
 
@@ -84,15 +80,32 @@ include "../../model/model.php";
 
                         <div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10">
 
-                            <input type="text" name="fees" class="form-control" title="Basic Amount"
-                                placeholder="*Basic Amount" id="fees" onchange="validate_balance(this.id);">
+                            <input type="text" name="fees" class="form-control" title="Basic Amount" placeholder="*Basic Amount" id="fees" onchange="validate_balance(this.id);">
 
                         </div>
 
                         <div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10">
 
-                            <input type="text" name="markup" class="form-control" placeholder="Markup cost"
-                                title="Markup cost" id="markup" onchange="validate_balance(this.id);">
+                            <input type="text" name="markup" class="form-control" placeholder="Markup cost" title="Markup cost" id="markup" onchange="validate_balance(this.id);">
+
+                        </div>
+
+
+                        <div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10">
+
+                            <input type="text" name="fees_b2b" class="form-control" title="Basic Amount B2B" placeholder="*Basic Amount B2B" id="fees_b2b" onchange="validate_balance(this.id);">
+
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10">
+
+                            <input type="text" name="markup_b2b" class="form-control" placeholder="Markup cost B2B" title="Markup cost B2B" id="markup_b2b" onchange="validate_balance(this.id);">
+
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10">
+
+                            <input type="text" name="time_taken" class="form-control" onchange="validate_specialChar(this.id);" placeholder="Time Taken" title="Time Taken" id="time_taken">
 
                         </div>
 
@@ -100,13 +113,6 @@ include "../../model/model.php";
 
                     <div class="row">
 
-                        <div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10">
-
-                            <input type="text" name="time_taken" class="form-control"
-                                onchange="validate_specialChar(this.id);" placeholder="Time Taken" title="Time Taken"
-                                id="time_taken">
-
-                        </div>
 
                         <div class="col-md-3 col-sm-6 col-xs-12 text-left">
 
@@ -193,8 +199,7 @@ include "../../model/model.php";
                     <div class="row mg_tp_20">
                         <div class="col-xs-12 mg_bt_10">
                             <h3 class="editor_title">List of documents</h3>
-                            <textarea class="feature_editor form-control" placeholder="List of documents" id="doc_list"
-                                name="doc_list" title="Documents" rows="2" style="width:100%;"></textarea>
+                            <textarea class="feature_editor form-control" placeholder="List of documents" id="doc_list" name="doc_list" title="Documents" rows="2" style="width:100%;"></textarea>
 
                         </div>
                     </div>
@@ -203,8 +208,7 @@ include "../../model/model.php";
 
                         <div class="col-md-12">
 
-                            <button class="btn btn-sm btn-success" id="btn_save"><i
-                                    class="fa fa-floppy-o"></i>&nbsp;&nbsp;Save</button>
+                            <button class="btn btn-sm btn-success" id="btn_save"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Save</button>
 
                         </div>
 
@@ -225,242 +229,256 @@ include "../../model/model.php";
 <script src="<?= BASE_URL ?>js/ajaxupload.3.5.js"></script>
 
 <script>
-$('#save_modal').modal('show');
-$('#visa_country_name,#visa_type').select2();
+    $('#save_modal').modal('show');
+    $('#visa_country_name,#visa_type').select2();
 
-upload_user_pic_attch();
+    upload_user_pic_attch();
 
-function upload_user_pic_attch() {
+    function upload_user_pic_attch() {
 
-    var btnUpload = $('#photo_upload_visa');
-    $(btnUpload).find('span').text('Upload Form1');
-    $("#photo_upload_url1").val('');
+        var btnUpload = $('#photo_upload_visa');
+        $(btnUpload).find('span').text('Upload Form1');
+        $("#photo_upload_url1").val('');
 
-    new AjaxUpload(btnUpload, {
-        action: 'upload_photo_proof.php',
-        name: 'uploadfile',
-        onSubmit: function(file, ext) {
-            if (!(ext && /^(pdf|txt)$/.test(ext))) {
-                error_msg_alert('Only pdf,txt files are allowed');
-                return false;
-            }
-            $(btnUpload).find('span').text('Uploading...');
-        },
-        onComplete: function(file, response) {
-            if (response === "error") {
-                error_msg_alert("File is not uploaded.");
-                $(btnUpload).find('span').text('Upload Form1');
-            } else {
-                $(btnUpload).find('span').text('Uploaded');
-                $("#photo_upload_url1").val(response);
-            }
-        }
-    });
-}
-
-
-upload_user_pic_attch2();
-function upload_user_pic_attch2() {
-
-    var btnUpload = $('#photo_upload2');
-    $(btnUpload).find('span').text('Upload Form2');
-    $("#photo_upload_url2").val('');
-
-    new AjaxUpload(btnUpload, {
-        action: 'upload_photo_proof.php',
-        name: 'uploadfile',
-        onSubmit: function(file, ext) {
-            if (!(ext && /^(pdf|txt)$/.test(ext))) {
-                error_msg_alert('Only pdf,txt files are allowed');
-                return false;
-            }
-            $(btnUpload).find('span').text('Uploading...');
-        },
-        onComplete: function(file, response) {
-            if (response === "error") {
-                error_msg_alert("File is not uploaded.");
-                $(btnUpload).find('span').text('Upload');
-            } else {
-                $(btnUpload).find('span').text('Uploaded');
-                $("#photo_upload_url2").val(response);
-            }
-        }
-    });
-}
-upload_user_pic_attch3();
-function upload_user_pic_attch3() {
-
-    var btnUpload = $('#photo_upload3');
-    $(btnUpload).find('span').text('Upload Form3');
-    $("#photo_upload_url3").val('');
-
-    new AjaxUpload(btnUpload, {
-        action: 'upload_photo_proof.php',
-        name: 'uploadfile',
-        onSubmit: function(file, ext) {
-            if (!(ext && /^(pdf|txt)$/.test(ext))) {
-                error_msg_alert('Only pdf,txt files are allowed');
-                return false;
-            }
-            $(btnUpload).find('span').text('Uploading...');
-        },
-        onComplete: function(file, response) {
-            if (response === "error") {
-                error_msg_alert("File is not uploaded.");
-                $(btnUpload).find('span').text('Upload');
-            } else {
-                $(btnUpload).find('span').text('Uploaded');
-                $("#photo_upload_url3").val(response);
-            }
-        }
-    });
-}
-upload_user_pic_attch4();
-function upload_user_pic_attch4() {
-
-    var btnUpload = $('#photo_upload4');
-    $(btnUpload).find('span').text('Upload Form4');
-    $("#photo_upload_url4").val('');
-
-    new AjaxUpload(btnUpload, {
-        action: 'upload_photo_proof.php',
-        name: 'uploadfile',
-        onSubmit: function(file, ext) {
-            if (!(ext && /^(pdf|txt)$/.test(ext))) {
-                error_msg_alert('Only pdf,txt files are allowed');
-                return false;
-            }
-            $(btnUpload).find('span').text('Uploading...');
-        },
-        onComplete: function(file, response) {
-            if (response === "error") {
-                error_msg_alert("File is not uploaded.");
-                $(btnUpload).find('span').text('Upload');
-            } else {
-                $(btnUpload).find('span').text('Uploaded');
-                $("#photo_upload_url4").val(response);
-            }
-        }
-    });
-}
-upload_user_pic_attch5();
-function upload_user_pic_attch5() {
-
-    var btnUpload = $('#photo_upload5');
-    $(btnUpload).find('span').text('Upload Form5');
-    $("#photo_upload_url5").val('');
-
-    new AjaxUpload(btnUpload, {
-        action: 'upload_photo_proof.php',
-        name: 'uploadfile',
-        onSubmit: function(file, ext) {
-            if (!(ext && /^(pdf|txt)$/.test(ext))) {
-                error_msg_alert('Only pdf,txt files are allowed');
-                return false;
-            }
-            $(btnUpload).find('span').text('Uploading...');
-        },
-        onComplete: function(file, response) {
-            if (response === "error") {
-                error_msg_alert("File is not uploaded.");
-                $(btnUpload).find('span').text('Upload');
-            } else {
-                $(btnUpload).find('span').text('Uploaded');
-                $("#photo_upload_url5").val(response);
-            }
-        }
-    });
-}
-
-$(function() {
-    $('#frm_visa_save').validate({
-        rules: {
-            visa_country_name: {
-                required: true
+        new AjaxUpload(btnUpload, {
+            action: 'upload_photo_proof.php',
+            name: 'uploadfile',
+            onSubmit: function(file, ext) {
+                if (!(ext && /^(pdf|txt)$/.test(ext))) {
+                    error_msg_alert('Only pdf,txt files are allowed');
+                    return false;
+                }
+                $(btnUpload).find('span').text('Uploading...');
             },
-            visa_type: {
-                required: true
-            },
-            fees: {
-                required: true
+            onComplete: function(file, response) {
+                if (response === "error") {
+                    error_msg_alert("File is not uploaded.");
+                    $(btnUpload).find('span').text('Upload Form1');
+                } else {
+                    $(btnUpload).find('span').text('Uploaded');
+                    $("#photo_upload_url1").val(response);
+                }
             }
-        },
-        submitHandler: function(form) {
-
-            var base_url = $('#base_url').val();
+        });
+    }
 
 
+    upload_user_pic_attch2();
 
-            var visa_country_name = $("#visa_country_name").val();
+    function upload_user_pic_attch2() {
 
-            var visa_type = $("#visa_type").val();
+        var btnUpload = $('#photo_upload2');
+        $(btnUpload).find('span').text('Upload Form2');
+        $("#photo_upload_url2").val('');
 
-            var fees = $("#fees").val();
+        new AjaxUpload(btnUpload, {
+            action: 'upload_photo_proof.php',
+            name: 'uploadfile',
+            onSubmit: function(file, ext) {
+                if (!(ext && /^(pdf|txt)$/.test(ext))) {
+                    error_msg_alert('Only pdf,txt files are allowed');
+                    return false;
+                }
+                $(btnUpload).find('span').text('Uploading...');
+            },
+            onComplete: function(file, response) {
+                if (response === "error") {
+                    error_msg_alert("File is not uploaded.");
+                    $(btnUpload).find('span').text('Upload');
+                } else {
+                    $(btnUpload).find('span').text('Uploaded');
+                    $("#photo_upload_url2").val(response);
+                }
+            }
+        });
+    }
+    upload_user_pic_attch3();
 
-            var markup = $("#markup").val();
+    function upload_user_pic_attch3() {
 
-            var time_taken = $("#time_taken").val();
+        var btnUpload = $('#photo_upload3');
+        $(btnUpload).find('span').text('Upload Form3');
+        $("#photo_upload_url3").val('');
 
-            var photo_upload_url = $('#photo_upload_url1').val();
-            var photo_upload_url2 = $('#photo_upload_url2').val();
-            var photo_upload_url3 = $('#photo_upload_url3').val();
-            var photo_upload_url4 = $('#photo_upload_url4').val();
-            var photo_upload_url5 = $('#photo_upload_url5').val();
+        new AjaxUpload(btnUpload, {
+            action: 'upload_photo_proof.php',
+            name: 'uploadfile',
+            onSubmit: function(file, ext) {
+                if (!(ext && /^(pdf|txt)$/.test(ext))) {
+                    error_msg_alert('Only pdf,txt files are allowed');
+                    return false;
+                }
+                $(btnUpload).find('span').text('Uploading...');
+            },
+            onComplete: function(file, response) {
+                if (response === "error") {
+                    error_msg_alert("File is not uploaded.");
+                    $(btnUpload).find('span').text('Upload');
+                } else {
+                    $(btnUpload).find('span').text('Uploaded');
+                    $("#photo_upload_url3").val(response);
+                }
+            }
+        });
+    }
+    upload_user_pic_attch4();
 
-            var doc_list = $('#doc_list').val();
+    function upload_user_pic_attch4() {
 
-            $('#btn_save').button('loading');
+        var btnUpload = $('#photo_upload4');
+        $(btnUpload).find('span').text('Upload Form4');
+        $("#photo_upload_url4").val('');
 
-            $.post(
+        new AjaxUpload(btnUpload, {
+            action: 'upload_photo_proof.php',
+            name: 'uploadfile',
+            onSubmit: function(file, ext) {
+                if (!(ext && /^(pdf|txt)$/.test(ext))) {
+                    error_msg_alert('Only pdf,txt files are allowed');
+                    return false;
+                }
+                $(btnUpload).find('span').text('Uploading...');
+            },
+            onComplete: function(file, response) {
+                if (response === "error") {
+                    error_msg_alert("File is not uploaded.");
+                    $(btnUpload).find('span').text('Upload');
+                } else {
+                    $(btnUpload).find('span').text('Uploaded');
+                    $("#photo_upload_url4").val(response);
+                }
+            }
+        });
+    }
+    upload_user_pic_attch5();
 
-                base_url + "controller/visa_master/visa_master_save.php", {
-                    visa_country_name: visa_country_name,
-                    visa_type: visa_type,
-                    fees: fees,
-                    markup: markup,
-                    time_taken: time_taken,
-                    photo_upload_url: photo_upload_url,
-                    photo_upload_url2: photo_upload_url2,
-                    photo_upload_url3: photo_upload_url3,
-                    photo_upload_url4: photo_upload_url4,
-                    photo_upload_url5: photo_upload_url5,
-                    doc_list: doc_list
+    function upload_user_pic_attch5() {
+
+        var btnUpload = $('#photo_upload5');
+        $(btnUpload).find('span').text('Upload Form5');
+        $("#photo_upload_url5").val('');
+
+        new AjaxUpload(btnUpload, {
+            action: 'upload_photo_proof.php',
+            name: 'uploadfile',
+            onSubmit: function(file, ext) {
+                if (!(ext && /^(pdf|txt)$/.test(ext))) {
+                    error_msg_alert('Only pdf,txt files are allowed');
+                    return false;
+                }
+                $(btnUpload).find('span').text('Uploading...');
+            },
+            onComplete: function(file, response) {
+                if (response === "error") {
+                    error_msg_alert("File is not uploaded.");
+                    $(btnUpload).find('span').text('Upload');
+                } else {
+                    $(btnUpload).find('span').text('Uploaded');
+                    $("#photo_upload_url5").val(response);
+                }
+            }
+        });
+    }
+
+    $(function() {
+        $('#frm_visa_save').validate({
+            rules: {
+                visa_country_name: {
+                    required: true
                 },
+                visa_type: {
+                    required: true
+                },
+                fees: {
+                    required: true
+                },
+                fees_b2b: {
+                    required: true
+                }
 
-                function(data) {
+            },
+            submitHandler: function(form) {
 
-                    $('#btn_save').button('reset');
+                var base_url = $('#base_url').val();
 
-                    var msg = data.split('--');
 
-                    if (msg[0] == "error") {
 
-                        error_msg_alert(msg[1]);
+                var visa_country_name = $("#visa_country_name").val();
+
+                var visa_type = $("#visa_type").val();
+
+                var fees = $("#fees").val();
+
+                var markup = $("#markup").val();
+
+                var fees_b2b = $("#fees_b2b").val();
+
+                var markup_b2b = $("#markup_b2b").val();
+
+                var time_taken = $("#time_taken").val();
+
+                var photo_upload_url = $('#photo_upload_url1').val();
+                var photo_upload_url2 = $('#photo_upload_url2').val();
+                var photo_upload_url3 = $('#photo_upload_url3').val();
+                var photo_upload_url4 = $('#photo_upload_url4').val();
+                var photo_upload_url5 = $('#photo_upload_url5').val();
+
+                var doc_list = $('#doc_list').val();
+
+                $('#btn_save').button('loading');
+
+                $.post(
+
+                    base_url + "controller/visa_master/visa_master_save.php", {
+                        visa_country_name: visa_country_name,
+                        visa_type: visa_type,
+                        fees: fees,
+                        markup: markup,
+                        time_taken: time_taken,
+                        photo_upload_url: photo_upload_url,
+                        photo_upload_url2: photo_upload_url2,
+                        photo_upload_url3: photo_upload_url3,
+                        photo_upload_url4: photo_upload_url4,
+                        photo_upload_url5: photo_upload_url5,
+                        doc_list: doc_list,
+                        fees_b2b: fees_b2b,
+                        markup_b2b: markup_b2b,
+                    },
+
+                    function(data) {
+
                         $('#btn_save').button('reset');
 
-                    } else {
+                        var msg = data.split('--');
 
-                        msg_alert(data);
-                        update_b2c_cache();
-                        $('#save_modal').modal('hide');
+                        if (msg[0] == "error") {
 
-                        $('#save_modal').on('hidden.bs.modal', function() {
+                            error_msg_alert(msg[1]);
+                            $('#btn_save').button('reset');
 
-                            visa_list_reflect();
+                        } else {
 
-                        });
+                            msg_alert(data);
+                            update_b2c_cache();
+                            $('#save_modal').modal('hide');
 
-                    }
+                            $('#save_modal').on('hidden.bs.modal', function() {
+
+                                visa_list_reflect();
+
+                            });
+
+                        }
 
 
 
-                });
+                    });
 
-        }
+            }
+
+        });
 
     });
-
-});
 </script>
 
 

@@ -1,1 +1,2 @@
 ALTER TABLE `visa_master_entries` ADD `mother_name` VARCHAR(100) NULL DEFAULT NULL AFTER `pan_card_url`, ADD `father_name` VARCHAR(100) NULL DEFAULT NULL AFTER `mother_name`;
+ALTER TABLE `visa_crm_master` ADD `fees_b2b` VARCHAR(50) NULL DEFAULT NULL AFTER `upload_url5`, ADD `markup_b2b` VARCHAR(50) NULL DEFAULT NULL AFTER `fees_b2b`;

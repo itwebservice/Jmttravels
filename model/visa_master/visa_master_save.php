@@ -15,7 +15,8 @@ public function visa_master_save()
   $photo_upload_url4 = $_POST['photo_upload_url4'];
   $photo_upload_url5 = $_POST['photo_upload_url5'];
   $doc_list=mysqlREString($_POST['doc_list']);
-
+  $fees_b2b=$_POST['fees_b2b'];
+  $markup_b2b=$_POST['markup_b2b'];
   //Transaction start
   begin_t();
   $visa_type = addslashes($visa_type);
@@ -30,7 +31,7 @@ public function visa_master_save()
   $value=mysqli_fetch_assoc($row);
   $max=$value['max']+1;
 
-  $sq = mysqlQuery("insert into visa_crm_master (entry_id, country_id, visa_type, fees, markup, time_taken, upload_url,upload_url2,upload_url3,upload_url4,upload_url5, list_of_documents,status) values ('$max', '$visa_country_name', '$visa_type', '$fees', '$markup', '$time_taken', '$photo_upload_url', '$photo_upload_url2', '$photo_upload_url3', '$photo_upload_url4', '$photo_upload_url5','$doc_list','1')");
+  $sq = mysqlQuery("insert into visa_crm_master (entry_id, country_id, visa_type, fees, markup, time_taken, upload_url,upload_url2,upload_url3,upload_url4,upload_url5, list_of_documents,status,fees_b2b,markup_b2b) values ('$max', '$visa_country_name', '$visa_type', '$fees', '$markup', '$time_taken', '$photo_upload_url', '$photo_upload_url2', '$photo_upload_url3', '$photo_upload_url4', '$photo_upload_url5','$doc_list','1','$fees_b2b','$markup_b2b')");
 
   if($sq){
     echo "Visa information has been successfully saved.";
@@ -72,7 +73,8 @@ public function visa_master_save()
    $doc_list=mysqlREString($_POST['doc_list']);
    $active_flag = $_POST['active_flag'];
 
-
+   $fees_b2b=$_POST['fees_b2b'];
+   $markup_b2b=$_POST['markup_b2b'];
 
   //Transaction start
 
@@ -84,7 +86,7 @@ public function visa_master_save()
     exit;
   }
 
-  $sq = mysqlQuery("update visa_crm_master set country_id='$visa_country_name',visa_type='$visa_type',fees='$fees',markup='$markup',time_taken='$time_taken',upload_url='$photo_upload_url',upload_url2='$photo_upload_url2',upload_url3='$photo_upload_url3',upload_url4='$photo_upload_url4',upload_url5='$photo_upload_url5',list_of_documents='$doc_list',status='$active_flag' where entry_id='$entry_id'");
+  $sq = mysqlQuery("update visa_crm_master set country_id='$visa_country_name',visa_type='$visa_type',fees='$fees',markup='$markup',time_taken='$time_taken',upload_url='$photo_upload_url',upload_url2='$photo_upload_url2',upload_url3='$photo_upload_url3',upload_url4='$photo_upload_url4',upload_url5='$photo_upload_url5',list_of_documents='$doc_list',status='$active_flag',`fees_b2b`='$fees_b2b',`markup_b2b`='$markup_b2b' where entry_id='$entry_id'");
 
   if($sq){
 
