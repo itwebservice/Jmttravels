@@ -48,7 +48,7 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                     <div class="panel panel-default main_block">
                                                         <div class="panel-heading main_block" role="tab" id="heading_<?= $db['entry_id'] ?>">
                                                             <div class="Normal collapsed main_block" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<?= $db['entry_id'] ?>" aria-expanded="false" aria-controls="collapse_<?= $db['entry_id'] ?>" id="collapsed_<?= $db['entry_id'] ?>">
-                                                                <div class="col-md-12"><span><em style="margin-left: 15px;"><?= $db['first_name']." ".$db['last_name'] ?></em></span>
+                                                                <div class="col-md-12"><span><em style="margin-left: 15px;"><?= $db['first_name'] . " " . $db['last_name'] ?></em></span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -58,38 +58,54 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                     <input type="hidden" name="id[]" value="<?= $db['entry_id'] ?>">
                                                                     <input type="hidden" name="visa_id" value="<?= $visa_id ?>">
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="First Name"  name="first_name[]" value="<?= $db['first_name'] ?>" id="" class="form-control" title="First Name">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="First Name" name="first_name[]" value="<?= $db['first_name'] ?>" id="" class="form-control" title="First Name">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text"  placeholder="Middle Name"  name="middle_name[]" value="<?= $db['middle_name'] ?>" id="" class="form-control" title="Middle Name">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Middle Name" name="middle_name[]" value="<?= $db['middle_name'] ?>" id="" class="form-control" title="Middle Name">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="Last Name"  name="last_name[]" value="<?= $db['last_name'] ?>" id="" class="form-control" title="Last Name">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="Last Name" name="last_name[]" value="<?= $db['last_name'] ?>" id="" class="form-control" title="Last Name">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required name="birth_date[]"  placeholder="Date Of BIrth" value="<?= $db['birth_date'] ?>" id="" class="form-control app_datepicker" title="Date Of Birth">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required name="birth_date[]" placeholder="Date Of BIrth" value="<?= $db['birth_date'] ?>" id="" class="form-control app_datepicker" title="Date Of Birth">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="Passport Id"  name="passport_id[]" value="<?= $db['passport_id'] ?>" id="" class="form-control" title="Passport Id">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="Passport Id" name="passport_id[]" value="<?= $db['passport_id'] ?>" id="" class="form-control" title="Passport Id">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required name="issue_date[]"  value="<?= $db['issue_date'] ?>" id="" class="form-control app_datetimepicker" title="Issue Date">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required name="issue_date[]" value="<?= $db['issue_date'] ?>" id="issue_date<?= $db['entry_id'] ?>" class="form-control app_datetimepicker" title="Issue Date" onchange="get_to_date(this.id,'expiry_date<?= $db['entry_id'] ?>');">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required name="expiry_date[]"  value="<?= $db['expiry_date'] ?>" id="" class="form-control app_datetimepicker" title="Expiry Date">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required name="expiry_date[]" value="<?= $db['expiry_date'] ?>" id="expiry_date<?= $db['entry_id'] ?>" class="form-control app_datetimepicker" title="Expiry Date" onchange="validate_validDate('issue_date<?= $db['entry_id'] ?>','expiry_date<?= $db['entry_id'] ?>');">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="Nationality"  name="nationality[]" value="<?= $db['nationality'] ?>" id="" class="form-control" title="Nationality">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="Nationality" name="nationality[]" value="<?= $db['nationality'] ?>" id="" class="form-control" title="Nationality">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text"  placeholder="Mother Name"  name="mother_name[]" value="<?= $db['mother_name'] ?>" id="" class="form-control" title="Mother Name">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Mother Name" name="mother_name[]" value="<?= $db['mother_name'] ?>" id="" class="form-control" title="Mother Name">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text"  placeholder="Father Name"  name="father_name[]" value="<?= $db['father_name'] ?>" id="" class="form-control" title="Father Name">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Father Name" name="father_name[]" value="<?= $db['father_name'] ?>" id="" class="form-control" title="Father Name">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="file" multiple placeholder=""  name="id_proff[]" value="<?= $db['id_proff'] ?>" id="" class="form-control" title="ID PROOF">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="file" multiple placeholder="" name="id_proff[]" id="" class="form-control" title="ID PROOF">
                                                                     </div>
+                                                                    <?php
+                                                                    if (!empty($db['id_proof_url'])) {
+                                                                        $url = $db['id_proof_url'];
+                                                                        $pos = strstr($url, 'uploads');
+                                                                        if ($pos != false) {
+                                                                            $newUrl1 = preg_replace('/(\/+)/', '/', $db['id_proof_url']);
+                                                                            $newUrl = BASE_URL . str_replace('../', '', $newUrl1);
+                                                                        } else {
+                                                                            $newUrl =  $db['id_proof_url'];
+                                                                        }
+
+                                                                    ?>
+                                                                        <div class="col-md-4 mg_tp_10">
+                                                                            <a href="<?= $newUrl ?>" target="_blank" data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-eye"></i></a>
+                                                                        </div>
+                                                                    <?php } ?>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -132,6 +148,7 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
 
 </div>
 <script src="<?php echo BASE_URL ?>js/app/footer_scripts.js"></script>
+<script src="<?php echo BASE_URL ?>js/app/field_validation.js"></script>
 <script>
     $('#upd_form').on('submit', function(e) {
         e.preventDefault();
@@ -167,6 +184,6 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
     $('#visa_edit_modal').modal('show');
     $("input[name='birth_date[]'],input[name='issue_date[]'],input[name='expiry_date[]']").datetimepicker({
         timepicker: false,
-        format: "Y-m-d"
+        format: "d-m-Y"
     })
 </script>

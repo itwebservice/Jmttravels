@@ -1119,12 +1119,14 @@ Please contact for more details : ' . $contact);
 		$mother_name = $_POST['mother_name'];
 		$father_name = $_POST['father_name'];
 		$id_proff = $this->fileUploadAll($_FILES['id_proff'], 'visa_id_proff');
+		
 		foreach ($ids as $key => $id) {
 			$query = "UPDATE `visa_master_entries` SET `first_name`='" . $first_name[$key] . "',
 			`middle_name`='" . $middle_name[$key] . "',`last_name`='" . $last_name[$key] . "',`birth_date`='" . $birth_date[$key] . "',
+			passport_id='$passport_id[$key]', issue_date='$issue_date[$key]', expiry_date = '$expiry_date[$key]',
 			`nationality`='" . $nationality[$key] . "',`mother_name`='" . $mother_name[$key] . "',`father_name`='" . $father_name[$key] . "'";
 			if (!empty($id_proff[$key])) {
-				$query .= ",id_proff_url='" . $id_proff[$key] . "'";
+				$query .= ",id_proof_url='" . $id_proff[$key] . "'";
 			}
 			$query .= " WHERE entry_id='" . $id . "'";
 			mysqlQuery($query);
@@ -1136,49 +1138,38 @@ Please contact for more details : ' . $contact);
 	{
 		$urlArr = array();
 		for ($i = 0; $i < count($fileFile['name']); $i++) {
-			if (isset($fileFile)) {
+			if (!empty($fileFile['name'][$i])) {
 				$errors = array();
 				$fileMain = $fileFile;
 				$file_name = $fileMain['name'][$i];
 				$file_size = $fileMain['size'][$i];
 				$file_tmp = $fileMain['tmp_name'][$i];
-
 				$file_type = $fileMain['type'][$i];
 				//dir
 				$year = date("Y");
 				$month = date("M");
 				$day = date("d");
 				$timestamp = date('U');
-				$current_dir = '../../../uploads/';
-				$current_dir = $this->check_dir($current_dir, 'company_QR');
+				$current_dir = '../../uploads/';
+				$current_dir = $this->check_dir($current_dir, 'Visa_field');
 				$current_dir = $this->check_dir($current_dir, $year);
 				$current_dir = $this->check_dir($current_dir, $month);
 				$current_dir = $this->check_dir($current_dir, $day);
 				$current_dir = $this->check_dir($current_dir, $timestamp);
-				$file_name = str_replace(' ','_',basename($file_name));
-				$fileMainName = $current_dir.$file_name; 
-
-				$file_ext = strtolower(end(explode('.', $fileMain['name'][$i])));
-
-				$extensions = array("jpeg", "jpg", "png");
-
-				if (in_array($file_ext, $extensions) === false) {
-					$errors[] = "extension not allowed, please choose a JPEG or PNG file.";
-				}
-
+				$file_name2 = str_replace(' ', '_', basename($file_name));
+				$fileMainName = $current_dir . $file_name2;
 				if ($file_size > 2097152) {
 					$errors[] = 'File size must be excately 2 MB';
 				}
 
 				if (empty($errors) == true) {
 					if (move_uploaded_file($file_tmp, $fileMainName)) {
-
 						$urlArr[] = $fileMainName;
 					} else {
 						$urlArr[] = 0;
 					}
 				} else {
-					//  return ($errors);
+					  //var_dump ($errors);
 					$urlArr[] = 0;
 				}
 			} else {
