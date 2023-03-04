@@ -106,6 +106,9 @@
                        	<th>Nationality</th>
                        	<!-- <th>Documents</th> -->
 						<th>Appointment_Date</th>
+						<th>Start_Date</th>
+						<th>End_Date</th>
+						<th>Status</th>
                        </tr>
                        </thead>
                        <tbody>
@@ -145,6 +148,9 @@
 								    	<?php echo $row_entry['received_documents'];  ?>
 								    </td> -->
 									<td><?php echo get_date_user($row_entry['appointment_date']); ?></td>
+									<td><?php echo get_date_user($row_entry['start_date']); ?></td>
+									<td><?php echo get_date_user($row_entry['end_date']); ?></td>
+									<td><?php echo $row_entry['pass_status']; ?></td>
 								</tr>  
 								<script>
 									$("#birth_date<?= $offset.$count ?>_d, #expiry_date<?= $offset ?>1").datetimepicker({ timepicker:false, format:'d-m-Y' });

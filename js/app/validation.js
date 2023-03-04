@@ -3058,6 +3058,8 @@ function foo(tableID, quot_table_id, rowCounts) {
     row.cells[13].childNodes[0].placeholder = "Appointment Date";
     row.cells[13].childNodes[0].setAttribute("title", "Appointment Date");
     row.cells[13].childNodes[0].setAttribute("class", "app_datepicker");
+
+
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!
@@ -3078,21 +3080,56 @@ function foo(tableID, quot_table_id, rowCounts) {
       minDate: tom,
       format: "d-m-Y",
     });
+
+//new
+row.cells[14].childNodes[0].setAttribute(
+  "id",
+  "start_date" + prefix + foo.counter
+);
+row.cells[14].childNodes[0].placeholder = "Travel Start Date";
+    row.cells[14].childNodes[0].setAttribute("title", "Travel Start Date");
+    row.cells[14].childNodes[0].setAttribute("class", "app_datepicker form-control");
+    $(row.cells[14].childNodes[0]).datetimepicker({
+      timepicker: false,
+      minDate: tom,
+      format: "d-m-Y",
+    });
+
+
+    row.cells[15].childNodes[0].setAttribute(
+      "id",
+      "start_date" + prefix + foo.counter
+    );
+    row.cells[15].childNodes[0].placeholder = "Travel End Date";
+        row.cells[15].childNodes[0].setAttribute("title", "Travel End Date");
+        row.cells[15].childNodes[0].setAttribute("class", "app_datepicker form-control");
+        $(row.cells[15].childNodes[0]).datetimepicker({
+          timepicker: false,
+          minDate: tom,
+          format: "d-m-Y",
+        });
+
+        row.cells[16].childNodes[0].setAttribute(
+          "id",
+          "status_type" + prefix + foo.counter
+        );
+//new
+
     if (tableID == "tbl_dynamic_visa") {
-      row.cells[14].childNodes[0].setAttribute(
+      row.cells[17].childNodes[0].setAttribute(
         "id",
         "visa_cost" + prefix + foo.counter
       );
-      row.cells[14].childNodes[0].value = 0.0;
-      $(row.cells[14]).addClass("hidden");
+      row.cells[17].childNodes[0].value = 0.0;
+      $(row.cells[17]).addClass("hidden");
     } else {
-      $(row.cells[14].childNodes[0]).trigger("change");
-      $(row.cells[14]).addClass("hidden");
-      row.cells[15].childNodes[0].setAttribute(
+      $(row.cells[17].childNodes[0]).trigger("change");
+      $(row.cells[17]).addClass("hidden");
+      row.cells[17].childNodes[0].setAttribute(
         "id",
         "visa_cost" + prefix + foo.counter
       );
-      row.cells[15].childNodes[0].value = 0.0;
+      row.cells[17].childNodes[0].value = 0.0;
       // $(row.cells[16]).addClass('hidden');
     }
   }

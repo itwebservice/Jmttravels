@@ -45,6 +45,9 @@ class visa_master
 		$credit_charges = $_POST['credit_charges'];
 		$credit_card_details = $_POST['credit_card_details'];
 		$currency_code = $_POST['currency_code'];
+		$start_date_arr = $_POST['start_date_arr'];
+		$end_date_arr = $_POST['end_date_arr'];
+		$status_arr = $_POST['status_arr'];
 
 		$payment_date = date('Y-m-d', strtotime($payment_date));
 		$balance_date = date("Y-m-d", strtotime($balance_date));
@@ -120,7 +123,7 @@ class visa_master
 				$expiry_date_arr[$i] = get_date_db($expiry_date_arr[$i]);
 				$appointment_date_arr[$i] = get_date_db($appointment_date_arr[$i]);
 
-				$sq_entry = mysqlQuery("insert into visa_master_entries(entry_id, visa_id, first_name, middle_name, last_name, birth_date, adolescence, visa_country_name, visa_type, passport_id, issue_date, expiry_date,nationality, received_documents,appointment_date) values('$entry_id', '$visa_id', '$first_name_arr[$i]', '$middle_name_arr[$i]', '$last_name_arr[$i]', '$birth_date_arr[$i]', '$adolescence_arr[$i]', '$visa_country_name_arr[$i]', '$visa_type_arr[$i]', '$passport_id_arr[$i]', '$issue_date_arr[$i]', '$expiry_date_arr[$i]', '$nationality_arr[$i]', '$received_documents_arr[$i]','$appointment_date_arr[$i]')");
+				$sq_entry = mysqlQuery("insert into visa_master_entries(entry_id, visa_id, first_name, middle_name, last_name, birth_date, adolescence, visa_country_name, visa_type, passport_id, issue_date, expiry_date,nationality, received_documents,appointment_date,start_date,end_date,pass_status) values('$entry_id', '$visa_id', '$first_name_arr[$i]', '$middle_name_arr[$i]', '$last_name_arr[$i]', '$birth_date_arr[$i]', '$adolescence_arr[$i]', '$visa_country_name_arr[$i]', '$visa_type_arr[$i]', '$passport_id_arr[$i]', '$issue_date_arr[$i]', '$expiry_date_arr[$i]', '$nationality_arr[$i]', '$received_documents_arr[$i]','$appointment_date_arr[$i]','$start_date_arr[$i]','$end_date_arr[$i]','$status_arr[$i]')");
 
 				if (!$sq_entry) {
 					$GLOBALS['flag'] = false;
@@ -726,7 +729,9 @@ class visa_master
 		$service_tax_markup = $_POST['service_tax_markup'];
 		$reflections = json_decode(json_encode($_POST['reflections']));
 		$currency_code = $_POST['currency_code'];
-
+		$start_date_arr = $_POST['start_date_arr'];
+		$end_date_arr = $_POST['end_date_arr'];
+		$status_arr = $_POST['status_arr'];
 		$due_date1 = date('Y-m-d', strtotime($due_date1));
 		$balance_date1 = date('Y-m-d', strtotime($balance_date1));
 
@@ -764,13 +769,13 @@ class visa_master
 				$issue_date_arr[$i] = get_date_db($issue_date_arr[$i]);
 				$expiry_date_arr[$i] = get_date_db($expiry_date_arr[$i]);
 				$appointment_date_arr[$i] = get_date_db($appointment_date_arr[$i]);
-				if ($entry_id_arr[$i] == "") {
+				if (empty($entry_id_arr[$i])) {
 
 					$sq_max = mysqli_fetch_assoc(mysqlQuery("select max(entry_id) as max from visa_master_entries"));
 
 					$entry_id = $sq_max['max'] + 1;
 
-					$sq_entry = mysqlQuery("insert into visa_master_entries(entry_id, visa_id, first_name, middle_name, last_name, birth_date, adolescence, visa_country_name, visa_type, passport_id, issue_date, expiry_date, nationality, received_documents,appointment_date) values('$entry_id', '$visa_id', '$first_name_arr[$i]', '$middle_name_arr[$i]', '$last_name_arr[$i]', '$birth_date_arr[$i]', '$adolescence_arr[$i]', '$visa_country_name_arr[$i]', '$visa_type_arr[$i]', '$passport_id_arr[$i]', '$issue_date_arr[$i]', '$expiry_date_arr[$i]', '$nationality_arr[$i]', '$received_documents_arr[$i]','$appointment_date_arr[$i]')");
+					$sq_entry = mysqlQuery("insert into visa_master_entries(entry_id, visa_id, first_name, middle_name, last_name, birth_date, adolescence, visa_country_name, visa_type, passport_id, issue_date, expiry_date, nationality, received_documents,appointment_date,start_date,end_date,pass_status) values('$entry_id', '$visa_id', '$first_name_arr[$i]', '$middle_name_arr[$i]', '$last_name_arr[$i]', '$birth_date_arr[$i]', '$adolescence_arr[$i]', '$visa_country_name_arr[$i]', '$visa_type_arr[$i]', '$passport_id_arr[$i]', '$issue_date_arr[$i]', '$expiry_date_arr[$i]', '$nationality_arr[$i]', '$received_documents_arr[$i]','$appointment_date_arr[$i]','$start_date_arr[$i]','$end_date_arr[$i]','$status_arr[$i]')");
 
 					if (!$sq_entry) {
 						$GLOBALS['flag'] = false;
@@ -778,7 +783,7 @@ class visa_master
 						//exit;
 					}
 				} else {
-					$sq_entry = mysqlQuery("update visa_master_entries set first_name='$first_name_arr[$i]', middle_name='$middle_name_arr[$i]', last_name='$last_name_arr[$i]', birth_date='$birth_date_arr[$i]', adolescence='$adolescence_arr[$i]', visa_country_name='$visa_country_name_arr[$i]', visa_type='$visa_type_arr[$i]', passport_id='$passport_id_arr[$i]', issue_date='$issue_date_arr[$i]', expiry_date='$expiry_date_arr[$i]', received_documents='$received_documents_arr[$i]', nationality='$nationality_arr[$i]',appointment_date	='$appointment_date_arr[$i]' where entry_id='$entry_id_arr[$i]'");
+					$sq_entry = mysqlQuery("update visa_master_entries set first_name='$first_name_arr[$i]', middle_name='$middle_name_arr[$i]', last_name='$last_name_arr[$i]', birth_date='$birth_date_arr[$i]', adolescence='$adolescence_arr[$i]', visa_country_name='$visa_country_name_arr[$i]', visa_type='$visa_type_arr[$i]', passport_id='$passport_id_arr[$i]', issue_date='$issue_date_arr[$i]', expiry_date='$expiry_date_arr[$i]', received_documents='$received_documents_arr[$i]', nationality='$nationality_arr[$i]',appointment_date	='$appointment_date_arr[$i]',start_date='$start_date_arr[$i]',end_date='$end_date_arr[$i]',pass_status='$status_arr[$i]' where entry_id='$entry_id_arr[$i]'");
 					if (!$sq_entry) {
 						$GLOBALS['flag'] = false;
 						echo "error--Some Visa entries are not updated!";

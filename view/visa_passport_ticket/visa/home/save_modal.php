@@ -59,7 +59,7 @@ $branch_status = $sq['branch_status'];
 							</div>
 						</div>
 					</div>
-							<div id="new_cust_div"></div>
+					<div id="new_cust_div"></div>
 
 					<div class="panel panel-default panel-body fieldset mg_tp_30">
 						<legend>Passenger Details</legend>
@@ -153,17 +153,17 @@ $branch_status = $sq['branch_status'];
 								<select class="form-control" name="currency_code" id="vcurrency_code" title="Currency" style="width:100%" data-toggle="tooltip" required>
 									<?php
 									$sq_app_setting = mysqli_fetch_assoc(mysqlQuery("select currency from app_settings"));
-									if($sq_app_setting['currency']!='0'){
+									if ($sq_app_setting['currency'] != '0') {
 
 										$sq_currencyd = mysqli_fetch_assoc(mysqlQuery("SELECT `id`,`currency_code` FROM `currency_name_master` WHERE id=" . $sq_app_setting['currency']));
-										?>
+									?>
 										<option value="<?= $sq_currencyd['id'] ?>"><?= $sq_currencyd['currency_code'] ?></option>
 									<?php } ?>
 									<?php
 									$sq_currency = mysqlQuery("select * from currency_name_master order by currency_code");
-									while($row_currency = mysqli_fetch_assoc($sq_currency)){
+									while ($row_currency = mysqli_fetch_assoc($sq_currency)) {
 									?>
-									<option value="<?= $row_currency['id'] ?>"><?= $row_currency['currency_code'] ?></option>
+										<option value="<?= $row_currency['id'] ?>"><?= $row_currency['currency_code'] ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -255,7 +255,7 @@ $branch_status = $sq['branch_status'];
 		format: 'd-m-Y',
 		maxDate: yest
 	});
-	$('#appointment1,#expiry_date1').datetimepicker({
+	$('#appointment1,#expiry_date1,#start_date1,#end_date1').datetimepicker({
 		timepicker: false,
 		minDate: tom,
 		format: 'd-m-Y'
@@ -354,9 +354,15 @@ $branch_status = $sq['branch_status'];
 						}
 					}
 				},
-				tax_apply_on : { required:true},
-				tax_value : { required:true},
-				markup_tax_value : { required:true}
+				tax_apply_on: {
+					required: true
+				},
+				tax_value: {
+					required: true
+				},
+				markup_tax_value: {
+					required: true
+				}
 			},
 			submitHandler: function(form) {
 				$('#btn_visa_master_save').prop('disabled', true);
@@ -406,9 +412,9 @@ $branch_status = $sq['branch_status'];
 				var markup = $('#markup').val();
 				var service_tax_markup = $('#service_tax_markup').val();
 
-				if(payment_mode=="Advance"){
+				if (payment_mode == "Advance") {
 					error_msg_alert("Please select another payment mode.");
-					$('#btn_visa_master_save').prop('disabled',false);
+					$('#btn_visa_master_save').prop('disabled', false);
 					return false;
 				}
 
@@ -439,6 +445,10 @@ $branch_status = $sq['branch_status'];
 				var issue_date_arr = new Array();
 				var expiry_date_arr = new Array();
 				var nationality_arr = new Array();
+				var start_date_arr = new Array();
+				var end_date_arr = new Array();
+				var status_arr = new Array();
+
 				//var received_documents_arr = new Array();
 				var appointment_date_arr = new Array();
 
@@ -472,6 +482,9 @@ $branch_status = $sq['branch_status'];
 						// });
 						// received_documents = received_documents.trimChars(",");
 						var appointment = row.cells[13].childNodes[0].value;
+						var start_date = row.cells[14].childNodes[0].value;
+						var end_date = row.cells[15].childNodes[0].value;
+						var pass_status = row.cells[16].childNodes[0].value;
 						var msg = "";
 
 						if (first_name == "") {
@@ -486,6 +499,15 @@ $branch_status = $sq['branch_status'];
 						}
 						if (nationality == "") {
 							msg += "Nationality is required in row:" + (i + 1) + "<br>";
+						}
+						if (start_date == "") {
+							msg += "Start Date is required in row:" + (i + 1) + "<br>";
+						}
+						if (end_date == "") {
+							msg += "End Date is required in row:" + (i + 1) + "<br>";
+						}
+						if (pass_status == "") {
+							msg += "Passenger Status is required in row:" + (i + 1) + "<br>";
 						}
 						if (msg != "") {
 							error_msg_alert(msg);
@@ -506,6 +528,9 @@ $branch_status = $sq['branch_status'];
 						nationality_arr.push(nationality);
 						//received_documents_arr.push(received_documents);
 						appointment_date_arr.push(appointment);
+						start_date_arr.push(start_date);
+						end_date_arr.push(end_date);
+						status_arr.push(pass_status);
 					}
 				}
 				var hotel_sc = $('#hotel_sc').val();
@@ -517,7 +542,7 @@ $branch_status = $sq['branch_status'];
 				var tax_value = $('#tax_value').val();
 				var markup_tax_value = $('#markup_tax_value').val();
 
-				
+
 				var reflections = [];
 				reflections.push({
 					'hotel_sc': hotel_sc,
@@ -525,9 +550,9 @@ $branch_status = $sq['branch_status'];
 					'hotel_taxes': hotel_taxes,
 					'hotel_markup_taxes': hotel_markup_taxes,
 					'hotel_tds': hotel_tds,
-					'tax_apply_on':tax_apply_on,
-					'tax_value':tax_value,
-					'markup_tax_value':markup_tax_value
+					'tax_apply_on': tax_apply_on,
+					'tax_value': tax_value,
+					'markup_tax_value': markup_tax_value
 				});
 				var bsmValues = [];
 				bsmValues.push({
@@ -542,137 +567,139 @@ $branch_status = $sq['branch_status'];
 				$.post(base_url + 'view/load_data/finance_date_validation.php', {
 					check_date: check_date1
 				}, function(data) {
-						if (data !== 'valid') {
-							error_msg_alert("The Booking date does not match between selected Financial year.");
-							$('#btn_visa_master_save').prop('disabled', false);
-							$('#btn_visa_master_save').button('reset');
-							return false;
-						} else {
-							var payment_date = $('#payment_date').val();
-							$.post(base_url + 'view/load_data/finance_date_validation.php', {
-								check_date: payment_date
-							}, function(data) {
-								if (data !== 'valid') {
-									error_msg_alert("The Payment date does not match between selected Financial year.");
-									$('#btn_visa_master_save').prop('disabled', false);
-									$('#btn_visa_master_save').button('reset');
-									return false;
+					if (data !== 'valid') {
+						error_msg_alert("The Booking date does not match between selected Financial year.");
+						$('#btn_visa_master_save').prop('disabled', false);
+						$('#btn_visa_master_save').button('reset');
+						return false;
+					} else {
+						var payment_date = $('#payment_date').val();
+						$.post(base_url + 'view/load_data/finance_date_validation.php', {
+							check_date: payment_date
+						}, function(data) {
+							if (data !== 'valid') {
+								error_msg_alert("The Payment date does not match between selected Financial year.");
+								$('#btn_visa_master_save').prop('disabled', false);
+								$('#btn_visa_master_save').button('reset');
+								return false;
+							} else {
+								//New Customer save
+								if (customer_id == '0') {
+									$.ajax({
+										type: 'post',
+										url: base_url + 'controller/customer_master/customer_save.php',
+										data: {
+											first_name: cust_first_name,
+											middle_name: cust_middle_name,
+											last_name: cust_last_name,
+											gender: gender,
+											birth_date: cust_birth_date,
+											age: age,
+											contact_no: contact_no,
+											email_id: email_id,
+											address: address,
+											address2: address2,
+											city: city,
+											active_flag: active_flag,
+											service_tax_no: service_tax_no,
+											landline_no: landline_no,
+											alt_email_id: alt_email_id,
+											company_name: company_name,
+											cust_type: cust_type,
+											state: state,
+											branch_admin_id: branch_admin_id,
+											country_code: country_code
+										},
+										success: function(result) {
+											var error_arr = result.split('--');
+											if (error_arr[0] == 'error') {
+												error_msg_alert(error_arr[1]);
+												$('#btn_visa_master_save').button('reset');
+												$('#btn_visa_master_save').prop('disabled', false);
+												return false;
+											} else {
+												saveData();
+											}
+										}
+									});
 								} else {
-									//New Customer save
-									if (customer_id == '0') {
-										$.ajax({
-											type: 'post',
-											url: base_url + 'controller/customer_master/customer_save.php',
-											data: {
-												first_name: cust_first_name,
-												middle_name: cust_middle_name,
-												last_name: cust_last_name,
-												gender: gender,
-												birth_date: cust_birth_date,
-												age: age,
-												contact_no: contact_no,
-												email_id: email_id,
-												address: address,
-												address2: address2,
-												city: city,
-												active_flag: active_flag,
-												service_tax_no: service_tax_no,
-												landline_no: landline_no,
-												alt_email_id: alt_email_id,
-												company_name: company_name,
-												cust_type: cust_type,
-												state: state,
-												branch_admin_id: branch_admin_id,
-												country_code: country_code
-											},
-											success: function(result) {
-												var error_arr = result.split('--');
-												if (error_arr[0] == 'error') {
-													error_msg_alert(error_arr[1]);
-													$('#btn_visa_master_save').button('reset');
-													$('#btn_visa_master_save').prop('disabled', false);
-													return false;
-												} else {
-													saveData();
-												}
-											}
-										});
-									}
-									else{
-										saveData();
-									}
-
-									function saveData() {
-
-										$.ajax({
-											type: 'post',
-											url: base_url + 'controller/visa_passport_ticket/visa/visa_master_save.php',
-											data: {
-												emp_id: emp_id,
-												customer_id: customer_id,
-												visa_issue_amount: visa_issue_amount,
-												service_charge: service_charge,
-												service_tax_subtotal: service_tax_subtotal,
-												visa_total_cost: visa_total_cost,
-												payment_date: payment_date,
-												payment_amount: payment_amount,
-												payment_mode: payment_mode,
-												bank_name: bank_name,
-												transaction_id: transaction_id,
-												first_name_arr: first_name_arr,
-												middle_name_arr: middle_name_arr,
-												last_name_arr: last_name_arr,
-												birth_date_arr: birth_date_arr,
-												adolescence_arr: adolescence_arr,
-												visa_country_name_arr: visa_country_name_arr,
-												visa_type_arr: visa_type_arr,
-												passport_id_arr: passport_id_arr,
-												issue_date_arr: issue_date_arr,
-												expiry_date_arr: expiry_date_arr,
-												nationality_arr: nationality_arr,
-												//received_documents_arr: received_documents_arr,
-												appointment_date_arr: appointment_date_arr,
-												bank_id: bank_id,
-												due_date: due_date,
-												balance_date: booking_date,
-												branch_admin_id: branch_admin_id,
-												financial_year_id: financial_year_id,
-												markup: markup,
-												service_tax_markup: service_tax_markup,
-												reflections: reflections,
-												bsmValues: bsmValues,
-												roundoff: roundoff,
-												credit_charges: credit_charges,
-												credit_card_details: credit_card_details,
-												currency_code:currency_code
-											},
-											success: function(result) {
-												var msg = result.split('-');
-
-												if (msg[0] == 'error') {
-													$('#btn_visa_master_save').prop('disabled', false);
-													msg_alert(result);
-													$('#btn_visa_master_save').button('reset');
-												} else {
-													var msg1 = result.split('-');
-													$('#btn_visa_master_save').prop('disabled', false);
-													$('#btn_visa_master_save').button('reset');
-													msg_alert(msg1[0]);
-													reset_form('frm_visa_save');
-													$('#visa_save_modal').modal('hide');
-													visa_customer_list_reflect();
-													window.open(base_url+'view/vendor/dashboard/estimate/estimate_save_modal.php?type=Visa Booking&amount='+visa_issue_amount+'&booking_id='+msg1[1]);
-													setTimeout(() => {
-														if ($('#whatsapp_switch').val() == "on") whatsapp_send(emp_id, customer_id, booking_date, base_url, country_code+contact_no,email_id);
-													}, 1000);
-												}
-											}
-										});
-									}
+									saveData();
 								}
-							});
-						}
-					});
+
+								function saveData() {
+
+									$.ajax({
+										type: 'post',
+										url: base_url + 'controller/visa_passport_ticket/visa/visa_master_save.php',
+										data: {
+											emp_id: emp_id,
+											customer_id: customer_id,
+											visa_issue_amount: visa_issue_amount,
+											service_charge: service_charge,
+											service_tax_subtotal: service_tax_subtotal,
+											visa_total_cost: visa_total_cost,
+											payment_date: payment_date,
+											payment_amount: payment_amount,
+											payment_mode: payment_mode,
+											bank_name: bank_name,
+											transaction_id: transaction_id,
+											first_name_arr: first_name_arr,
+											middle_name_arr: middle_name_arr,
+											last_name_arr: last_name_arr,
+											birth_date_arr: birth_date_arr,
+											adolescence_arr: adolescence_arr,
+											visa_country_name_arr: visa_country_name_arr,
+											visa_type_arr: visa_type_arr,
+											passport_id_arr: passport_id_arr,
+											issue_date_arr: issue_date_arr,
+											expiry_date_arr: expiry_date_arr,
+											nationality_arr: nationality_arr,
+											//received_documents_arr: received_documents_arr,
+											appointment_date_arr: appointment_date_arr,
+											bank_id: bank_id,
+											due_date: due_date,
+											balance_date: booking_date,
+											branch_admin_id: branch_admin_id,
+											financial_year_id: financial_year_id,
+											markup: markup,
+											service_tax_markup: service_tax_markup,
+											reflections: reflections,
+											bsmValues: bsmValues,
+											roundoff: roundoff,
+											credit_charges: credit_charges,
+											credit_card_details: credit_card_details,
+											currency_code: currency_code,
+											start_date_arr:start_date_arr,
+											end_date_arr:end_date_arr,
+											status_arr:status_arr,
+										},
+										success: function(result) {
+											var msg = result.split('-');
+
+											if (msg[0] == 'error') {
+												$('#btn_visa_master_save').prop('disabled', false);
+												msg_alert(result);
+												$('#btn_visa_master_save').button('reset');
+											} else {
+												var msg1 = result.split('-');
+												$('#btn_visa_master_save').prop('disabled', false);
+												$('#btn_visa_master_save').button('reset');
+												msg_alert(msg1[0]);
+												reset_form('frm_visa_save');
+												$('#visa_save_modal').modal('hide');
+												visa_customer_list_reflect();
+												window.open(base_url + 'view/vendor/dashboard/estimate/estimate_save_modal.php?type=Visa Booking&amount=' + visa_issue_amount + '&booking_id=' + msg1[1]);
+												setTimeout(() => {
+													if ($('#whatsapp_switch').val() == "on") whatsapp_send(emp_id, customer_id, booking_date, base_url, country_code + contact_no, email_id);
+												}, 1000);
+											}
+										}
+									});
+								}
+							}
+						});
+					}
+				});
 			}
 		});
 
@@ -694,29 +721,33 @@ $branch_status = $sq['branch_status'];
 			var json_data = JSON.parse(data);
 			var amount = isNaN(parseFloat(json_data.amount)) ? 0.00 : parseFloat(json_data.amount);
 			var service_charge = isNaN(parseFloat(json_data.service)) ? 0.00 : parseFloat(json_data.service);
-			$('#visa_cost' + offset).val(amount+'-'+service_charge);
+			$('#visa_cost' + offset).val(amount + '-' + service_charge);
 			alltable_visa_cost('tbl_dynamic_visa');
 		});
 	}
-	function alltable_visa_cost(id){
+
+	function alltable_visa_cost(id) {
 		var table = document.getElementById(id);
 		$('#visa_issue_amount').val(0);
 		$('#markup').val(0);
 		var rowCount = table.rows.length;
-		var total_amt = 0, total_markup = 0;
-		for(var i=0; i<rowCount; i++){
+		var total_amt = 0,
+			total_markup = 0;
+		for (var i = 0; i < rowCount; i++) {
 			var row = table.rows[i];
-			if(row.cells[0].childNodes[0].checked == true){
+			if (row.cells[0].childNodes[0].checked == true) {
 				var amt1 = row.cells[14].childNodes[0].value;
 				var amt = amt1.split('-');
 				total_amt += parseFloat(amt[0]);
 				total_markup += parseFloat(amt[1]);
 			}
 		}
-		if(isNaN(total_amt)) total_amt = 0;
-		if(isNaN(total_markup)) total_markup = 0;
-		$('#visa_issue_amount').val(total_amt);$('#visa_issue_amount').trigger('change');
-		$('#markup').val(total_markup);$('#markup').trigger('change');
+		if (isNaN(total_amt)) total_amt = 0;
+		if (isNaN(total_markup)) total_markup = 0;
+		$('#visa_issue_amount').val(total_amt);
+		$('#visa_issue_amount').trigger('change');
+		$('#markup').val(total_markup);
+		$('#markup').trigger('change');
 	}
 
 	$('#visa_save_modal').on('hidden.bs.modal', function() {

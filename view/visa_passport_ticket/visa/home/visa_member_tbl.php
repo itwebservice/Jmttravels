@@ -35,6 +35,17 @@
   <td><input class="form-control app_datepicker" type="text" id="expiry_date<?= $offset ?>1" name="expiry_date<?= $offset ?>1" placeholder="Expiry Date" title="Expiry Date" onchange="validate_issueDate('issue_date<?= $offset ?>1',this.id)" style="width:150px;" /></td>
   <td><input class="form-control" type="text" id="nationality<?= $offset ?>1" name="nationality<?= $offset ?>1" placeholder="*Nationality" title="Nationality" style="width:150px;" /></td>
   <td><input class="form-control app_datepicker" type="text" id="appointment<?= $offset ?>1" name="appointment<?= $offset ?>1" value="<?= date('d-m-Y') ?>" placeholder="Appointment Date" title="Appointment Date" style="width:160px;"></td>
+  <td><input class="form-control app_datepicker" type="text" id="start_date<?= $offset ?>1" name="start_date<?= $offset ?>1"  placeholder="Travel Start Date" title="Travel Start Date" style="width:160px;"></td>
+  <td><input class="form-control app_datepicker" type="text" id="end_date<?= $offset ?>1" name="end_date<?= $offset ?>1"  placeholder="Travel End Date" title="Travel End Date" style="width:160px;"></td>
+  <td><select name="status_type<?= $offset ?>1" id="status_type<?= $offset ?>1" class="app_select2 form-control" title="Status" style="width:150px">
+      <option value="">*Status</option>
+      <option value="Unused">Unused</option>
+      <option value="In-Use">In-Use</option>
+      <option value="Completed">Completed</option>
+      <option value="Cancelled">Cancelled</option>
+      
+    </select>
+  </td>
   <td><input type="hidden" id="visa_cost<?= $offset ?>1" name="visa_cost<?= $offset ?>1"></td>
 </tr>
 
