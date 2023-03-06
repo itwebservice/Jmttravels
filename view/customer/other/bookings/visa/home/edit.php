@@ -88,7 +88,9 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                     <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Father Name" name="father_name[]" value="<?= $db['father_name'] ?>" id="" class="form-control" title="Father Name">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="file" multiple placeholder="" name="id_proff[]" id="" class="form-control" title="ID PROOF">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="file" onchange="fileSizeCheck()" multiple placeholder="" name="id_proff[]" id="" class="form-control" title="ID PROOF">
+            <div style="color: red;">Note : Upload Image size below 300KB, resolution : 900X450. </div>
+
                                                                     </div>
                                                                     <?php
                                                                     if (!empty($db['id_proof_url'])) {
@@ -156,6 +158,16 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
         $('#btn_update').attr("disabled", true);
         var formData = new FormData(this);
         var base_url = $('#base_url').val();
+
+        if(fileSizeCheck() == false)
+        {
+            $('#btn_update').button('update');
+                $('#btn_update').removeAttr("disabled");
+            return false;
+        }
+       
+        
+    
         $.ajax({
             type: 'POST',
             url: base_url + 'controller/visa_master/customer_visa_entry_update.php',
@@ -186,4 +198,25 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
         timepicker: false,
         format: "d-m-Y"
     })
+</script>
+
+<script>
+    function fileSizeCheck() {
+        var fileUpload = document.querySelector("[name='id_proff[]']");
+        // for(i=0;i<=fileUpload.length; i++)
+        // {
+          
+            if (typeof (fileUpload.files) != "undefined" ) {
+            var size = parseFloat(fileUpload.files[0].size / 1024).toFixed(2);
+            if(size > 300)
+            {
+                error_msg_alert('File Size Extends');
+                $('#btn_update').button('update');
+                $('#btn_update').removeAttr("disabled");
+                return false;
+            }
+        
+        } 
+        // }
+    }
 </script>
