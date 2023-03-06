@@ -48,7 +48,7 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                     <div class="panel panel-default main_block">
                                                         <div class="panel-heading main_block" role="tab" id="heading_<?= $db['entry_id'] ?>">
                                                             <div class="Normal collapsed main_block" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<?= $db['entry_id'] ?>" aria-expanded="false" aria-controls="collapse_<?= $db['entry_id'] ?>" id="collapsed_<?= $db['entry_id'] ?>">
-                                                                <div class="col-md-12"><span><em style="margin-left: 15px;"><?= $db['first_name'] . " " . $db['last_name'] ?></em></span>
+                                                                <div class="col-md-12"><span><em style="margin-left: 15px;"><?= $db['first_name'] . " " . $db['last_name'] ?> (<?php echo $db['pass_status']; ?>)</em></span>
                                                                 </div>
                                                             </div>
                                                         </div>

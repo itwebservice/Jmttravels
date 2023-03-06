@@ -294,7 +294,8 @@ while ($row_enq = mysqli_fetch_assoc($sq_enquiry)) {
 				<div class="dashboard_tab text-center main_block">
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs responsive" role="tablist">
-						<li role="presentation" class="active"><a href="#enquiry_tab" aria-controls="enquiry_tab" role="tab" data-toggle="tab">Followups</a></li>
+						<li role="presentation" class="active"><a href="#visa_tab" aria-controls="visa_tab" role="tab" data-toggle="tab">VISA</a></li>
+						<li role="presentation" ><a href="#enquiry_tab" aria-controls="enquiry_tab" role="tab" data-toggle="tab">Followups</a></li>
 						<li role="presentation"><a href="#oncoming_tab" aria-controls="oncoming_tab" role="tab" data-toggle="tab">Ongoing Tours</a></li>
 						<li role="presentation"><a href="#upcoming_tab" aria-controls="upcoming_tab" role="tab" data-toggle="tab">Upcoming Tours</a></li>
 						<li role="presentation"><a href="#fit_tab" aria-controls="fit_tab" role="tab" data-toggle="tab">Package Tours</a></li>
@@ -305,6 +306,11 @@ while ($row_enq = mysqli_fetch_assoc($sq_enquiry)) {
 					<div class="tab-content responsive main_block mg_bt_150">
 
 						<!-- Ongoing  -->
+						<div role="tabpanel" class="tab-pane active" id="visa_tab">
+							<div id='visa_data'></div>
+						</div>
+					
+							<!-- Ongoing  -->
 						<div role="tabpanel" class="tab-pane" id="oncoming_tab">
 							<div id='ongoing_tours_data'></div>
 						</div>
@@ -413,7 +419,7 @@ while ($row_enq = mysqli_fetch_assoc($sq_enquiry)) {
 						</div>
 						<!--  GIT Summary End -->
 						<!-- Enquiry & Followup summary -->
-						<div role="tabpanel" class="tab-pane active" id="enquiry_tab">
+						<div role="tabpanel" class="tab-pane " id="enquiry_tab">
 							<div class="dashboard_table dashboard_table_panel main_block">
 								<div class="row text-right">
 									<div class="col-md-6 text-left">
@@ -470,6 +476,16 @@ while ($row_enq = mysqli_fetch_assoc($sq_enquiry)) {
 			$('#ongoing_tours_data').html(data);
 		});
 	}
+	visa_reflect();
+
+	function visa_reflect() {
+		$.post('admin/visa_reflect.php', {}, function(data) {
+			$('#visa_data').html(data);
+		});
+	}
+
+
+
 	upcoming_tours_reflect();
 
 	function upcoming_tours_reflect() {
