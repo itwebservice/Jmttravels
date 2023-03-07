@@ -80,13 +80,13 @@ include "../../model/model.php";
 
                         <div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10">
 
-                            <input type="text" name="fees" class="form-control" title="Basic Amount" placeholder="*Basic Amount" id="fees" onchange="validate_balance(this.id);">
+                            <input type="text" name="fees" class="form-control" title="Basic Amount B2C" placeholder="*Basic Amount B2C" id="fees" onchange="validate_balance(this.id);">
 
                         </div>
 
                         <div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10">
 
-                            <input type="text" name="markup" class="form-control" placeholder="Markup cost" title="Markup cost" id="markup" onchange="validate_balance(this.id);">
+                            <input type="text" name="markup" class="form-control" placeholder="Markup cost B2C" title="Markup cost B2C" id="markup" onchange="validate_balance(this.id);">
 
                         </div>
 

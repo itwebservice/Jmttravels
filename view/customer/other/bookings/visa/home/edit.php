@@ -89,7 +89,7 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                     </div>
 
                                                                     <div class="col-md-4 mg_tp_10"> <input type="file" id="file_<?= $db['entry_id'] ?>" accept="image/*" onchange="fileSizeCheck(this.id)" multiple placeholder="" name="id_proff[]"  class="form-control" title="ID PROOF">
-            <div style="color: red;">Note : Upload Image size below 300KB, resolution : 900X450. </div>
+            <div style="color: red;">Note : Upload Image size below 512KB, resolution : 900X450. </div>
 
                                                                     </div>
                                                                     <?php
