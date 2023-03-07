@@ -1127,8 +1127,8 @@ Please contact for more details : ' . $contact);
 		
 		foreach ($ids as $key => $id) {
 			$query = "UPDATE `visa_master_entries` SET `first_name`='" . $first_name[$key] . "',
-			`middle_name`='" . $middle_name[$key] . "',`last_name`='" . $last_name[$key] . "',`birth_date`='" . $birth_date[$key] . "',
-			passport_id='$passport_id[$key]', issue_date='$issue_date[$key]', expiry_date = '$expiry_date[$key]',
+			`middle_name`='" . $middle_name[$key] . "',`last_name`='" . $last_name[$key] . "',`birth_date`='" . get_date_db($birth_date[$key]) . "',
+			passport_id='$passport_id[$key]', issue_date='".get_date_db($issue_date[$key])."', expiry_date = '".get_date_db($expiry_date[$key])."',
 			`nationality`='" . $nationality[$key] . "',`mother_name`='" . $mother_name[$key] . "',`father_name`='" . $father_name[$key] . "'";
 			if (!empty($id_proff[$key])) {
 				$query .= ",id_proof_url='" . $id_proff[$key] . "'";

@@ -73,13 +73,13 @@ $sq_visa = mysqli_fetch_assoc(mysqlQuery("select * from visa_crm_master where en
 
             <div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10">
 
-              <input type="text" name="fees" class="form-control" title="Basic Amount" value="<?= $sq_visa['fees'] ?>" placeholder="Basic Amount" id="fees" onchange="validate_balance(this.id);">
+              <input type="text" name="fees" class="form-control" title="Basic Amount B2C" value="<?= $sq_visa['fees'] ?>" placeholder="Basic Amount B2C" id="fees" onchange="validate_balance(this.id);">
 
             </div>
 
             <div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10">
 
-              <input type="text" name="markup" class="form-control" title="Markup cost" placeholder="Markup cost" value="<?= $sq_visa['markup'] ?>" id="markup" onchange="validate_balance(this.id);">
+              <input type="text" name="markup" class="form-control" title="Markup cost B2C" placeholder="Markup cost B2C" value="<?= $sq_visa['markup'] ?>" id="markup" onchange="validate_balance(this.id);">
 
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10">
