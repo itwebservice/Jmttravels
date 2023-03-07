@@ -73,10 +73,10 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                     <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="Passport Id" name="passport_id[]" value="<?= $db['passport_id'] ?>" id="" class="form-control text-uppercase" title="Passport Id">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required name="issue_date[]" value="<?= $db['issue_date'] != "1970-01-01" ? $db['issue_date'] : "" ?>" id="issue_date<?= $db['entry_id'] ?>" class="form-control app_datetimepicker" title="Issue Date" onchange="get_to_date(this.id,'expiry_date<?= $db['entry_id'] ?>');">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required name="issue_date[]" placeholder="Issue Date" value="<?= $db['issue_date'] != "1970-01-01" ? $db['issue_date'] : "" ?>" id="issue_date<?= $db['entry_id'] ?>" class="form-control app_datetimepicker" title="Issue Date" onchange="get_to_date(this.id,'expiry_date<?= $db['entry_id'] ?>');">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required name="expiry_date[]" value="<?= $db['expiry_date'] != "1970-01-01" ? $db['expiry_date'] : "" ?>" id="expiry_date<?= $db['entry_id'] ?>" class="form-control app_datetimepicker" title="Expiry Date" onchange="validate_validDate('issue_date<?= $db['entry_id'] ?>','expiry_date<?= $db['entry_id'] ?>');">
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" required name="expiry_date[]" placeholder="Expiry Date" value="<?= $db['expiry_date'] != "1970-01-01" ? $db['expiry_date'] : "" ?>" id="expiry_date<?= $db['entry_id'] ?>" class="form-control app_datetimepicker" title="Expiry Date" onchange="validate_validDate('issue_date<?= $db['entry_id'] ?>','expiry_date<?= $db['entry_id'] ?>');">
                                                                     </div>
 
                                                                     <div class="col-md-4 mg_tp_10"> <input type="text" required placeholder="Nationality" name="nationality[]" value="<?= $db['nationality'] ?>" id="" class="form-control" title="Nationality">
@@ -89,7 +89,7 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                     </div>
 
                                                                     <div class="col-md-4 mg_tp_10"> <input type="file" id="file_<?= $db['entry_id'] ?>" accept="image/*" onchange="fileSizeCheck(this.id)" multiple placeholder="" name="id_proff[]"  class="form-control" title="ID PROOF">
-            <div style="color: red;">Note : Upload Image size below 512KB, resolution : 900X450. </div>
+                                                                    <span style="color: red;" class="note" data-original-title="" title="">Note : Upload Image size below 512KB, resolution : 900X450. </span>
 
                                                                     </div>
                                                                     <?php

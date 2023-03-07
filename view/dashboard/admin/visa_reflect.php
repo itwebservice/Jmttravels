@@ -31,7 +31,10 @@ $data = mysqlQuery($sq_query);
                                             $days_ago_db = date('Y-m-d', strtotime('-3 days', strtotime($db['end_date'])));
                                             if ($days_ago_db >= $days_ago && $days_ago_db <= date('Y-m-d')) {
                                                 $color = $db['pass_status'] == "Completed" ? "#dff0d8" : ($db['pass_status'] == "In-Use" ? "#fcf8e3" : "#fff"); 
-
+                                                if($db['pass_status'] == "Cancelled")
+                                                {
+                                                    $color = "#f2dede";
+                                                }
                                     ?>
                                                 <tr style="background:<?= $color ?> !important;">
                                                     <td><?= get_visa_booking_id($db['visa_id']); ?></td>
@@ -40,7 +43,7 @@ $data = mysqlQuery($sq_query);
                                                     <td><?= $db['end_date'] ?></td>
                                                     <td><?= $db['pass_status'] ?></td>
                                                     <td>
-                                                        <select name="status_type" id="status_type<?= $db['entry_id'] ?>" onchange="updateVisaStatus(this.id,`<?= $db['entry_id'] ?>`)" class="app_select2 form-control" title="Status" style="width:150px">
+                                                        <select name="status_type" id="status_type<?= $db['entry_id'] ?>" onchange="updateVisaStatus(this.id,`<?= $db['entry_id'] ?>`)" class="app_select2 form-control" title="Status" style="width:110px">
                                                             <option value="">*Status</option>
                                                             <option value="Unused" <?= $db['pass_status'] == "Unused" ? "selected" : "" ?>>Unused</option>
                                                             <option value="In-Use" <?= $db['pass_status'] == "In-Use" ? "selected" : "" ?>>In-Use</option>
