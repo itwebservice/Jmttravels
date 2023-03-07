@@ -204,7 +204,7 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
             if(size > 300)
             {
                 fileUpload.value = "";
-                error_msg_alert('File Size Extends');
+                error_msg_alert('File Size Exceeds');
                 $('#btn_update').button('update');
                 $('#btn_update').removeAttr("disabled");
                 return false;

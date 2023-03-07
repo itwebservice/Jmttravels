@@ -16,11 +16,11 @@
 	            </span>
 	            <span class="main_block">
 	                  <i class="fa fa-angle-double-right cost_arrow" aria-hidden="true"></i>
-	                  <?php echo "<label>Basic Amount <em>:</em></label> ".number_format($sq_visa['fees'],2) ?>
+	                  <?php echo "<label>Basic Amount B2C<em>:</em></label> ".number_format($sq_visa['fees'],2) ?>
 	            </span>
 	            <span class="main_block">
 	                  <i class="fa fa-angle-double-right cost_arrow" aria-hidden="true"></i>
-	                  <?php echo "<label>Markup cost<em>:</em></label> ".number_format($sq_visa['markup'],2) ?>
+	                  <?php echo "<label>Markup cost B2C<em>:</em></label> ".number_format($sq_visa['markup'],2) ?>
 	            </span>
 				<span class="main_block">
 	                  <i class="fa fa-angle-double-right cost_arrow" aria-hidden="true"></i>
