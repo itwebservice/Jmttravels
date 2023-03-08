@@ -15,8 +15,8 @@ $data = mysqlQuery($sq_query);
                                     <tr class="table-heading-row">
                                         <th>Booking Id</th>
                                         <th>Passenger Name</th>
-                                        <th>Passenger Travel From Date</th>
-                                        <th>Passenger Travel To Date</th>
+                                        <th>VISA Issue Date</th>
+                                        <th>VISA Expiry Date</th>
                                         <th>Passenger Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -28,7 +28,7 @@ $data = mysqlQuery($sq_query);
                                     if (mysqli_num_rows($data) > 0) {
                                         while ($db = mysqli_fetch_assoc($data)) {
                                             $days_ago = date('Y-m-d', strtotime('-3 days', strtotime(date('Y-m-d'))));
-                                            $days_ago_db = date('Y-m-d', strtotime('-3 days', strtotime($db['end_date'])));
+                                            $days_ago_db = date('Y-m-d', strtotime('-3 days', strtotime($db['expiry_date'])));
                                             if ($days_ago_db >= $days_ago && $days_ago_db <= date('Y-m-d')) {
                                                 $color = $db['pass_status'] == "Completed" ? "#dff0d8" : ($db['pass_status'] == "In-Use" ? "#fcf8e3" : "#fff"); 
                                                 if($db['pass_status'] == "Cancelled")
@@ -39,8 +39,8 @@ $data = mysqlQuery($sq_query);
                                                 <tr style="background:<?= $color ?> !important;">
                                                     <td><?= get_visa_booking_id($db['visa_id']); ?></td>
                                                     <td><?= $db['first_name'] . " " . $db['middle_name'] . " " . $db['last_name'] ?></td>
-                                                    <td><?= $db['start_date'] ?></td>
-                                                    <td><?= $db['end_date'] ?></td>
+                                                    <td><?= $db['issue_date'] ?></td>
+                                                    <td><?= $db['expiry_date'] ?></td>
                                                     <td><?= $db['pass_status'] ?></td>
                                                     <td>
                                                         <select name="status_type" id="status_type<?= $db['entry_id'] ?>" onchange="updateVisaStatus(this.id,`<?= $db['entry_id'] ?>`)" class="app_select2 form-control" title="Status" style="width:110px">

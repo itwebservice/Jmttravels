@@ -593,19 +593,19 @@ $sq_cust_fit_feedback = mysqli_num_rows(mysqlQuery("select * from remainder_stat
 
 	// 		if(user_visa==0){
 
-	// 	function user_visa_remainder()
+		function cust_visa_remainder()
 
-	// 	{
+		{
 
-	// 		var base_url = $('#base_url').val();
+			var base_url = $('#base_url').val();
 
-	// 		$.post(base_url+'model/remainders/user_visa.php', { }, function(data){
-	// 			alert(data);
-	// 		});
+			$.post(base_url+'model/remainders/customer_visa.php', { }, function(data){
+				alert(data);
+			});
 
-	// 	}
+		}
 
-	// 	user_visa_remainder();
+	cust_visa_remainder();
 
 	// }
 

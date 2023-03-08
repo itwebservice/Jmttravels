@@ -13,6 +13,7 @@ $customer_id = $_SESSION['customer_id'];
 			<th>Booking_ID</th>
 			<th>Total_pax</th>
 			<th>View</th>
+			<th>Opening Balance</th>
 			<th class="text-right info">Total_Amount</th>
 			<th class="text-right success">Paid_Amount</th>
 			<th class="text-right danger">Cncl_amount</th> 
@@ -36,6 +37,7 @@ $customer_id = $_SESSION['customer_id'];
             
 			$pass_count = mysqli_num_rows(mysqlQuery("select * from  visa_master_entries where visa_id='$row_visa[visa_id]'"));
 			$cancel_count = mysqli_num_rows(mysqlQuery("select * from  visa_master_entries where visa_id='$row_visa[visa_id]' and status='Cancel'"));
+			$ledger = mysqli_fetch_assoc(mysqlQuery("select * from ledger_master where customer_id='$customer_id' and user_type='customer'"));
 			$bg="";
 			if($pass_count==$cancel_count){
 				$bg="danger";
@@ -104,6 +106,7 @@ $customer_id = $_SESSION['customer_id'];
 				<button class="btn btn-info btn-sm" onclick="visa_edit_modal(<?= $row_visa['visa_id'] ?>)" title="Edit Details" id="visaEdit-<?= $row_visa['visa_id'] ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
 					<button class="btn btn-info btn-sm" onclick="visa_display_modal(<?= $row_visa['visa_id'] ?>)" title="View Details" id="visa-<?= $row_visa['visa_id'] ?>"><i class="fa fa-eye" aria-hidden="true"></i></button>
 				</td>
+				<td><?= $ledger['balance'].'('.$ledger['dr_cr'].')' ?></td>
 				<td class="info text-right"><?php echo $sale_total_amount; ?></td>
 				<td class="success text-right"><?= $paid_amount ?></td>
 				<td class="danger text-right"><?php echo $cancel_amount; ?></td>
