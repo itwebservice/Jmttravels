@@ -2,9 +2,34 @@
 include "../../../model/model.php";
 $booking_id = $_POST['booking_id'];
 $booking_type = $_POST['booking_type'];
-$count = 0;
+$from_date = $_POST['from_date'];
+$to_date = $_POST['to_date'];
+$cust_type = $_POST['cust_type'];
+$company_name = $_POST['company_name'];
+$customer_id = $_POST['customer_id'];
+$customerIds = getCustomerIdOnly($cust_type,$company_name,$customer_id);
+$visaIds = getBookingIdOnCustomer($customerIds);				
 
-$sq_report = mysqlQuery("select * from visa_status_entries where booking_type ='$booking_type' and booking_id = '$booking_id'");
+
+
+$count = 0;
+$mainQry = "select * from visa_status_entries where 1";
+if(!empty($booking_type) && !empty($booking_id))
+{
+	$mainQry .= " and booking_type ='$booking_type' and booking_id = '$booking_id'";
+}
+if(!empty($visaIds))
+{
+	$mainQry .= " and booking_id IN(".implode(",",$visaIds).")";
+}
+if(!empty($from_date) && !empty($to_date))
+{
+	$filter_from_date = date('Y-m-d h:i:s',strtotime($from_date));
+	$filter_to_date = date('Y-m-d h:i:s',strtotime($to_date));
+	$mainQry .= " and created_at BETWEEN '".$filter_from_date."' AND '".$filter_to_date."'";
+
+}
+$sq_report = mysqlQuery($mainQry);
 ?>
 <div class="row mg_tp_20">
 <div class="table-responsive">
@@ -23,6 +48,9 @@ $sq_report = mysqlQuery("select * from visa_status_entries where booking_type ='
 			<?php 
 			while($row_report = mysqli_fetch_assoc($sq_report)) {
 				$count++;
+				
+				
+
 				?>
 			<tr>
 			<td><?php echo $count; ?></td>
@@ -71,3 +99,49 @@ $sq_report = mysqlQuery("select * from visa_status_entries where booking_type ='
 		"pagingType": "full_numbers"
 	});
 </script>
+
+<?php
+function getCustomerIdOnly($cust_type,$company_name,$customer_id)
+{
+	$data = [];
+	if(!empty($cust_type))
+	{
+		$customerQuery = "select customer_id from customer_master where type='$cust_type'";
+		if(!empty($company_name))
+		{
+			$customerQuery .= " and company_name='$company_name'";
+		}
+		$customerQuery = mysqlQuery($customerQuery);
+		if(mysqli_num_rows($customerQuery)>0)
+		{
+			while($db = mysqli_fetch_array($customerQuery))
+			{
+					$data[] = $db['customer_id'];
+			}
+		}
+	}
+	elseif(!empty($customer_id))
+	{
+		$data[] = $customer_id;
+	}
+	return $data;
+}
+
+function getBookingIdOnCustomer($customerId)
+{
+	$data = [];
+	if(!empty($customerId))
+	{
+		$query = mysqlQuery("select visa_id from visa_master where customer_id IN(".implode(',',$customerId).")");
+		if(mysqli_num_rows($query)>0)
+		{
+			while($db = mysqli_fetch_array($query))
+			{
+					$data[] = $db['visa_id'];
+			}
+		}
+	}
+	return $data;
+}
+
+?>

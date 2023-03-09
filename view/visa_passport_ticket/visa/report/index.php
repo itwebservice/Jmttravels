@@ -18,7 +18,7 @@ $emp_id = $_SESSION['emp_id'];
 			<select name="cust_type_filter" id="cust_type_filter" style="width:100%" onchange="dynamic_customer_load(this.value,'company_filter');company_name_reflect();" title="Customer Type">
 				<?php get_customer_type_dropdown(); ?>
 			</select>
-	    </div>
+	    </div>	
 	    <div id="company_div" class="hidden">
 		</div>
 		<div class="col-md-3 col-sm-6 col-xs-12 mg_bt_10" id="customer_div">    

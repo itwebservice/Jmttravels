@@ -50,5 +50,5 @@ function email($name, $visa_country_name, $issue_date, $expiry_date, $renewal_am
 		</tr>';
 	$subject = 'Customer Visa Status ( Customer Name :' . $name . ' ).';
 	global $model;
-	$model->app_email_send('91', 'Admin', 'nikhil.itweb@gmail.com', $content1, $subject);
+	$model->app_email_send('91', 'Admin', $app_email_id, $content1, $subject);
 }

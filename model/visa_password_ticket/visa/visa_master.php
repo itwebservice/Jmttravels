@@ -1123,13 +1123,28 @@ Please contact for more details : ' . $contact);
 		$nationality = $_POST['nationality'];
 		$mother_name = $_POST['mother_name'];
 		$father_name = $_POST['father_name'];
+		$place_of_issue = $_POST['place_of_issue'];
+		$birth_place = $_POST['birth_place'];
+		$birth_country = $_POST['birth_country'];
+		$marital_status = $_POST['marital_status'];
+		$documents_nationality = $_POST['documents_nationality'];
+		$travel_document_type = $_POST['travel_document_type'];
+		$gender = $_POST['gender'];
+
 		$id_proff = $this->fileUploadAll($_FILES['id_proff'], 'visa_id_proff');
 		
 		foreach ($ids as $key => $id) {
 			$query = "UPDATE `visa_master_entries` SET `first_name`='" . $first_name[$key] . "',
 			`middle_name`='" . $middle_name[$key] . "',`last_name`='" . $last_name[$key] . "',`birth_date`='" . get_date_db($birth_date[$key]) . "',
 			passport_id='$passport_id[$key]', issue_date='".get_date_db($issue_date[$key])."', expiry_date = '".get_date_db($expiry_date[$key])."',
-			`nationality`='" . $nationality[$key] . "',`mother_name`='" . $mother_name[$key] . "',`father_name`='" . $father_name[$key] . "'";
+			`nationality`='" . $nationality[$key] . "',`mother_name`='" . $mother_name[$key] . "',`father_name`='" . $father_name[$key] . "',
+			`place_of_issue`='".$place_of_issue[$key]."',
+			`birth_place`='".$birth_place[$key]."',
+			`birth_country`='".$birth_country[$key]."',
+			`marital_status`='".$marital_status[$key]."',
+			`documents_nationality`='".$documents_nationality[$key]."',
+			`travel_document_type`='".$travel_document_type[$key]."',
+			`gender`='".$gender[$key]."'";
 			if (!empty($id_proff[$key])) {
 				$query .= ",id_proof_url='" . $id_proff[$key] . "'";
 			}

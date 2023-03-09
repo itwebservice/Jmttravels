@@ -88,11 +88,48 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                     <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Father Name" name="father_name[]" value="<?= $db['father_name'] ?>" id="" class="form-control" title="Father Name">
                                                                     </div>
 
-                                                                    <div class="col-md-4 mg_tp_10"> <input type="file" id="file_<?= $db['entry_id'] ?>" accept="image/*" onchange="fileSizeCheck(this.id)" multiple placeholder="" name="id_proff[]"  class="form-control" title="ID PROOF">
+                                                                    
+                                                                    
+                                                            
+
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Place Of Issue" name="place_of_issue[]" value="<?= $db['place_of_issue'] ?>" id="" class="form-control" title="Place Of Issue">
+                                                                    </div>
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Birth Place" name="birth_place[]" value="<?= $db['birth_place'] ?>" id="" class="form-control" title="Birth Place">
+                                                                    </div>
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Birth Country" name="birth_country[]" value="<?= $db['birth_country'] ?>" id="" class="form-control" title="Birth Country">
+                                                                    </div>
+                                                                    <div class="col-md-4 mg_tp_10"> 
+                                                                    <select name="marital_status[]" id="" class="form-control" title="Marital Status">
+                                                                        <option value="">Marital Status</option>
+                                                                        <option value="Married" <?= $db['marital_status'] == "Married" ? "selected" : ""  ?>>Married</option>
+                                                                        <option value="Unmarried" <?= $db['marital_status'] == "Unmarried" ? "selected" : ""  ?>>Unmarried</option>
+                                                                    </select>    
+                                                                        
+                                                                    
+                                                                    </div>
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Documents Nationality" name="documents_nationality[]" value="<?= $db['documents_nationality'] ?>" id="" class="form-control" title="Documents Nationality">
+                                                                    </div>
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Travel Document Type" name="travel_document_type[]" value="<?= $db['travel_document_type'] ?>" id="" class="form-control" title="Travel Document Type">
+                                                                    </div>
+                                                                    <div class="col-md-4 mg_tp_10">
+                                                                    <select name="gender[]" id="" class="form-control" title="Gender">
+                                                                        <option value="">Gender</option>
+                                                                        <option value="Male" <?= $db['gender'] == "Male" ? "selected" : ""  ?>>Male</option>
+                                                                        <option value="Female" <?= $db['gender'] == "Female" ? "selected" : ""  ?>>Female</option>
+                                                                    </select>    
+                                                                    
+                                                                    </div>
+
+                                                                  
+                                                                </div>
+                                                                <div class="row">
+                                                                <div class="col-md-4 mg_tp_10"> <input type="file" id="file_<?= $db['entry_id'] ?>" accept="image/*" onchange="fileSizeCheck(this.id)" multiple placeholder="" name="id_proff[]"  class="form-control" title="ID PROOF"> 
+                                                                    
                                                                     <span style="color: red;" class="note" data-original-title="" title="">Note : Upload Image size below 512KB, resolution : 900X450. </span>
 
                                                                     </div>
-                                                                    <?php
+                                                                    <div class="col-md-4 mg_tp_10">
+                                                            <?php
                                                                     if (!empty($db['id_proof_url'])) {
                                                                         $url = $db['id_proof_url'];
                                                                         $pos = strstr($url, 'uploads');
@@ -108,6 +145,7 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                             <a href="<?= $newUrl ?>" target="_blank" data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-eye"></i></a>
                                                                         </div>
                                                                     <?php } ?>
+                                                            </div>
                                                                 </div>
                                                             </div>
                                                         </div>
