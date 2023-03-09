@@ -71,6 +71,7 @@ $branch_status = $_POST['branch_status'];
 
 
 <script>
+  load_visa_report('visa_booking','visa_status_div');
 $('#visa_id_filter_reflect').select2();
 $('#from_date, #to_date').datetimepicker({ timepicker:false, format:'d-m-Y' });
 
