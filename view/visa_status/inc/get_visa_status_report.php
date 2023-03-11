@@ -34,6 +34,7 @@ $sq_report = mysqlQuery($mainQry);
 			<thead>
 				<tr class="table-heading-row">
 					<th>S_No.</th>
+					<th>Booking Id</th>
 					<th>Status_Date</th>
 					<th>Passenger_Name</th>
 					<th>Visa_Status</th>
@@ -50,6 +51,7 @@ $sq_report = mysqlQuery($mainQry);
 				?>
 					<tr>
 						<td><?php echo $count; ?></td>
+						<td><?php echo get_visa_booking_id($row_report['booking_id']); ?></td>
 						<td><?php echo get_date_user($row_report['created_at']); ?></td>
 						<?php
 						if ($booking_type == "visa_booking") {

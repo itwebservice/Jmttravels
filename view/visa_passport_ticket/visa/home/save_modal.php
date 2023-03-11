@@ -448,6 +448,17 @@ $branch_status = $sq['branch_status'];
 				var start_date_arr = new Array();
 				var end_date_arr = new Array();
 				var status_arr = new Array();
+				var mother_name_arr = new Array();
+				var father_name_arr = new Array();
+				var place_of_issue_arr = new Array();
+				var birth_place_arr = new Array();
+				var birth_country_arr = new Array();
+				var marital_status_arr = new Array();
+				var documents_nationality_arr = new Array();
+				var travel_document_type_arr = new Array();
+				var gender_arr = new Array();
+
+
 
 				//var received_documents_arr = new Array();
 				var appointment_date_arr = new Array();
@@ -485,6 +496,17 @@ $branch_status = $sq['branch_status'];
 						var start_date = row.cells[14].childNodes[0].value;
 						var end_date = row.cells[15].childNodes[0].value;
 						var pass_status = row.cells[16].childNodes[0].value;
+
+						var mother_name = row.cells[17].childNodes[0].value;
+						var father_name = row.cells[18].childNodes[0].value;
+						var place_of_issue = row.cells[19].childNodes[0].value;
+						var birth_place = row.cells[20].childNodes[0].value;
+						var birth_country = row.cells[21].childNodes[0].value;
+						var marital_status = row.cells[22].childNodes[0].value;
+						var documents_nationality = row.cells[23].childNodes[0].value;
+						var travel_document_type = row.cells[24].childNodes[0].value;
+						var gender = row.cells[25].childNodes[0].value;
+
 						var msg = "";
 
 						if (first_name == "") {
@@ -531,6 +553,15 @@ $branch_status = $sq['branch_status'];
 						start_date_arr.push(start_date);
 						end_date_arr.push(end_date);
 						status_arr.push(pass_status);
+						mother_name_arr.push(mother_name);
+						father_name_arr.push(father_name);
+						place_of_issue_arr.push(place_of_issue);
+						birth_place_arr.push(birth_place);
+						birth_country_arr.push(birth_country);
+						marital_status_arr.push(marital_status);
+						documents_nationality_arr.push(documents_nationality);
+						travel_document_type_arr.push(travel_document_type);
+						gender_arr.push(gender);
 					}
 				}
 				var hotel_sc = $('#hotel_sc').val();
@@ -669,9 +700,18 @@ $branch_status = $sq['branch_status'];
 											credit_charges: credit_charges,
 											credit_card_details: credit_card_details,
 											currency_code: currency_code,
-											start_date_arr:start_date_arr,
-											end_date_arr:end_date_arr,
-											status_arr:status_arr,
+											start_date_arr: start_date_arr,
+											end_date_arr: end_date_arr,
+											status_arr: status_arr,
+											mother_name_arr:mother_name_arr,
+											father_name_arr:father_name_arr,
+											place_of_issue_arr:place_of_issue_arr,
+											birth_place_arr:birth_place_arr,
+											birth_country_arr:birth_country_arr,
+											marital_status_arr:marital_status_arr,
+											documents_nationality_arr:documents_nationality_arr,
+											travel_document_type_arr:travel_document_type_arr,
+											gender_arr:gender_arr
 										},
 										success: function(result) {
 											var msg = result.split('-');

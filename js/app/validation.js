@@ -3113,23 +3113,62 @@ row.cells[14].childNodes[0].placeholder = "Travel Start Date";
           "id",
           "status_type" + prefix + foo.counter
         );
+
+        row.cells[17].childNodes[0].setAttribute(
+          "id",
+          "mother_name" + prefix + foo.counter
+        );
+        row.cells[18].childNodes[0].setAttribute(
+          "id",
+          "father_name" + prefix + foo.counter
+        );
+        row.cells[19].childNodes[0].setAttribute(
+          "id",
+          "place_of_issue" + prefix + foo.counter
+        );
+        row.cells[20].childNodes[0].setAttribute(
+          "id",
+          "birth_place" + prefix + foo.counter
+        );
+        row.cells[21].childNodes[0].setAttribute(
+          "id",
+          "birth_country" + prefix + foo.counter
+        );
+        row.cells[22].childNodes[0].setAttribute(
+          "id",
+          "marital_status" + prefix + foo.counter
+        );
+        row.cells[23].childNodes[0].setAttribute(
+          "id",
+          "documents_nationality" + prefix + foo.counter
+        );
+        row.cells[24].childNodes[0].setAttribute(
+          "id",
+          "travel_document_type" + prefix + foo.counter
+        );
+        row.cells[25].childNodes[0].setAttribute(
+          "id",
+          "gender" + prefix + foo.counter
+        );
+
+
 //new
 
     if (tableID == "tbl_dynamic_visa") {
-      row.cells[17].childNodes[0].setAttribute(
+      row.cells[26].childNodes[0].setAttribute(
         "id",
         "visa_cost" + prefix + foo.counter
       );
-      row.cells[17].childNodes[0].value = 0.0;
-      $(row.cells[17]).addClass("hidden");
+      row.cells[26].childNodes[0].value = 0.0;
+      $(row.cells[26]).addClass("hidden");
     } else {
-      $(row.cells[17].childNodes[0]).trigger("change");
-      $(row.cells[17]).addClass("hidden");
-      row.cells[17].childNodes[0].setAttribute(
+      $(row.cells[26].childNodes[0]).trigger("change");
+      $(row.cells[26]).addClass("hidden");
+      row.cells[26].childNodes[0].setAttribute(
         "id",
         "visa_cost" + prefix + foo.counter
       );
-      row.cells[17].childNodes[0].value = 0.0;
+      row.cells[26].childNodes[0].value = 0.0;
       // $(row.cells[16]).addClass('hidden');
     }
   }

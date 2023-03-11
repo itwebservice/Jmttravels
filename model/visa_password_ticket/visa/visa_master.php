@@ -48,6 +48,15 @@ class visa_master
 		$start_date_arr = $_POST['start_date_arr'];
 		$end_date_arr = $_POST['end_date_arr'];
 		$status_arr = $_POST['status_arr'];
+		$mother_name_arr = $_POST['mother_name_arr'];
+		$father_name_arr = $_POST['father_name_arr'];
+		$place_of_issue_arr = $_POST['place_of_issue_arr'];
+		$birth_place_arr = $_POST['birth_place_arr'];
+		$birth_country_arr = $_POST['birth_country_arr'];
+		$marital_status_arr = $_POST['marital_status_arr'];
+		$documents_nationality_arr = $_POST['documents_nationality_arr'];
+		$travel_document_type_arr = $_POST['travel_document_type_arr'];
+		$gender_arr = $_POST['gender_arr'];
 
 		$payment_date = date('Y-m-d', strtotime($payment_date));
 		$balance_date = date("Y-m-d", strtotime($balance_date));
@@ -123,7 +132,19 @@ class visa_master
 				$expiry_date_arr[$i] = get_date_db($expiry_date_arr[$i]);
 				$appointment_date_arr[$i] = get_date_db($appointment_date_arr[$i]);
 
-				$sq_entry = mysqlQuery("insert into visa_master_entries(entry_id, visa_id, first_name, middle_name, last_name, birth_date, adolescence, visa_country_name, visa_type, passport_id, issue_date, expiry_date,nationality, received_documents,appointment_date,start_date,end_date,pass_status) values('$entry_id', '$visa_id', '$first_name_arr[$i]', '$middle_name_arr[$i]', '$last_name_arr[$i]', '$birth_date_arr[$i]', '$adolescence_arr[$i]', '$visa_country_name_arr[$i]', '$visa_type_arr[$i]', '$passport_id_arr[$i]', '$issue_date_arr[$i]', '$expiry_date_arr[$i]', '$nationality_arr[$i]', '$received_documents_arr[$i]','$appointment_date_arr[$i]','$start_date_arr[$i]','$end_date_arr[$i]','$status_arr[$i]')");
+				$sq_entry = mysqlQuery("insert into visa_master_entries(entry_id, visa_id, first_name, middle_name, last_name, birth_date, adolescence, visa_country_name, visa_type, passport_id, issue_date, expiry_date,nationality, received_documents,appointment_date,start_date,end_date,pass_status,
+				`mother_name`, `father_name`,`place_of_issue`, `birth_place`, `birth_country`, `marital_status`, `documents_nationality`, `travel_document_type`, `gender`) 
+				values('$entry_id', '$visa_id', '$first_name_arr[$i]', '$middle_name_arr[$i]', '$last_name_arr[$i]', '$birth_date_arr[$i]', '$adolescence_arr[$i]', '$visa_country_name_arr[$i]', '$visa_type_arr[$i]', '$passport_id_arr[$i]', '$issue_date_arr[$i]', '$expiry_date_arr[$i]', '$nationality_arr[$i]', '$received_documents_arr[$i]','$appointment_date_arr[$i]','$start_date_arr[$i]','$end_date_arr[$i]','$status_arr[$i]',
+				'$mother_name_arr[$i]',
+				'$father_name_arr[$i]',
+				'$place_of_issue_arr[$i]',
+				'$birth_place_arr[$i]',
+				'$birth_country_arr[$i]',
+				'$marital_status_arr[$i]',
+				'$documents_nationality_arr[$i]',
+				'$travel_document_type_arr[$i]',
+				'$gender_arr[$i]'
+				)");
 
 				if (!$sq_entry) {
 					$GLOBALS['flag'] = false;
@@ -1132,19 +1153,19 @@ Please contact for more details : ' . $contact);
 		$gender = $_POST['gender'];
 
 		$id_proff = $this->fileUploadAll($_FILES['id_proff'], 'visa_id_proff');
-		
+
 		foreach ($ids as $key => $id) {
 			$query = "UPDATE `visa_master_entries` SET `first_name`='" . $first_name[$key] . "',
 			`middle_name`='" . $middle_name[$key] . "',`last_name`='" . $last_name[$key] . "',`birth_date`='" . get_date_db($birth_date[$key]) . "',
-			passport_id='$passport_id[$key]', issue_date='".get_date_db($issue_date[$key])."', expiry_date = '".get_date_db($expiry_date[$key])."',
+			passport_id='$passport_id[$key]', issue_date='" . get_date_db($issue_date[$key]) . "', expiry_date = '" . get_date_db($expiry_date[$key]) . "',
 			`nationality`='" . $nationality[$key] . "',`mother_name`='" . $mother_name[$key] . "',`father_name`='" . $father_name[$key] . "',
-			`place_of_issue`='".$place_of_issue[$key]."',
-			`birth_place`='".$birth_place[$key]."',
-			`birth_country`='".$birth_country[$key]."',
-			`marital_status`='".$marital_status[$key]."',
-			`documents_nationality`='".$documents_nationality[$key]."',
-			`travel_document_type`='".$travel_document_type[$key]."',
-			`gender`='".$gender[$key]."'";
+			`place_of_issue`='" . $place_of_issue[$key] . "',
+			`birth_place`='" . $birth_place[$key] . "',
+			`birth_country`='" . $birth_country[$key] . "',
+			`marital_status`='" . $marital_status[$key] . "',
+			`documents_nationality`='" . $documents_nationality[$key] . "',
+			`travel_document_type`='" . $travel_document_type[$key] . "',
+			`gender`='" . $gender[$key] . "'";
 			if (!empty($id_proff[$key])) {
 				$query .= ",id_proof_url='" . $id_proff[$key] . "'";
 			}
@@ -1189,7 +1210,7 @@ Please contact for more details : ' . $contact);
 						$urlArr[] = 0;
 					}
 				} else {
-					  //var_dump ($errors);
+					//var_dump ($errors);
 					$urlArr[] = 0;
 				}
 			} else {

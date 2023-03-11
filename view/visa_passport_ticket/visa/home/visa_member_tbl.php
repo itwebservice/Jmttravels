@@ -1,5 +1,5 @@
 <tr>
-  <td><input class="css-checkbox" id="chk_visa<?= $offset ?>1"  type="checkbox" checked><label class="css-label" for="chk_visa<?= $offset ?>1"> <label></td>
+  <td><input class="css-checkbox" id="chk_visa<?= $offset ?>1" type="checkbox" checked><label class="css-label" for="chk_visa<?= $offset ?>1"> <label></td>
   <td><input maxlength="15" value="1" type="text" name="username" placeholder="Sr. No." class="form-control" disabled /></td>
   <td><input class="form-control" type="text" id="first_name<?= $offset ?>1" name="first_name<?= $offset ?>1" onchange="fname_validate(this.id)" placeholder="*First Name" title="First Name" style="width:150px;" /></td>
   <td><input class="form-control" type="text" id="middle_name<?= $offset ?>1" onchange="fname_validate(this.id)" name="middle_name<?= $offset ?>1" placeholder="Middle Name" title="Middle Name" style="width:150px;" /></td>
@@ -35,15 +35,40 @@
   <td><input class="form-control app_datepicker" type="text" id="expiry_date<?= $offset ?>1" name="expiry_date<?= $offset ?>1" placeholder="Expiry Date" title="Expiry Date" onchange="validate_issueDate('issue_date<?= $offset ?>1',this.id)" style="width:150px;" /></td>
   <td><input class="form-control" type="text" id="nationality<?= $offset ?>1" name="nationality<?= $offset ?>1" placeholder="*Nationality" title="Nationality" style="width:150px;" /></td>
   <td><input class="form-control app_datepicker" type="text" id="appointment<?= $offset ?>1" name="appointment<?= $offset ?>1" value="<?= date('d-m-Y') ?>" placeholder="Appointment Date" title="Appointment Date" style="width:160px;"></td>
-  <td><input class="form-control app_datepicker" type="text" id="start_date<?= $offset ?>1" name="start_date<?= $offset ?>1"  placeholder="Travel Start Date" title="Travel Start Date" style="width:160px;"></td>
-  <td><input class="form-control app_datepicker" type="text" id="end_date<?= $offset ?>1" name="end_date<?= $offset ?>1"  placeholder="Travel End Date" title="Travel End Date" style="width:160px;"></td>
+  <td><input class="form-control app_datepicker" type="text" id="start_date<?= $offset ?>1" name="start_date<?= $offset ?>1" placeholder="Travel Start Date" title="Travel Start Date" style="width:160px;"></td>
+  <td><input class="form-control app_datepicker" type="text" id="end_date<?= $offset ?>1" name="end_date<?= $offset ?>1" placeholder="Travel End Date" title="Travel End Date" style="width:160px;"></td>
   <td><select name="status_type<?= $offset ?>1" id="status_type<?= $offset ?>1" class="app_select2 form-control" title="Status" style="width:150px">
       <option value="">*Status</option>
       <option value="Unused">Unused</option>
       <option value="In-Use">In-Use</option>
       <option value="Completed">Completed</option>
       <option value="Cancelled">Cancelled</option>
-      
+    </select>
+  </td>
+  <td><input type="text" placeholder="Mother Name"  style="width:150px" name="mother_name" value="<?= $db['mother_name'] ?>" id="mother_name<?= $offset ?>1" class="form-control" title="Mother Name">
+  </td>
+  <td><input type="text" placeholder="Father Name"  style="width:150px" name="father_name" value="<?= $db['father_name'] ?>" id="father_name<?= $offset ?>1" class="form-control" title="Father Name">
+  </td>
+  <td><input type="text" placeholder="Place Of Issue"  style="width:150px" name="place_of_issue" value="<?= $db['place_of_issue'] ?>" id="place_of_issue<?= $offset ?>1" class="form-control" title="Place Of Issue">
+  </td>
+  <td><input type="text" placeholder="Birth Place"  style="width:150px" name="birth_place" value="<?= $db['birth_place'] ?>" id="birth_place<?= $offset ?>1" class="form-control" title="Birth Place">
+  </td>
+  <td><input type="text" placeholder="Birth Country"  style="width:150px" name="birth_country" value="<?= $db['birth_country'] ?>" id="birth_country<?= $offset ?>1" class="form-control" title="Birth Country">
+  </td>
+  <td><select  style="width:150px" name="marital_status" id="marital_status<?= $offset ?>1" class="form-control" title="Marital Status">
+      <option value="">Marital Status</option>
+      <option value="Married" <?= $db['marital_status'] == "Married" ? "selected" : ""  ?>>Married</option>
+      <option value="Unmarried" <?= $db['marital_status'] == "Unmarried" ? "selected" : ""  ?>>Unmarried</option>
+    </select>
+  </td>
+  <td><input type="text" placeholder="Documents Nationality"  style="width:150px" name="documents_nationality" value="<?= $db['documents_nationality'] ?>" id="documents_nationality<?= $offset ?>1" class="form-control" title="Documents Nationality">
+  </td>
+  <td><input type="text" placeholder="Travel Document Type"  style="width:150px" name="travel_document_type" value="<?= $db['travel_document_type'] ?>" id="travel_document_type<?= $offset ?>1" class="form-control" title="Travel Document Type">
+  </td>
+  <td><select  style="width:150px" name="gender" id="gender<?= $offset ?>1" class="form-control" title="Gender">
+      <option value="">Gender</option>
+      <option value="Male" <?= $db['gender'] == "Male" ? "selected" : ""  ?>>Male</option>
+      <option value="Female" <?= $db['gender'] == "Female" ? "selected" : ""  ?>>Female</option>
     </select>
   </td>
   <td><input type="hidden" id="visa_cost<?= $offset ?>1" name="visa_cost<?= $offset ?>1"></td>
@@ -79,26 +104,27 @@
     if (dates == '') {
       error_msg_alert('Please enter the Date..!!');
       return false;
-    }
-    else if (!date1.match(/^(0[1-9]|[12][0-9]|3[01])[\- \/.](?:(0[1-9]|1[012])[\- \/.](19|20)[0-9]{2})$/)) {
+    } else if (!date1.match(/^(0[1-9]|[12][0-9]|3[01])[\- \/.](?:(0[1-9]|1[012])[\- \/.](19|20)[0-9]{2})$/)) {
       error_msg_alert('Date format is wrong');
       return false;
     }
 
-      var today = new Date().getTime()
+    var today = new Date().getTime()
     date = Date.parse(date);
     if (today < dates) {
-          error_msg_alert("Date cannot be future date");
-          $('#'+id).css({'border':'1px solid red'});  
-          document.getElementById(id).value="";
-          $('#'+id).focus();
-          g_validate_status = false;
-          return false;		
+      error_msg_alert("Date cannot be future date");
+      $('#' + id).css({
+        'border': '1px solid red'
+      });
+      document.getElementById(id).value = "";
+      $('#' + id).focus();
+      g_validate_status = false;
+      return false;
     }
   }
 
   function validate_issueDate(from, to) {
-    
+
     var from_date = $('#' + from).val();
     var to_date = $('#' + to).val();
 

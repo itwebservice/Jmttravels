@@ -108,6 +108,13 @@
 						<th>Appointment_Date</th>
 						<th>Start_Date</th>
 						<th>End_Date</th>
+						<th>Place of Issue</th>
+							<th>birth place</th>
+							<th>Birth Country</th>
+							<th>marital status</th>
+							<th> Documents Nationality</th>
+							<th> Travel Document type</th>
+							<th>Gender</th>
 						<th>Status</th>
                        </tr>
                        </thead>
@@ -150,6 +157,13 @@
 									<td><?php echo get_date_user($row_entry['appointment_date']); ?></td>
 									<td><?php echo get_date_user($row_entry['start_date']); ?></td>
 									<td><?php echo get_date_user($row_entry['end_date']); ?></td>
+									<td> <?= $row_entry['place_of_issue'] ?></td>
+									<td> <?= $row_entry['birth_place'] ?></td>
+									<td> <?= $row_entry['birth_country'] ?></td>
+									<td> <?= $row_entry['marital_status'] ?></td>
+									<td> <?= $row_entry['documents_nationality'] ?></td>
+									<td> <?= $row_entry['travel_document_type'] ?></td>
+									<td> <?= $row_entry['gender'] ?></td>
 									<td><?php echo $row_entry['pass_status']; ?></td>
 								</tr>  
 								<script>

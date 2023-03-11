@@ -148,15 +148,41 @@ if ($reflections[0]->tax_apply_on == '1') {
                                                     <td><input type="text" id="expiry_date<?= $offset ?>1" name="expiry_date<?= $offset ?>1" class="form-control app_datepicker" placeholder="Expiry Date" title="Expiry Date" value="<?= get_date_user($row_entry['expiry_date']) ?>" onchange="validate_issueDate('issue_date<?= $offset ?>1',this.id)" style="width:110px;"></td>
                                                     <td><input type="text" id="nationality<?= $offset ?>1" name="nationality<?= $offset ?>1" onchange="validate_city(this.id)" placeholder="*Nationality" title="Nationality" value="<?= $row_entry['nationality'] ?>" class="form-control" style="width:150px;" /></td>
                                                     <td><input type="text" id="appointment<?= $offset ?>1" name="appointment<?= $offset ?>1" class="form-control app_datepicker" placeholder="Appointment Date" title="Appointment Date" value="<?= get_date_user($row_entry['appointment_date']) ?>" style="width:150px;"></td>
-                                                    <td><input class="form-control app_datepicker" type="text" id="start_date<?= $offset.$count ?>" value="<?= $row_entry['start_date'] ?>" name="start_date<?= $offset ?>1" placeholder="Travel Start Date" title="Travel Start Date" style="width:160px;"></td>
-                                                    <td><input class="form-control app_datepicker" type="text" id="end_date<?= $offset.$count ?>" name="end_date<?= $offset ?>1" placeholder="Travel End Date" value="<?= $row_entry['end_date'] ?>" title="Travel End Date" style="width:160px;"></td>
-                                                    <td><select name="status_type<?= $offset ?>1" id="status_type<?= $offset.$count ?>" class="app_select2 form-control" title="Status" style="width:150px">
+                                                    <td><input class="form-control app_datepicker" type="text" id="start_date<?= $offset . $count ?>" value="<?= $row_entry['start_date'] ?>" name="start_date<?= $offset ?>1" placeholder="Travel Start Date" title="Travel Start Date" style="width:160px;"></td>
+                                                    <td><input class="form-control app_datepicker" type="text" id="end_date<?= $offset . $count ?>" name="end_date<?= $offset ?>1" placeholder="Travel End Date" value="<?= $row_entry['end_date'] ?>" title="Travel End Date" style="width:160px;"></td>
+                                                    <td><select name="status_type<?= $offset ?>1" id="status_type<?= $offset . $count ?>" class="app_select2 form-control" title="Status" style="width:150px">
                                                             <option value="">*Status</option>
                                                             <option value="Unused" <?= $row_entry['pass_status'] == "Unused" ? "selected"  : "" ?>>Unused</option>
                                                             <option value="In-Use" <?= $row_entry['pass_status'] == "In-Use" ? "selected"  : "" ?>>In-Use</option>
                                                             <option value="Completed" <?= $row_entry['pass_status'] == "Completed" ? "selected"  : "" ?>>Completed</option>
                                                             <option value="Cancelled" <?= $row_entry['pass_status'] == "Cancelled" ? "selected"  : "" ?>>Cancelled</option>
 
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" placeholder="Mother Name" style="width:150px" name="mother_name" value="<?= $row_entry['mother_name'] ?>" id="mother_name<?= $offset.$count ?>" class="form-control" title="Mother Name">
+                                                    </td>
+                                                    <td><input type="text" placeholder="Father Name" style="width:150px" name="father_name" value="<?= $row_entry['father_name'] ?>" id="father_name<?= $offset.$count ?>" class="form-control" title="Father Name">
+                                                    </td>
+                                                    <td><input type="text" placeholder="Place Of Issue" style="width:150px" name="place_of_issue" value="<?= $row_entry['place_of_issue'] ?>" id="place_of_issue<?= $offset.$count ?>" class="form-control" title="Place Of Issue">
+                                                    </td>
+                                                    <td><input type="text" placeholder="Birth Place" style="width:150px" name="birth_place" value="<?= $row_entry['birth_place'] ?>" id="birth_place<?= $offset.$count ?>" class="form-control" title="Birth Place">
+                                                    </td>
+                                                    <td><input type="text" placeholder="Birth Country" style="width:150px" name="birth_country" value="<?= $row_entry['birth_country'] ?>" id="birth_country<?= $offset.$count ?>" class="form-control" title="Birth Country">
+                                                    </td>
+                                                    <td><select style="width:150px" name="marital_status" id="marital_status<?= $offset.$count ?>" class="form-control" title="Marital Status">
+                                                            <option value="">Marital Status</option>
+                                                            <option value="Married" <?= $row_entry['marital_status'] == "Married" ? "selected" : ""  ?>>Married</option>
+                                                            <option value="Unmarried" <?= $row_entry['marital_status'] == "Unmarried" ? "selected" : ""  ?>>Unmarried</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" placeholder="Documents Nationality" style="width:150px" name="documents_nationality" value="<?= $row_entry['documents_nationality'] ?>" id="documents_nationality<?= $offset.$count ?>" class="form-control" title="Documents Nationality">
+                                                    </td>
+                                                    <td><input type="text" placeholder="Travel Document Type" style="width:150px" name="travel_document_type" value="<?= $row_entry['travel_document_type'] ?>" id="travel_document_type<?= $offset.$count ?>" class="form-control" title="Travel Document Type">
+                                                    </td>
+                                                    <td><select style="width:150px" name="gender" id="gender<?= $offset.$count ?>" class="form-control" title="Gender">
+                                                            <option value="">Gender</option>
+                                                            <option value="Male" <?= $row_entry['gender'] == "Male" ? "selected" : ""  ?>>Male</option>
+                                                            <option value="Female" <?= $row_entry['gender'] == "Female" ? "selected" : ""  ?>>Female</option>
                                                         </select>
                                                     </td>
                                                     <td class="hidden"><input type="text" value="<?= $row_entry['entry_id'] ?>">
@@ -181,14 +207,14 @@ if ($reflections[0]->tax_apply_on == '1') {
                                                         minDate: tom,
                                                         format: 'd-m-Y'
                                                     });
-                                                    $('#start_date<?= $offset.$count ?>').datetimepicker({
+                                                    $('#start_date<?= $offset . $count ?>').datetimepicker({
                                                         timepicker: false,
-                                                        
+
                                                         format: 'd-m-Y'
                                                     });
-                                                    $('#end_date<?= $offset.$count ?>').datetimepicker({
+                                                    $('#end_date<?= $offset . $count ?>').datetimepicker({
                                                         timepicker: false,
-                                                        
+
                                                         format: 'd-m-Y'
                                                     });
                                                     $('#visa_country_name<?= $offset ?>1').select2();
@@ -452,6 +478,16 @@ if ($reflections[0]->tax_apply_on == '1') {
                 //	var received_documents_arr = new Array();
                 var appointment_date_arr = new Array();
                 var entry_id_arr = new Array();
+                var mother_name_arr = new Array();
+                var father_name_arr = new Array();
+                var place_of_issue_arr = new Array();
+                var birth_place_arr = new Array();
+                var birth_country_arr = new Array();
+                var marital_status_arr = new Array();
+                var documents_nationality_arr = new Array();
+                var travel_document_type_arr = new Array();
+                var gender_arr = new Array();
+
 
                 var table = document.getElementById("tbl_dynamic_visa_update");
                 var rowCount = table.rows.length;
@@ -484,8 +520,20 @@ if ($reflections[0]->tax_apply_on == '1') {
                         var start_date = row.cells[14].childNodes[0].value;
                         var end_date = row.cells[15].childNodes[0].value;
                         var pass_status = row.cells[16].childNodes[0].value;
-                        if (row.cells[17]) {
-                            var entry_id = row.cells[17].childNodes[0].value;
+                        var mother_name = row.cells[17].childNodes[0].value;
+                        var father_name = row.cells[18].childNodes[0].value;
+                        var place_of_issue = row.cells[19].childNodes[0].value;
+                        var birth_place = row.cells[20].childNodes[0].value;
+                        var birth_country = row.cells[21].childNodes[0].value;
+                        var marital_status = row.cells[22].childNodes[0].value;
+                        var documents_nationality = row.cells[23].childNodes[0].value;
+                        var travel_document_type = row.cells[24].childNodes[0].value;
+                        var gender = row.cells[25].childNodes[0].value;
+
+
+
+                        if (row.cells[26]) {
+                            var entry_id = row.cells[26].childNodes[0].value;
                         } else {
                             var entry_id = "";
                         }
@@ -537,6 +585,15 @@ if ($reflections[0]->tax_apply_on == '1') {
                         start_date_arr.push(start_date);
                         end_date_arr.push(end_date);
                         status_arr.push(pass_status);
+                        mother_name_arr.push(mother_name);
+                        father_name_arr.push(father_name);
+                        place_of_issue_arr.push(place_of_issue);
+                        birth_place_arr.push(birth_place);
+                        birth_country_arr.push(birth_country);
+                        marital_status_arr.push(marital_status);
+                        documents_nationality_arr.push(documents_nationality);
+                        travel_document_type_arr.push(travel_document_type);
+                        gender_arr.push(gender);
                     }
                 }
 
@@ -615,6 +672,15 @@ if ($reflections[0]->tax_apply_on == '1') {
                                 start_date_arr: start_date_arr,
                                 end_date_arr: end_date_arr,
                                 status_arr: status_arr,
+                                mother_name_arr: mother_name_arr,
+                                father_name_arr: father_name_arr,
+                                place_of_issue_arr: place_of_issue_arr,
+                                birth_place_arr: birth_place_arr,
+                                birth_country_arr: birth_country_arr,
+                                marital_status_arr: marital_status_arr,
+                                documents_nationality_arr: documents_nationality_arr,
+                                travel_document_type_arr: travel_document_type_arr,
+                                gender_arr: gender_arr
                             },
                             success: function(result) {
                                 var msg = result.split('-');
