@@ -105,6 +105,8 @@
                        	<th>Expiry_Date</th>
                        	<th>Nationality</th>
                        	<!-- <th>Documents</th> -->
+						   <th>Father Name</th>
+							<th>Mother Name</th>
 						<th>Appointment_Date</th>
 						<th>Start_Date</th>
 						<th>End_Date</th>
@@ -154,6 +156,8 @@
 								    <!-- <td>
 								    	<?php echo $row_entry['received_documents'];  ?>
 								    </td> -->
+									<td><?php echo $row_entry['father_name']; ?></td>
+									<td><?php echo $row_entry['mother_name']; ?></td>
 									<td><?php echo get_date_user($row_entry['appointment_date']); ?></td>
 									<td><?php echo get_date_user($row_entry['start_date']); ?></td>
 									<td><?php echo get_date_user($row_entry['end_date']); ?></td>
