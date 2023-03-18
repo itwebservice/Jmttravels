@@ -2,8 +2,9 @@
 
 $flag = true;
 
-class visa_master
+class visa_master 
 {
+	
 	public function visa_master_save()
 	{
 		$row_spec = 'sales';
@@ -1151,9 +1152,7 @@ Please contact for more details : ' . $contact);
 		$documents_nationality = $_POST['documents_nationality'];
 		$travel_document_type = $_POST['travel_document_type'];
 		$gender = $_POST['gender'];
-
-		$id_proff = $this->fileUploadAll($_FILES['id_proff'], 'visa_id_proff');
-
+		// $id_proff = $this->fileUploadAll($_FILES['id_proff'], 'visa_id_proff');
 		foreach ($ids as $key => $id) {
 			$query = "UPDATE `visa_master_entries` SET `first_name`='" . $first_name[$key] . "',
 			`middle_name`='" . $middle_name[$key] . "',`last_name`='" . $last_name[$key] . "',`birth_date`='" . get_date_db($birth_date[$key]) . "',
@@ -1166,70 +1165,74 @@ Please contact for more details : ' . $contact);
 			`documents_nationality`='" . $documents_nationality[$key] . "',
 			`travel_document_type`='" . $travel_document_type[$key] . "',
 			`gender`='" . $gender[$key] . "'";
-			if (!empty($id_proff[$key])) {
-				$query .= ",id_proof_url='" . $id_proff[$key] . "'";
-			}
+			
 			$query .= " WHERE entry_id='" . $id . "'";
 			mysqlQuery($query);
+			$idproffId = 'id_proff_'.$id;
+			if(!empty($_FILES[$idproffId]))
+			{
+				$media = new mediaable();
+				$media->uploadMediaMultiple($_FILES[$idproffId], $id, 'VISA_ID_PROFF');
+			}
 		}
 		echo "success";
 	}
 
-	public function fileUploadAll($fileFile, $storeUrl)
-	{
-		$urlArr = array();
-		for ($i = 0; $i < count($fileFile['name']); $i++) {
-			if (!empty($fileFile['name'][$i])) {
-				$errors = array();
-				$fileMain = $fileFile;
-				$file_name = $fileMain['name'][$i];
-				$file_size = $fileMain['size'][$i];
-				$file_tmp = $fileMain['tmp_name'][$i];
-				$file_type = $fileMain['type'][$i];
-				//dir
-				$year = date("Y");
-				$month = date("M");
-				$day = date("d");
-				$timestamp = date('U');
-				$current_dir = '../../uploads/';
-				$current_dir = $this->check_dir($current_dir, 'Visa_field');
-				$current_dir = $this->check_dir($current_dir, $year);
-				$current_dir = $this->check_dir($current_dir, $month);
-				$current_dir = $this->check_dir($current_dir, $day);
-				$current_dir = $this->check_dir($current_dir, $timestamp);
-				$file_name2 = str_replace(' ', '_', basename($file_name));
-				$fileMainName = $current_dir . $file_name2;
-				if ($file_size > 2097152) {
-					$errors[] = 'File size must be excately 2 MB';
-				}
+	// public function fileUploadAll($fileFile, $storeUrl)
+	// {
+	// 	$urlArr = array();
+	// 	for ($i = 0; $i < count($fileFile['name']); $i++) {
+	// 		if (!empty($fileFile['name'][$i])) {
+	// 			$errors = array();
+	// 			$fileMain = $fileFile;
+	// 			$file_name = $fileMain['name'][$i];
+	// 			$file_size = $fileMain['size'][$i];
+	// 			$file_tmp = $fileMain['tmp_name'][$i];
+	// 			$file_type = $fileMain['type'][$i];
+	// 			//dir
+	// 			$year = date("Y");
+	// 			$month = date("M");
+	// 			$day = date("d");
+	// 			$timestamp = date('U');
+	// 			$current_dir = '../../uploads/';
+	// 			$current_dir = $this->check_dir($current_dir, 'Visa_field');
+	// 			$current_dir = $this->check_dir($current_dir, $year);
+	// 			$current_dir = $this->check_dir($current_dir, $month);
+	// 			$current_dir = $this->check_dir($current_dir, $day);
+	// 			$current_dir = $this->check_dir($current_dir, $timestamp);
+	// 			$file_name2 = str_replace(' ', '_', basename($file_name));
+	// 			$fileMainName = $current_dir . $file_name2;
+	// 			if ($file_size > 2097152) {
+	// 				$errors[] = 'File size must be excately 2 MB';
+	// 			}
 
-				if (empty($errors) == true) {
-					if (move_uploaded_file($file_tmp, $fileMainName)) {
-						$urlArr[] = $fileMainName;
-					} else {
-						$urlArr[] = 0;
-					}
-				} else {
-					//var_dump ($errors);
-					$urlArr[] = 0;
-				}
-			} else {
-				$urlArr[] = 0;
-			}
-		}
-		return $urlArr;
-	}
-	public function check_dir($current_dir, $type)
+	// 			if (empty($errors) == true) {
+	// 				if (move_uploaded_file($file_tmp, $fileMainName)) {
+	// 					$urlArr[] = $fileMainName;
+	// 				} else {
+	// 					$urlArr[] = 0;
+	// 				}
+	// 			} else {
+	// 				//var_dump ($errors);
+	// 				$urlArr[] = 0;
+	// 			}
+	// 		} else {
+	// 			$urlArr[] = 0;
+	// 		}
+	// 	}
+	// 	return $urlArr;
+	// }
+	// public function check_dir($current_dir, $type)
 
-	{
+	// {
 
-		if (!is_dir($current_dir . "/" . $type)) {
+	// 	if (!is_dir($current_dir . "/" . $type)) {
 
-			mkdir($current_dir . "/" . $type);
-		}
+	// 		mkdir($current_dir . "/" . $type);
+	// 	}
 
-		$current_dir = $current_dir . "/" . $type . "/";
+	// 	$current_dir = $current_dir . "/" . $type . "/";
 
-		return $current_dir;
-	}
+	// 	return $current_dir;
+	// }
 }

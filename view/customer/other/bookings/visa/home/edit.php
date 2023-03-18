@@ -11,6 +11,7 @@ $year = $yr[0];
 $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_id'");
 
 ?>
+
 <div class="modal fade profile_box_modal" id="visa_edit_modal" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg" style="width: 1200px !important;" role="document">
         <div class="modal-content">
@@ -47,8 +48,12 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                 <div class="accordion_content package_content mg_bt_10">
                                                     <div class="panel panel-default main_block">
                                                         <div class="panel-heading main_block" role="tab" id="heading_<?= $db['entry_id'] ?>">
-                                                            <div class="Normal collapsed main_block" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<?= $db['entry_id'] ?>" aria-expanded="false" aria-controls="collapse_<?= $db['entry_id'] ?>" id="collapsed_<?= $db['entry_id'] ?>">
-                                                                <div class="col-md-12"><span><em style="margin-left: 15px;"><?= $db['first_name'] . " " . $db['last_name'] ?> (<?php echo $db['pass_status']; ?>)</em></span>
+                                                            <div class="Normal main_block collapsedn" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<?= $db['entry_id'] ?>" aria-expanded="false" aria-controls="collapse_<?= $db['entry_id'] ?>" id="collapsed_<?= $db['entry_id'] ?>">
+                                                                <div class="col-md-6"><span><em style="margin-left: 15px;"><?= $db['first_name'] . " " . $db['last_name'] ?> (<?php echo $db['pass_status']; ?>)</em></span>
+                                                                
+                                                                </div>
+                                                                <div class="col-md-6 text-right">
+                                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -123,7 +128,7 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                   
                                                                 </div>
                                                                 <div class="row">
-                                                                <div class="col-md-4 mg_tp_10"> <input type="file" id="file_<?= $db['entry_id'] ?>" accept="image/*" onchange="fileSizeCheck(this.id)" multiple placeholder="" name="id_proff[]"  class="form-control" title="ID PROOF"> 
+                                                                <div class="col-md-4 mg_tp_10"> <input type="file" id="file_<?= $db['entry_id'] ?>" accept="image/*" onchange="fileSizeCheck(this.id)" multiple placeholder="" name="id_proff_<?= $db['entry_id'] ?>[]"  class="form-control" title="ID PROOF"> 
                                                                     
                                                                     <span style="color: red;" class="note" data-original-title="" title="">Note : Upload Image size below 512KB, resolution : 900X450. </span>
 
