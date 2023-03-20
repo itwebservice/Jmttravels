@@ -25,7 +25,8 @@ class mediaable
             if (move_uploaded_file($file_tmp, $fileMainName)) {
                 $urlFilter = $this->makeUrl($fileMainName);
                 $query = mysqlQuery("INSERT INTO `mediaables`(`id`, `filename`, `extension`, `size`, `url`, `model_id`, `model_name`, `created_at`) VALUES (NULL,'$file_name','$file_type','$file_size','$urlFilter','$fileModelId','$fileModelName',CURRENT_TIMESTAMP)");
-                return $urlFilter;
+                // return $urlFilter;
+                return true;
             }
         } catch (Exception $e) {
             echo $e->getMessage();

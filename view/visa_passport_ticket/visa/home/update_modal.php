@@ -156,7 +156,12 @@ if ($reflections[0]->tax_apply_on == '1') {
                                                             <option value="In-Use" <?= $row_entry['pass_status'] == "In-Use" ? "selected"  : "" ?>>In-Use</option>
                                                             <option value="Completed" <?= $row_entry['pass_status'] == "Completed" ? "selected"  : "" ?>>Completed</option>
                                                             <option value="Cancelled" <?= $row_entry['pass_status'] == "Cancelled" ? "selected"  : "" ?>>Cancelled</option>
-
+                                                            <option value="Visa Expired" <?= $row_entry['pass_status'] == "Visa Expired" ? "selected" : "" ?>>Visa Expired</option>
+                                                            <option value="Documents received" <?= $row_entry['pass_status'] == "Documents received" ? "selected" : "" ?>>Documents received</option>
+                                                            <option value="Documents pending" <?= $row_entry['pass_status'] == "Documents pending" ? "selected" : "" ?>>Documents pending</option>
+                                                            <option value="Hold" <?= $row_entry['pass_status'] == "Hold" ? "selected" : "" ?>>Hold</option>
+                                                            <option value="Return" <?= $row_entry['pass_status'] == "Return" ? "selected" : "" ?>>Return</option>
+                                                            <option value="Proceed" <?= $row_entry['pass_status'] == "Proceed" ? "selected" : "" ?>>Proceed</option>
                                                         </select>
                                                     </td>
                                                     <td><input type="text" placeholder="Mother Name" style="width:150px" name="mother_name" value="<?= $row_entry['mother_name'] ?>" id="mother_name<?= $offset . $count ?>" class="form-control" title="Mother Name">

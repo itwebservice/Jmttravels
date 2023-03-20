@@ -43,29 +43,36 @@
       <option value="In-Use">In-Use</option>
       <option value="Completed">Completed</option>
       <option value="Cancelled">Cancelled</option>
+      <option value="Visa Expired">Visa Expired</option>
+      <option value="Documents received">Documents received</option>
+      <option value="Documents pending" >Documents pending</option>
+      <option value="Hold" >Hold</option>
+      <option value="Return" >Return</option>
+      <option value="Proceed" >Proceed</option>
+
     </select>
   </td>
-  <td><input type="text" placeholder="Mother Name"  style="width:150px" name="mother_name" value="<?= $db['mother_name'] ?>" id="mother_name<?= $offset ?>1" class="form-control" title="Mother Name">
+  <td><input type="text" placeholder="Mother Name" style="width:150px" name="mother_name" value="<?= $db['mother_name'] ?>" id="mother_name<?= $offset ?>1" class="form-control" title="Mother Name">
   </td>
-  <td><input type="text" placeholder="Father Name"  style="width:150px" name="father_name" value="<?= $db['father_name'] ?>" id="father_name<?= $offset ?>1" class="form-control" title="Father Name">
+  <td><input type="text" placeholder="Father Name" style="width:150px" name="father_name" value="<?= $db['father_name'] ?>" id="father_name<?= $offset ?>1" class="form-control" title="Father Name">
   </td>
-  <td><input type="text" placeholder="Place Of Issue"  style="width:150px" name="place_of_issue" value="<?= $db['place_of_issue'] ?>" id="place_of_issue<?= $offset ?>1" class="form-control" title="Place Of Issue">
+  <td><input type="text" placeholder="Place Of Issue" style="width:150px" name="place_of_issue" value="<?= $db['place_of_issue'] ?>" id="place_of_issue<?= $offset ?>1" class="form-control" title="Place Of Issue">
   </td>
-  <td><input type="text" placeholder="Birth Place"  style="width:150px" name="birth_place" value="<?= $db['birth_place'] ?>" id="birth_place<?= $offset ?>1" class="form-control" title="Birth Place">
+  <td><input type="text" placeholder="Birth Place" style="width:150px" name="birth_place" value="<?= $db['birth_place'] ?>" id="birth_place<?= $offset ?>1" class="form-control" title="Birth Place">
   </td>
-  <td><input type="text" placeholder="Birth Country"  style="width:150px" name="birth_country" value="<?= $db['birth_country'] ?>" id="birth_country<?= $offset ?>1" class="form-control" title="Birth Country">
+  <td><input type="text" placeholder="Birth Country" style="width:150px" name="birth_country" value="<?= $db['birth_country'] ?>" id="birth_country<?= $offset ?>1" class="form-control" title="Birth Country">
   </td>
-  <td><select  style="width:150px" name="marital_status" id="marital_status<?= $offset ?>1" class="form-control" title="Marital Status">
+  <td><select style="width:150px" name="marital_status" id="marital_status<?= $offset ?>1" class="form-control" title="Marital Status">
       <option value="">Marital Status</option>
       <option value="Married" <?= $db['marital_status'] == "Married" ? "selected" : ""  ?>>Married</option>
       <option value="Unmarried" <?= $db['marital_status'] == "Unmarried" ? "selected" : ""  ?>>Unmarried</option>
     </select>
   </td>
-  <td><input type="text" placeholder="Documents Nationality"  style="width:150px" name="documents_nationality" value="<?= $db['documents_nationality'] ?>" id="documents_nationality<?= $offset ?>1" class="form-control" title="Documents Nationality">
+  <td><input type="text" placeholder="Documents Nationality" style="width:150px" name="documents_nationality" value="<?= $db['documents_nationality'] ?>" id="documents_nationality<?= $offset ?>1" class="form-control" title="Documents Nationality">
   </td>
-  <td><input type="text" placeholder="Travel Document Type"  style="width:150px" name="travel_document_type" value="<?= $db['travel_document_type'] ?>" id="travel_document_type<?= $offset ?>1" class="form-control" title="Travel Document Type">
+  <td><input type="text" placeholder="Travel Document Type" style="width:150px" name="travel_document_type" value="<?= $db['travel_document_type'] ?>" id="travel_document_type<?= $offset ?>1" class="form-control" title="Travel Document Type">
   </td>
-  <td><select  style="width:150px" name="gender" id="gender<?= $offset ?>1" class="form-control" title="Gender">
+  <td><select style="width:150px" name="gender" id="gender<?= $offset ?>1" class="form-control" title="Gender">
       <option value="">Gender</option>
       <option value="Male" <?= $db['gender'] == "Male" ? "selected" : ""  ?>>Male</option>
       <option value="Female" <?= $db['gender'] == "Female" ? "selected" : ""  ?>>Female</option>

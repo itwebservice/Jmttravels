@@ -49,6 +49,13 @@ $data = mysqlQuery($sq_query);
                                                             <option value="In-Use" <?= $db['pass_status'] == "In-Use" ? "selected" : "" ?>>In-Use</option>
                                                             <option value="Completed" <?= $db['pass_status'] == "Completed" ? "selected" : "" ?>>Completed</option>
                                                             <option value="Cancelled" <?= $db['pass_status'] == "Cancelled" ? "selected" : "" ?>>Cancelled</option>
+                                                            <option value="Visa Expired" <?= $db['pass_status'] == "Visa Expired" ? "selected" : "" ?>>Visa Expired</option>
+                                                            <option value="Documents received" <?= $db['pass_status'] == "Documents received" ? "selected" : "" ?>>Documents received</option>
+                                                            <option value="Documents pending" <?= $db['pass_status'] == "Documents pending" ? "selected" : "" ?>>Documents pending</option>
+                                                            <option value="Hold" <?= $db['pass_status'] == "Hold" ? "selected" : "" ?>>Hold</option>
+                                                            <option value="Return" <?= $db['pass_status'] == "Return" ? "selected" : "" ?>>Return</option>
+                                                            <option value="Proceed" <?= $db['pass_status'] == "Proceed" ? "selected" : "" ?>>Proceed</option>
+
                                                         </select>
                                                     </td>
                                                 </tr>

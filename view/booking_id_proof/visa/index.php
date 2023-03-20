@@ -9,28 +9,31 @@ $branch_status = $_POST['branch_status'];
 <div class="app_panel_content Filter-panel">
 <div class="row">
       <div class="col-sm-4 col-sm-offset-4">
-        <select id="fcmb_traveler_id" name="fcmb_traveler_id" title="Passenger Name" style="width:100%;" onchange="traveler_id_proof_info_reflect()" title="Passenger">
-            <option value="">Passenger Name</option>
+      <!--  -->
+        <select id="fcmb_traveler_id" name="fcmb_traveler_id" title="VISA" style="width:100%;" onchange="traveler_id_proof_info_reflect()"  title="Passenger">
+            <option value="">VISA</option>
             <?php
-            $query = "select * from visa_master_entries where 1 and visa_id in (select visa_id from visa_master where delete_status='0')";
+            $query = "select * from visa_master where 1 and delete_status='0'";
             if($branch_status=='yes' && $role!='Admin'){
                 $query .= " and visa_id in (select visa_id from visa_master where branch_admin_id = '$branch_admin_id')";
             }
             elseif($role!='Admin' && $role!='Branch Admin' && $role_id!='7' && $role_id<'7'){
               $query .= " and visa_id in (select visa_id from visa_master where emp_id ='$emp_id')";
             }
-            $query .= " and status != 'Cancel'";
+            $query .= " and cancel_flag!= 1";
             $query .= " order by visa_id desc";
+
 
             $sq_travelers_details = mysqlQuery($query);   
             while($row_travelers_details = mysqli_fetch_assoc( $sq_travelers_details ))
                   {
+                    $cust = mysqli_fetch_array(mysqlQuery("SELECT * FROM `customer_master` where customer_id='$row_travelers_details[customer_id]'"));
                     $sql_booking = mysqli_fetch_assoc(mysqlQuery("select * from visa_master where visa_id = '$row_travelers_details[visa_id]' and delete_status='0'"));
                     $booking_date = $sql_booking['created_at'];
                     $yr = explode("-", $booking_date);
                     $year = $yr[0];
                     ?>
-                    <option value="<?php echo $row_travelers_details['entry_id'] ?>"><?php echo get_visa_booking_id($row_travelers_details['visa_id'],$year).' : '.$row_travelers_details['first_name'].' '.$row_travelers_details['last_name']; ?></option>
+                    <option value="<?php echo $row_travelers_details['visa_id'] ?>"><?php echo get_visa_booking_id($row_travelers_details['visa_id'],$year).' : '.$cust['first_name'].' '.$cust['last_name']; ?></option>
                     <?php
                   }
             ?>

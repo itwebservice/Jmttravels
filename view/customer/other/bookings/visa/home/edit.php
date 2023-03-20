@@ -135,11 +135,13 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
 
                                                                     </div>
                                                                     <div class="col-md-4 mg_tp_10">
+                                                                       
                                                             <?php
                                                                 $media = new mediaable();
                                                                 $imgs = $media->getMedia($db['entry_id'] ,'VISA_ID_PROFF');
+
                                                                     if (!empty($imgs)) {
-                                                                        ?><div class="col-md-4 mg_tp_10">
+                                                                        ?>
                                                                         <?php
                                                                         foreach($imgs as $img)
                                                                             {
@@ -147,9 +149,29 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                             <a href="<?= BASE_URL.$img ?>" target="_blank" data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-eye"></i></a>
                                                                         
                                                                     <?php }
+                                                                ?> <?php 
+                                                                }?>
+                                                               
+                                                            </div>
+                                                            <div class="col-md-4 mg_tp_10">
+                                                               
+                                                            Files Admin: 
+                                                                    <?php 
+                                                          $imgsAdmin = $media->getMedia($db['entry_id'], 'VISA_ID_PROFF_ADMIN');
+
+                                                            if (!empty($imgsAdmin)) {
+                                                                        ?><div class="col-md-3 mg_tp_10">
+                                                                        <?php
+                                                                        foreach($imgsAdmin as $img)
+                                                                            {
+                                                                    ?>
+                                                                            <a href="<?= BASE_URL.$img ?>" target="_blank" data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-eye"></i></a>
+                                                                        
+                                                                    <?php }
                                                                 ?> </div><?php 
                                                                 }?>
-                                                            </div>
+                                                                
+                                                                </div>
                                                                 </div>
                                                             </div>
                                                         </div>
