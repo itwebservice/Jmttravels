@@ -101,4 +101,14 @@ class mediaable
         }
         return $newUrl;
     }
+
+    public function getMedia($modelId,$modelName)
+    {
+            $data = array();
+            $query = mysqlQuery("SELECT * FROM `mediaables` where model_id='$modelId' and model_name='$modelName'");
+            while($db = mysqli_fetch_array($query))
+            {
+                $data[] = $db['url'];
+            }return $data;
+    }
 }

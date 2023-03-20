@@ -32,7 +32,7 @@
   </td>
   <td><input class="form-control" type="text" id="passport_id<?= $offset ?>1" name="passport_id<?= $offset ?>1" onchange="validate_passport(this.id)" placeholder="Passport ID" title="Passport ID" style="text-transform: uppercase;width:150px;" /></td>
   <td><input class="form-control app_datepicker" type="text" id="issue_date<?= $offset ?>1" name="issue_date<?= $offset ?>1" placeholder="Issue Date" title="Issue Date" style="width:150px;"></td>
-  <td><input class="form-control app_datepicker" type="text" id="expiry_date<?= $offset ?>1" name="expiry_date<?= $offset ?>1" placeholder="Expiry Date" title="Expiry Date" onchange="validate_issueDate('issue_date<?= $offset ?>1',this.id)" style="width:150px;" /></td>
+  <td><input class="form-control app_datepicker" type="text" id="expiry_date<?= $offset ?>1" name="expiry_date<?= $offset ?>1" placeholder="Expiry Date" title="Expiry Date" onchange="validate_issueDate('issue_date<?= $offset ?>1',this.id);" style="width:150px;" /></td>
   <td><input class="form-control" type="text" id="nationality<?= $offset ?>1" name="nationality<?= $offset ?>1" placeholder="*Nationality" title="Nationality" style="width:150px;" /></td>
   <td><input class="form-control app_datepicker" type="text" id="appointment<?= $offset ?>1" name="appointment<?= $offset ?>1" value="<?= date('d-m-Y') ?>" placeholder="Appointment Date" title="Appointment Date" style="width:160px;"></td>
   <td><input class="form-control app_datepicker" type="text" id="start_date<?= $offset ?>1" name="start_date<?= $offset ?>1" placeholder="Travel Start Date" title="Travel Start Date" style="width:160px;"></td>

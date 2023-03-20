@@ -508,7 +508,13 @@ $branch_status = $sq['branch_status'];
 						var gender = row.cells[25].childNodes[0].value;
 
 						var msg = "";
+						
 
+						if(dateDaysValidation(expiry_date) == false)
+						{
+							$('#btn_visa_master_save').prop('disabled', false);
+							return false;
+						}
 						if (first_name == "") {
 							msg += "First name is required in row:" + (i + 1) + "<br>";
 						}
@@ -793,5 +799,28 @@ $branch_status = $sq['branch_status'];
 	$('#visa_save_modal').on('hidden.bs.modal', function() {
 		reset_form('frm_visa_save');
 	})
+
+
+	function dateDaysValidation(date1Main) {
+		var booking_date = $('#booking_date').val();
+		const date1 = new Date(convertDateString(booking_date));
+		const date2 = new Date(convertDateString(date1Main));
+		// alert(date1);
+		// alert(date2);
+		const diffTime = Math.abs(date2 - date1);
+		const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+		// alert(diffDays);
+		if(diffDays < 185)
+		{
+			error_msg_alert("Expiry Date and Booking Date Is In 185 Days");
+			 return false;
+		}
+		return true;
+	}
+	function convertDateString(date1)
+	{
+			var spDate = date1.split("-");
+			return spDate[2]+"-"+spDate[1]+"-"+spDate[0];
+	}
 </script>
 <script src="<?php echo BASE_URL ?>js/app/footer_scripts.js"></script>

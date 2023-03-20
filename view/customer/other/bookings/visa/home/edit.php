@@ -1,5 +1,6 @@
 <?php
 include "../../../../../../model/model.php";
+include('../../../../../../model/mediaable/mediaable.php');
 
 $visa_id = $_POST['visa_id'];
 
@@ -135,21 +136,19 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                     </div>
                                                                     <div class="col-md-4 mg_tp_10">
                                                             <?php
-                                                                    if (!empty($db['id_proof_url'])) {
-                                                                        $url = $db['id_proof_url'];
-                                                                        $pos = strstr($url, 'uploads');
-                                                                        if ($pos != false) {
-                                                                            $newUrl1 = preg_replace('/(\/+)/', '/', $db['id_proof_url']);
-                                                                            $newUrl = BASE_URL . str_replace('../', '', $newUrl1);
-                                                                        } else {
-                                                                            $newUrl =  $db['id_proof_url'];
-                                                                        }
-
+                                                                $media = new mediaable();
+                                                                $imgs = $media->getMedia($db['entry_id'] ,'VISA_ID_PROFF');
+                                                                    if (!empty($imgs)) {
+                                                                        ?><div class="col-md-4 mg_tp_10">
+                                                                        <?php
+                                                                        foreach($imgs as $img)
+                                                                            {
                                                                     ?>
-                                                                        <div class="col-md-4 mg_tp_10">
-                                                                            <a href="<?= $newUrl ?>" target="_blank" data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-eye"></i></a>
-                                                                        </div>
-                                                                    <?php } ?>
+                                                                            <a href="<?= BASE_URL.$img ?>" target="_blank" data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-eye"></i></a>
+                                                                        
+                                                                    <?php }
+                                                                ?> </div><?php 
+                                                                }?>
                                                             </div>
                                                                 </div>
                                                             </div>

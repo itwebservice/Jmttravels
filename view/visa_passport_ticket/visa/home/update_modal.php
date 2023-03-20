@@ -159,27 +159,27 @@ if ($reflections[0]->tax_apply_on == '1') {
 
                                                         </select>
                                                     </td>
-                                                    <td><input type="text" placeholder="Mother Name" style="width:150px" name="mother_name" value="<?= $row_entry['mother_name'] ?>" id="mother_name<?= $offset.$count ?>" class="form-control" title="Mother Name">
+                                                    <td><input type="text" placeholder="Mother Name" style="width:150px" name="mother_name" value="<?= $row_entry['mother_name'] ?>" id="mother_name<?= $offset . $count ?>" class="form-control" title="Mother Name">
                                                     </td>
-                                                    <td><input type="text" placeholder="Father Name" style="width:150px" name="father_name" value="<?= $row_entry['father_name'] ?>" id="father_name<?= $offset.$count ?>" class="form-control" title="Father Name">
+                                                    <td><input type="text" placeholder="Father Name" style="width:150px" name="father_name" value="<?= $row_entry['father_name'] ?>" id="father_name<?= $offset . $count ?>" class="form-control" title="Father Name">
                                                     </td>
-                                                    <td><input type="text" placeholder="Place Of Issue" style="width:150px" name="place_of_issue" value="<?= $row_entry['place_of_issue'] ?>" id="place_of_issue<?= $offset.$count ?>" class="form-control" title="Place Of Issue">
+                                                    <td><input type="text" placeholder="Place Of Issue" style="width:150px" name="place_of_issue" value="<?= $row_entry['place_of_issue'] ?>" id="place_of_issue<?= $offset . $count ?>" class="form-control" title="Place Of Issue">
                                                     </td>
-                                                    <td><input type="text" placeholder="Birth Place" style="width:150px" name="birth_place" value="<?= $row_entry['birth_place'] ?>" id="birth_place<?= $offset.$count ?>" class="form-control" title="Birth Place">
+                                                    <td><input type="text" placeholder="Birth Place" style="width:150px" name="birth_place" value="<?= $row_entry['birth_place'] ?>" id="birth_place<?= $offset . $count ?>" class="form-control" title="Birth Place">
                                                     </td>
-                                                    <td><input type="text" placeholder="Birth Country" style="width:150px" name="birth_country" value="<?= $row_entry['birth_country'] ?>" id="birth_country<?= $offset.$count ?>" class="form-control" title="Birth Country">
+                                                    <td><input type="text" placeholder="Birth Country" style="width:150px" name="birth_country" value="<?= $row_entry['birth_country'] ?>" id="birth_country<?= $offset . $count ?>" class="form-control" title="Birth Country">
                                                     </td>
-                                                    <td><select style="width:150px" name="marital_status" id="marital_status<?= $offset.$count ?>" class="form-control" title="Marital Status">
+                                                    <td><select style="width:150px" name="marital_status" id="marital_status<?= $offset . $count ?>" class="form-control" title="Marital Status">
                                                             <option value="">Marital Status</option>
                                                             <option value="Married" <?= $row_entry['marital_status'] == "Married" ? "selected" : ""  ?>>Married</option>
                                                             <option value="Unmarried" <?= $row_entry['marital_status'] == "Unmarried" ? "selected" : ""  ?>>Unmarried</option>
                                                         </select>
                                                     </td>
-                                                    <td><input type="text" placeholder="Documents Nationality" style="width:150px" name="documents_nationality" value="<?= $row_entry['documents_nationality'] ?>" id="documents_nationality<?= $offset.$count ?>" class="form-control" title="Documents Nationality">
+                                                    <td><input type="text" placeholder="Documents Nationality" style="width:150px" name="documents_nationality" value="<?= $row_entry['documents_nationality'] ?>" id="documents_nationality<?= $offset . $count ?>" class="form-control" title="Documents Nationality">
                                                     </td>
-                                                    <td><input type="text" placeholder="Travel Document Type" style="width:150px" name="travel_document_type" value="<?= $row_entry['travel_document_type'] ?>" id="travel_document_type<?= $offset.$count ?>" class="form-control" title="Travel Document Type">
+                                                    <td><input type="text" placeholder="Travel Document Type" style="width:150px" name="travel_document_type" value="<?= $row_entry['travel_document_type'] ?>" id="travel_document_type<?= $offset . $count ?>" class="form-control" title="Travel Document Type">
                                                     </td>
-                                                    <td><select style="width:150px" name="gender" id="gender<?= $offset.$count ?>" class="form-control" title="Gender">
+                                                    <td><select style="width:150px" name="gender" id="gender<?= $offset . $count ?>" class="form-control" title="Gender">
                                                             <option value="">Gender</option>
                                                             <option value="Male" <?= $row_entry['gender'] == "Male" ? "selected" : ""  ?>>Male</option>
                                                             <option value="Female" <?= $row_entry['gender'] == "Female" ? "selected" : ""  ?>>Female</option>
@@ -539,7 +539,10 @@ if ($reflections[0]->tax_apply_on == '1') {
                         }
 
                         var msg = "";
-
+                        if (dateDaysValidation(expiry_date) == false) {
+                            $('#visa_update').prop('disabled', false);
+                            return false;
+                        }
                         if (first_name == "") {
                             msg += "First name is required in row:" + (i + 1) + "<br>";
                         }
@@ -753,4 +756,27 @@ if ($reflections[0]->tax_apply_on == '1') {
             }
         }
     }
+
+
+    function dateDaysValidation(date1Main) {
+		var booking_date = $('#balance_date1').val();
+		const date1 = new Date(convertDateString(booking_date));
+		const date2 = new Date(convertDateString(date1Main));
+		// alert(date1);
+		// alert(date2);
+		const diffTime = Math.abs(date2 - date1);
+		const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+		// alert(diffDays);
+		if(diffDays < 185)
+		{
+			error_msg_alert("Expiry Date and Booking Date Is In 185 Days");
+			 return false;
+		}
+		return true;
+	}
+	function convertDateString(date1)
+	{
+			var spDate = date1.split("-");
+			return spDate[2]+"-"+spDate[1]+"-"+spDate[0];
+	}
 </script>
