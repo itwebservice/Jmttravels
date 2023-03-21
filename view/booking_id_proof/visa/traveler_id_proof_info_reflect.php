@@ -3,7 +3,7 @@ include_once('../../../model/model.php');
 include_once('../../../model/mediaable/mediaable.php');
 $visa_id = $_POST['entry_id'];
 
-$query = mysqlQuery("select * from visa_master_entries where entry_id='$visa_id'");
+$query = mysqlQuery("select * from visa_master_entries where visa_id='$visa_id'");
 ?>
 <div class="mg_tp_20"></div>
 <h3 class="editor_title">id proof Information</h3>
