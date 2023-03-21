@@ -86,9 +86,23 @@ $sq_report = mysqlQuery($mainQry);
 								<option value="Document Received" <?=  $row_report['doc_status'] == "Document Received" ? "selected" : "" ?>>Document Received</option>
 								<option value="Document Pending" <?=  $row_report['doc_status'] == "Document Pending" ? "selected" : "" ?>>Document Pending</option>
 								<option value="Document Processed" <?=  $row_report['doc_status'] == "Document Processed" ? "selected" : "" ?>>Document Processed</option>
-								<option value="Visa Confirmed" <?=  $row_report['doc_status'] == "Visa Confirmed" ? "selected" : "" ?>>Visa Confirmed</option>
 								<option value="Visa Cancellation" <?=  $row_report['doc_status'] == "Visa Cancellation" ? "selected" : "" ?>>Visa Cancellation</option>
 								<option value="Visa By Own" <?=  $row_report['doc_status'] == "Visa By Own" ? "selected" : "" ?>>Visa By Own</option>
+								<option value="Return"    <?=  $row_report['doc_status'] == "Return" ? "selected" : "" ?> > Return</option>
+								<option value="Reject"    <?=  $row_report['doc_status'] == "Reject" ? "selected" : "" ?> > Reject</option>
+								<option value="Extend"   <?=  $row_report['doc_status'] == "Extend" ? "selected" : "" ?> > Extend</option>
+								<option value="Expired"  <?=  $row_report['doc_status'] == "Expired" ? "selected" : "" ?> > Expired</option>
+								<option value="Exit"  <?=  $row_report['doc_status'] == "Exit" ? "selected" : "" ?> > Exit</option>
+								<option value="Documents received"  <?=  $row_report['doc_status'] == "Documents received" ? "selected" : "" ?> > Documents received</option>
+								<option value="Payment pending"  <?=  $row_report['doc_status'] == "Payment pending" ? "selected" : "" ?> > Payment pending</option>
+								<option value="Hold"  <?=  $row_report['doc_status'] == "Hold" ? "selected" : "" ?> > Hold</option>
+								<option value="Proceed"  <?=  $row_report['doc_status'] == "Proceed" ? "selected" : "" ?> > Proceed</option>
+								<option value="Visa issued"  <?=  $row_report['doc_status'] == "Visa issued" ? "selected" : "" ?> > Visa issued</option>
+								<option value="Visa approval"  <?=  $row_report['doc_status'] == "Visa approval" ? "selected" : "" ?> > Visa approval</option>
+								<option value="Visa Renewal"  <?=  $row_report['doc_status'] == "Visa Renewal" ? "selected" : "" ?> > Visa Renewal</option>
+							
+							
+							
 							</select>
 
 						</td>
@@ -112,7 +126,19 @@ $sq_report = mysqlQuery($mainQry);
 				id:id
 			},function(data){
 				success_msg_alert(data);
+				statusMail(value,id);
 				load_visa_report('visa_booking','visa_status_div');
+			});
+	}
+
+	function statusMail(value,id) {
+			var base_url = $('#base_url').val();
+			$.post(base_url+'controller/visa_status/visa_status_mail.php',{
+				type:value,
+				entry_id:id
+			},function(data){
+				setTimeout(function(){success_msg_alert(data);},1000);
+				
 			});
 	}
 </script>

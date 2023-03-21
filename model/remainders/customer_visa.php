@@ -17,11 +17,11 @@ while ($row_emp = mysqli_fetch_assoc($data)) {
 	$issue_date = $row_emp['issue_date'];
 	$expiry_date = $row_emp['expiry_date'];
 	$renewal_amount = $row_emp['pass_status'];
-	
-	if ($days_ago_db >= $days_ago && $days_ago_db <= date('Y-m-d')) {
+	$mailto = getEmailId($data);
+	if ($days_ago_db >= $days_ago && $days_ago_db <= date('Y-m-d') && !empty($mailto)) {
 
 		if ($sq_count == 0) {
-			email($name, $visa_country_name, $issue_date, $expiry_date, $renewal_amount);
+			email($name, $visa_country_name, $issue_date, $expiry_date, $renewal_amount,$mailto);
 		}
 	}
 }
@@ -33,22 +33,29 @@ if ($sq_count == 0) {
 }
 
 
-function email($name, $visa_country_name, $issue_date, $expiry_date, $renewal_amount)
+function email($name, $visa_country_name, $issue_date, $expiry_date, $renewal_amount,$mailto)
 {
 	global $app_email_id, $app_name, $app_contact_no, $admin_logo_url, $app_website, $mail_strong_style;
 
 	$content1 = '
-		<tr>
-			<table width="85%" cellspacing="0" cellpadding="5" style="color: #888888;border: 1px solid #888888;margin: 0px auto;margin-top:20px; min-width: 100%;" role="presentation">
-				<tr><td style="text-align:left;border: 1px solid #888888;">Customer name</td>   <td style="text-align:left;border: 1px solid #888888;">' . $name . '</td></tr>
-				<tr><td style="text-align:left;border: 1px solid #888888;"> Country</td>   <td style="text-align:left;border: 1px solid #888888;" >' . $visa_country_name . '</td></tr>
-				<tr><td style="text-align:left;border: 1px solid #888888;">Issue Date</td>   <td style="text-align:left;border: 1px solid #888888;">' . get_date_user($issue_date) . '</td></tr>
-				<tr><td style="text-align:left;border: 1px solid #888888;">Expiry Date </td>   <td style="text-align:left;border: 1px solid #888888;">' . get_date_user($expiry_date) . '</td></tr>
-				<tr><td style="text-align:left;border: 1px solid #888888;">Status </td>   <td style="text-align:left;border: 1px solid #888888;">' . $renewal_amount . '</td></tr>
-				
-			</table>
-		</tr>';
-	$subject = 'Customer Visa Status ( Customer Name :' . $name . ' ).';
+	Dear '.$name.',
+	We would like to remind you that your visa will expire soon. It is essential to make arrangements for visa renewal or exit the country before the visa expiry date.
+	Failure to comply with visa regulations may result in legal consequences, including fines, deportation, and restrictions on future visa applications.
+	If you have any questions or concerns about your visa, please contact us as soon as possible.
+	Thank you for choosing [Jmt travel & Tourism] we wish you a safe and enjoyable trip.';
+	$subject = 'Your Visa Is Expiring Soon';
 	global $model;
-	$model->app_email_send('91', 'Admin', $app_email_id, $content1, $subject);
+	$model->app_email_send('91', 'Admin', $mailto, $content1, $subject);
+}
+
+
+function getEmailId($data)
+{
+	global $model,$encrypt_decrypt,$secret_key;
+	$mainVisa = mysqli_fetch_array(mysqlQuery("select * from visa_master where visa_id='".$data['visa_id']."'"));
+$customer = mysqli_fetch_assoc(mysqlQuery("SELECT * FROM `customer_master` where customer_id='".$mainVisa['customer_id']."'"));
+$name = $data['first_name']." ".$data['last_name'];
+global $app_email_id;
+$email_id = $encrypt_decrypt->fnDecrypt($customer['email_id'], $secret_key);
+return $email_id; 
 }

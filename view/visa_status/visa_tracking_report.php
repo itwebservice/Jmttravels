@@ -19,3 +19,15 @@ else{ ?>
 <option value="Visa Confirmed">Visa Confirmed</option>
 <option value="Visa Cancellation">Visa Cancellation</option>
 <option value="Visa By Own">Visa By Own</option>
+<option value="Return"> Return</option>
+<option value="Reject" > Reject</option>
+<option value="Extend"> Extend</option>
+<option value="Expired"> Expired</option>
+<option value="Exit"> Exit</option>
+<option value="Documents received"> Documents received</option>
+<option value="Payment pending"> Payment pending</option>
+<option value="Hold"> Hold</option>
+<option value="Proceed"> Proceed</option>
+<option value="Visa issued"> Visa issued</option>
+<option value="Visa approval"> Visa approval</option>
+<option value="Visa Renewal"> Visa Renewal</option>
