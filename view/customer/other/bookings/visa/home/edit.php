@@ -51,7 +51,7 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                         <div class="panel-heading main_block" role="tab" id="heading_<?= $db['entry_id'] ?>">
                                                             <div class="Normal main_block collapsedn" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<?= $db['entry_id'] ?>" aria-expanded="false" aria-controls="collapse_<?= $db['entry_id'] ?>" id="collapsed_<?= $db['entry_id'] ?>">
                                                                 <div class="col-md-6"><span><em style="margin-left: 15px;"><?= $db['first_name'] . " " . $db['last_name'] ?> (<?php echo $db['pass_status']; ?>)</em></span>
-                                                                
+
                                                                 </div>
                                                                 <div class="col-md-6 text-right">
                                                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -94,9 +94,9 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                     <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Father Name" name="father_name[]" value="<?= $db['father_name'] ?>" id="" class="form-control" title="Father Name">
                                                                     </div>
 
-                                                                    
-                                                                    
-                                                            
+
+
+
 
                                                                     <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Place Of Issue" name="place_of_issue[]" value="<?= $db['place_of_issue'] ?>" id="" class="form-control" title="Place Of Issue">
                                                                     </div>
@@ -104,74 +104,72 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
                                                                     </div>
                                                                     <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Birth Country" name="birth_country[]" value="<?= $db['birth_country'] ?>" id="" class="form-control" title="Birth Country">
                                                                     </div>
-                                                                    <div class="col-md-4 mg_tp_10"> 
-                                                                    <select name="marital_status[]" id="" class="form-control" title="Marital Status">
-                                                                        <option value="">Marital Status</option>
-                                                                        <option value="Married" <?= $db['marital_status'] == "Married" ? "selected" : ""  ?>>Married</option>
-                                                                        <option value="Unmarried" <?= $db['marital_status'] == "Unmarried" ? "selected" : ""  ?>>Unmarried</option>
-                                                                    </select>    
-                                                                        
-                                                                    
+                                                                    <div class="col-md-4 mg_tp_10">
+                                                                        <select name="marital_status[]" id="" class="form-control" title="Marital Status">
+                                                                            <option value="">Marital Status</option>
+                                                                            <option value="Married" <?= $db['marital_status'] == "Married" ? "selected" : ""  ?>>Married</option>
+                                                                            <option value="Unmarried" <?= $db['marital_status'] == "Unmarried" ? "selected" : ""  ?>>Unmarried</option>
+                                                                        </select>
+
+
                                                                     </div>
                                                                     <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Documents Nationality" name="documents_nationality[]" value="<?= $db['documents_nationality'] ?>" id="" class="form-control" title="Documents Nationality">
                                                                     </div>
                                                                     <div class="col-md-4 mg_tp_10"> <input type="text" placeholder="Travel Document Type" name="travel_document_type[]" value="<?= $db['travel_document_type'] ?>" id="" class="form-control" title="Travel Document Type">
                                                                     </div>
                                                                     <div class="col-md-4 mg_tp_10">
-                                                                    <select name="gender[]" id="" class="form-control" title="Gender">
-                                                                        <option value="">Gender</option>
-                                                                        <option value="Male" <?= $db['gender'] == "Male" ? "selected" : ""  ?>>Male</option>
-                                                                        <option value="Female" <?= $db['gender'] == "Female" ? "selected" : ""  ?>>Female</option>
-                                                                    </select>    
-                                                                    
+                                                                        <select name="gender[]" id="" class="form-control" title="Gender">
+                                                                            <option value="">Gender</option>
+                                                                            <option value="Male" <?= $db['gender'] == "Male" ? "selected" : ""  ?>>Male</option>
+                                                                            <option value="Female" <?= $db['gender'] == "Female" ? "selected" : ""  ?>>Female</option>
+                                                                        </select>
+
                                                                     </div>
 
-                                                                  
+
                                                                 </div>
                                                                 <div class="row">
-                                                                <div class="col-md-4 mg_tp_10"> <input type="file" id="file_<?= $db['entry_id'] ?>" accept="image/*" onchange="fileSizeCheck(this.id)" multiple placeholder="" name="id_proff_<?= $db['entry_id'] ?>[]"  class="form-control" title="ID PROOF"> 
-                                                                    
-                                                                    <span style="color: red;" class="note" data-original-title="" title="">Note : Upload Image size below 512KB, resolution : 900X450. </span>
+                                                                    <div class="col-md-4 mg_tp_10"> <input type="file" id="file_<?= $db['entry_id'] ?>" accept="image/*" onchange="fileSizeCheck(this.id)" multiple placeholder="" name="id_proff_<?= $db['entry_id'] ?>[]" class="form-control" title="ID PROOF">
+
+                                                                        <span style="color: red;" class="note" data-original-title="" title="">Note : Upload Image size below 512KB, resolution : 900X450. </span>
 
                                                                     </div>
                                                                     <div class="col-md-4 mg_tp_10">
-                                                                       
-                                                            <?php
-                                                                $media = new mediaable();
-                                                                $imgs = $media->getMedia($db['entry_id'] ,'VISA_ID_PROFF');
 
-                                                                    if (!empty($imgs)) {
+                                                                        <?php
+                                                                        $media = new mediaable();
+                                                                        $imgs = $media->getMedia($db['entry_id'], 'VISA_ID_PROFF');
+
+                                                                        if (!empty($imgs)) {
                                                                         ?>
-                                                                        <?php
-                                                                        foreach($imgs as $img)
-                                                                            {
-                                                                    ?>
-                                                                            <a href="<?= BASE_URL.$img ?>" target="_blank" data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-eye"></i></a>
-                                                                        
-                                                                    <?php }
-                                                                ?> <?php 
-                                                                }?>
-                                                               
-                                                            </div>
-                                                            <div class="col-md-4 mg_tp_10">
-                                                               
-                                                            Files Admin: 
-                                                                    <?php 
-                                                          $imgsAdmin = $media->getMedia($db['entry_id'], 'VISA_ID_PROFF_ADMIN');
+                                                                            <?php
+                                                                            foreach ($imgs as $img) {
+                                                                            ?>
+                                                                                <a href="<?= BASE_URL . $img ?>" target="_blank" data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-eye"></i></a>
 
-                                                            if (!empty($imgsAdmin)) {
-                                                                        ?><div class="col-md-3 mg_tp_10">
+                                                                            <?php }
+                                                                            ?> <?php
+                                                                        } ?>
+
+                                                                    </div>
+                                                                    <div class="col-md-4 mg_tp_10">
+
+                                                                        Files Admin:
                                                                         <?php
-                                                                        foreach($imgsAdmin as $img)
-                                                                            {
-                                                                    ?>
-                                                                            <a href="<?= BASE_URL.$img ?>" target="_blank" data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-eye"></i></a>
-                                                                        
-                                                                    <?php }
-                                                                ?> </div><?php 
-                                                                }?>
-                                                                
-                                                                </div>
+                                                                        $imgsAdmin = $media->getMedia($db['entry_id'], 'VISA_ID_PROFF_ADMIN');
+
+                                                                        if (!empty($imgsAdmin)) {
+                                                                        ?>
+                                                                            <?php
+                                                                            foreach ($imgsAdmin as $img) {
+                                                                            ?>
+                                                                                <a href="<?= BASE_URL . $img ?>" target="_blank" data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-eye"></i></a>
+
+                                                                            <?php }
+                                                                            ?> <?php
+                                                                        } ?>
+
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -222,9 +220,9 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
         $('#btn_update').attr("disabled", true);
         var formData = new FormData(this);
         var base_url = $('#base_url').val();
-       
-        
-    
+
+
+
         $.ajax({
             type: 'POST',
             url: base_url + 'controller/visa_master/customer_visa_entry_update.php',
@@ -262,19 +260,18 @@ $sq_entry = mysqlQuery("select * from visa_master_entries where visa_id='$visa_i
         var fileUpload = document.getElementById(id);
         // for(i=0;i<=fileUpload.length; i++)
         // {
-          
-            if (typeof (fileUpload.files) != "undefined" ) {
+
+        if (typeof(fileUpload.files) != "undefined") {
             var size = parseFloat(fileUpload.files[0].size / 1024).toFixed(2);
-            if(size > 300)
-            {
+            if (size > 300) {
                 fileUpload.value = "";
                 error_msg_alert('File Size Exceeds');
                 $('#btn_update').button('update');
                 $('#btn_update').removeAttr("disabled");
                 return false;
             }
-        
-        } 
+
+        }
         // }
     }
 </script>
