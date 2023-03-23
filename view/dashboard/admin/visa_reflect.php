@@ -6,7 +6,7 @@ $data = mysqlQuery($sq_query);
 <div class="dashboard_table dashboard_table_panel main_block">
     <div class="row text-left mg_tp_10">
         <div class="col-md-12">
-            <div class="col-md-12 no-pad table_overflow">
+            <div class="col-md-12 no-pad table_verflow">
                 <div class="row mg_tp_20">
                     <div class="col-md-12 no-pad">
                         <div class="table-responsive">
@@ -30,9 +30,8 @@ $data = mysqlQuery($sq_query);
                                             $days_ago = date('Y-m-d', strtotime('-3 days', strtotime(date('Y-m-d'))));
                                             $days_ago_db = date('Y-m-d', strtotime('-3 days', strtotime($db['expiry_date'])));
                                             if ($days_ago_db >= $days_ago && $days_ago_db <= date('Y-m-d')) {
-                                                $color = $db['pass_status'] == "Completed" ? "#dff0d8" : ($db['pass_status'] == "In-Use" ? "#fcf8e3" : "#fff"); 
-                                                if($db['pass_status'] == "Cancelled")
-                                                {
+                                                $color = $db['pass_status'] == "Completed" ? "#dff0d8" : ($db['pass_status'] == "In-Use" ? "#fcf8e3" : "#fff");
+                                                if ($db['pass_status'] == "Cancelled") {
                                                     $color = "#f2dede";
                                                 }
                                     ?>
@@ -81,18 +80,19 @@ $data = mysqlQuery($sq_query);
         "pagingType": "full_numbers"
     });
 
-    function updateVisaStatus(id,visa_id)
-    {
-        var opt = $('#'+id).val();
+    function updateVisaStatus(id, visa_id) {
+        var opt = $('#' + id).val();
         var base_url = $('#base_url').val();
-        if(opt == "")
-    {
-        error_msg_alert("Please Select Status");
-        return false;
-    }
-        $.post(base_url+'/view/dashboard/admin/visa_action.php',{opt:opt,visa_id:visa_id},function(data){
+        if (opt == "") {
+            error_msg_alert("Please Select Status");
+            return false;
+        }
+        $.post(base_url + '/view/dashboard/admin/visa_action.php', {
+            opt: opt,
+            visa_id: visa_id
+        }, function(data) {
             visa_reflect();
-            success_msg_alert("Visa Updated Successfully");    
+            success_msg_alert("Visa Updated Successfully");
         });
     }
 </script>
