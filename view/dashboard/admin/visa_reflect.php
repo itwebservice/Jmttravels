@@ -42,7 +42,7 @@ $data = mysqlQuery($sq_query);
                                                     <td><?= $db['expiry_date'] ?></td>
                                                     <td><?= $db['pass_status'] ?></td>
                                                     <td>
-                                                        <select name="status_type" id="status_type<?= $db['entry_id'] ?>" onchange="updateVisaStatus(this.id,`<?= $db['entry_id'] ?>`)" class="app_select2 form-control" title="Status" style="width:110px">
+                                                        <select name="status_type" id="status_type<?= $db['entry_id'] ?>" onchange="updateVisaStatus(this.id,`<?= $db['entry_id'] ?>`)" class="app_select2 form-control" title="Status" style="width:130px">
                                                             <option value="">*Status</option>
                                                             <option value="Unused" <?= $db['pass_status'] == "Unused" ? "selected" : "" ?>>Unused</option>
                                                             <option value="In-Use" <?= $db['pass_status'] == "In-Use" ? "selected" : "" ?>>In-Use</option>
