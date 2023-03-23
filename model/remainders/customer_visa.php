@@ -17,7 +17,7 @@ while ($row_emp = mysqli_fetch_assoc($data)) {
 	$issue_date = $row_emp['issue_date'];
 	$expiry_date = $row_emp['expiry_date'];
 	$renewal_amount = $row_emp['pass_status'];
-	$mailto = getEmailId($data);
+	$mailto = getEmailId($row_emp);
 	if ($days_ago_db >= $days_ago && $days_ago_db <= date('Y-m-d') && !empty($mailto)) {
 
 		if ($sq_count == 0) {
@@ -38,14 +38,14 @@ function email($name, $visa_country_name, $issue_date, $expiry_date, $renewal_am
 	global $app_email_id, $app_name, $app_contact_no, $admin_logo_url, $app_website, $mail_strong_style;
 
 	$content1 = '
-	Dear '.$name.',
+	 <br>
 	We would like to remind you that your visa will expire soon. It is essential to make arrangements for visa renewal or exit the country before the visa expiry date.
 	Failure to comply with visa regulations may result in legal consequences, including fines, deportation, and restrictions on future visa applications.
 	If you have any questions or concerns about your visa, please contact us as soon as possible.
 	Thank you for choosing [Jmt travel & Tourism] we wish you a safe and enjoyable trip.';
 	$subject = 'Your Visa Is Expiring Soon';
 	global $model;
-	$model->app_email_send('91', 'Admin', $mailto, $content1, $subject);
+	$model->app_email_send('91', $name, $mailto, $content1, $subject);
 }
 
 

@@ -86,6 +86,7 @@ $sq_report = mysqlQuery($mainQry);
 								<option value="Document Received" <?=  $row_report['doc_status'] == "Document Received" ? "selected" : "" ?>>Document Received</option>
 								<option value="Document Pending" <?=  $row_report['doc_status'] == "Document Pending" ? "selected" : "" ?>>Document Pending</option>
 								<option value="Document Processed" <?=  $row_report['doc_status'] == "Document Processed" ? "selected" : "" ?>>Document Processed</option>
+								<option value="Visa Confirmed" <?=  $row_report['doc_status'] == "Visa Confirmed" ? "selected" : "" ?>>Visa Confirmed</option>
 								<option value="Visa Cancellation" <?=  $row_report['doc_status'] == "Visa Cancellation" ? "selected" : "" ?>>Visa Cancellation</option>
 								<option value="Visa By Own" <?=  $row_report['doc_status'] == "Visa By Own" ? "selected" : "" ?>>Visa By Own</option>
 								<option value="Return"    <?=  $row_report['doc_status'] == "Return" ? "selected" : "" ?> > Return</option>

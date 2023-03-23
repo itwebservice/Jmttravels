@@ -3086,7 +3086,7 @@ row.cells[14].childNodes[0].setAttribute(
   "id",
   "start_date" + prefix + foo.counter
 );
-row.cells[14].childNodes[0].placeholder = "Travel Start Date";
+row.cells[14].childNodes[0].placeholder = "*Travel Start Date";
     row.cells[14].childNodes[0].setAttribute("title", "Travel Start Date");
     row.cells[14].childNodes[0].setAttribute("class", "app_datepicker form-control");
     $(row.cells[14].childNodes[0]).datetimepicker({
@@ -3100,7 +3100,7 @@ row.cells[14].childNodes[0].placeholder = "Travel Start Date";
       "id",
       "start_date" + prefix + foo.counter
     );
-    row.cells[15].childNodes[0].placeholder = "Travel End Date";
+    row.cells[15].childNodes[0].placeholder = "*Travel End Date";
         row.cells[15].childNodes[0].setAttribute("title", "Travel End Date");
         row.cells[15].childNodes[0].setAttribute("class", "app_datepicker form-control");
         $(row.cells[15].childNodes[0]).datetimepicker({
