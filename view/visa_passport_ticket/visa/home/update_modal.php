@@ -544,7 +544,7 @@ if ($reflections[0]->tax_apply_on == '1') {
                         }
 
                         var msg = "";
-                        if (dateDaysValidation(expiry_date) == false) {
+                        if (dateDaysValidation(expiry_date,(i + 1)) == false) {
                             $('#visa_update').prop('disabled', false);
                             return false;
                         }
@@ -763,7 +763,7 @@ if ($reflections[0]->tax_apply_on == '1') {
     }
 
 
-    function dateDaysValidation(date1Main) {
+    function dateDaysValidation(date1Main,cuntNum) {
 		var booking_date = $('#balance_date1').val();
 		const date1 = new Date(convertDateString(booking_date));
 		const date2 = new Date(convertDateString(date1Main));
@@ -774,7 +774,7 @@ if ($reflections[0]->tax_apply_on == '1') {
 		// alert(diffDays);
 		if(diffDays < 185)
 		{
-			error_msg_alert("Expiry Date and Booking Date Is In 185 Days");
+			error_msg_alert("Expiry Date and Booking Date Is In 185 Days At Row:"+cuntNum);
 			 return false;
 		}
 		return true;
