@@ -510,7 +510,7 @@ $branch_status = $sq['branch_status'];
 						var msg = "";
 						
 
-						if(dateDaysValidation(expiry_date) == false)
+						if(dateDaysValidation(expiry_date,(i + 1)) == false)
 						{
 							$('#btn_visa_master_save').prop('disabled', false);
 							return false;
@@ -801,7 +801,7 @@ $branch_status = $sq['branch_status'];
 	})
 
 
-	function dateDaysValidation(date1Main) {
+	function dateDaysValidation(date1Main,rowCount) {
 		var booking_date = $('#booking_date').val();
 		const date1 = new Date(convertDateString(booking_date));
 		const date2 = new Date(convertDateString(date1Main));
@@ -812,7 +812,7 @@ $branch_status = $sq['branch_status'];
 		// alert(diffDays);
 		if(diffDays < 185)
 		{
-			error_msg_alert("Expiry Date and Booking Date Is In 185 Days");
+			error_msg_alert("Expiry Date and Booking Date Is In 185 Days At Row:"+rowCount);
 			 return false;
 		}
 		return true;

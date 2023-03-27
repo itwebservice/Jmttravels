@@ -38,6 +38,7 @@ function email($name, $visa_country_name, $issue_date, $expiry_date, $renewal_am
 	global $app_email_id, $app_name, $app_contact_no, $admin_logo_url, $app_website, $mail_strong_style;
 
 	$content1 = '
+	Dear '.$name.',
 	 <br>
 	We would like to remind you that your visa will expire soon. It is essential to make arrangements for visa renewal or exit the country before the visa expiry date.
 	Failure to comply with visa regulations may result in legal consequences, including fines, deportation, and restrictions on future visa applications.
@@ -45,7 +46,7 @@ function email($name, $visa_country_name, $issue_date, $expiry_date, $renewal_am
 	Thank you for choosing [Jmt travel & Tourism] we wish you a safe and enjoyable trip.';
 	$subject = 'Your Visa Is Expiring Soon';
 	global $model;
-	$model->app_email_send('91', $name, $mailto, $content1, $subject);
+	$model->app_email_master($mailto, $content1,$subject,'1');
 }
 
 
