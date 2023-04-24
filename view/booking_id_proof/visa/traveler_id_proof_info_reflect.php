@@ -68,7 +68,8 @@ $query = mysqlQuery("select * from visa_master_entries where visa_id='$visa_id'"
               foreach ($imgs as $img) {
               ?>
                
-                <a href="<?= BASE_URL . $img ?>" target="_blank" data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-eye"></i></a> 
+               <a href="<?= BASE_URL . $img ?>" target="_blank" data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-eye"></i></a> 
+                <a href="<?= BASE_URL . $img ?>" download data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-download"></i></a> 
                
               <?php
               }
@@ -81,6 +82,7 @@ $query = mysqlQuery("select * from visa_master_entries where visa_id='$visa_id'"
               foreach ($imgsAdmin as $img) {
               ?>
                 <a href="<?= BASE_URL . $img ?>" target="_blank" data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-eye"></i></a>
+                <a href="<?= BASE_URL . $img ?>" download data-toggle="tooltip" class="btn btn-info btn-sm" title="Id Proof" data-original-title="View Image"><i class="fa fa-download"></i></a>
               <?php
               }
               ?>

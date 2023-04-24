@@ -43,9 +43,10 @@ include "../../../../model/app_settings/branchwise_filteration.php";
 			<th>Booking_ID</th>
 			<th>Customer_Name</th>
 			<th>Passenger_Name</th>
-			<th>Birth_date</th>
+			<th>Passport_ID</th>
 			<th>Country</th>
 			<th>Visa_Type</th>
+			<th>Visa_Status</th>
 			<th>Nationality </th>
 			<!-- <th>Received_Documents</th> -->
 	    </tr>
@@ -78,10 +79,12 @@ include "../../../../model/app_settings/branchwise_filteration.php";
 					<td><?= get_visa_booking_id($row_visa['visa_id'],$year) ?></td>
 					<td><?= $customer_name ?></td>
 					<td><?= $row_entry['first_name'].' '.$row_entry['last_name'] ?></td></td>
-					<td><?= date('d-m-Y', strtotime($row_entry['birth_date'])) ?></td>
+					<td><?= $row_entry['passport_id'] ?></td>
 					<td><?= $row_entry['visa_country_name'] ?></td>
 					<td><?= $row_entry['visa_type'] ?></td>
+					<td><?= $row_entry['pass_status'] ?></td>
 					<td><?= $row_entry['nationality'] ?></td>
+					
 					<!-- <td><?= $row_entry['received_documents'] ?></td> -->
 				</tr>
 				<?php
