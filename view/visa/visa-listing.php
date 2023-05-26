@@ -85,9 +85,8 @@ if ($country_id != '') {
                     </div>
 
                     <div class="ts-blog-card-body">
-
+                        <span class="ts-blog-card-title">Oman Visa</span>
                         <p class="ts-blog-time">
-
 
                             <span>Price: 5000</span>
 
@@ -116,7 +115,7 @@ if ($country_id != '') {
                     </div>
 
                     <div class="ts-blog-card-body">
-
+                        <span class="ts-blog-card-title">Uae Visa</span>
                         <p class="ts-blog-time">
 
 
@@ -147,9 +146,8 @@ if ($country_id != '') {
                     </div>
 
                     <div class="ts-blog-card-body">
-
+                        <span class="ts-blog-card-title">Saudi Visa</span>
                         <p class="ts-blog-time">
-
 
                             <span>Price: 6000</span>
 
