@@ -2805,7 +2805,8 @@ font-weight: 500;
 text-transform: capitalize;
 line-height: 15px;
 color: #fff;
-padding: 12px 40px;
+padding: 12px 25px;
+margin-left: 10px;
 outline: none;
 text-decoration: none;
 border-radius: 20px;
@@ -4143,4 +4144,9 @@ margin: 2px 2px 0 0;
 .infoCard .infoCard_price .p_cost {
 display: inline-block;
 margin-top: 20px !important;
+}
+@media only screen and (max-width: 991px){
+.top-header .header-btn .header-offer-btn{
+margin-bottom: 15px;
+}
 }

@@ -33,12 +33,12 @@ if ($country_id != '') {
                     <div class="clearfix">
                         <?php
                         if ($country_id != '') { ?>
-                        <div class="sortSection">
-                            <span class="sortTitle st-search">
-                                <i class="icon it itours-timetable"></i>
-                                Country Name: <strong><?= $sq_city['country_name'] ?></strong>
-                            </span>
-                        </div>
+                            <div class="sortSection">
+                                <span class="sortTitle st-search">
+                                    <i class="icon it itours-timetable"></i>
+                                    Country Name: <strong><?= $sq_city['country_name'] ?></strong>
+                                </span>
+                            </div>
                         <?php } ?>
                     </div>
 
@@ -73,8 +73,102 @@ if ($country_id != '') {
 <!-- ********** Component :: Visa Listing  ********** -->
 <div class="c-containerDark">
     <div class="container">
+        <div class="row">
+            <div class="col col-12 col-md-6 col-lg-4">
+
+                <div class="ts-blog-card">
+
+                    <div class="ts-blog-card-img">
+
+                        <img src="../../images/flag-oman.jpg" alt="Country flag" class="img-fluid ">
+
+                    </div>
+
+                    <div class="ts-blog-card-body">
+
+                        <p class="ts-blog-time">
+
+
+                            <span>Price: 5000</span>
+
+                        </p>
+
+                    </div>
+
+                    <div class="ts-blog-card-footer">
+
+                        <a href="" target="_blank" class="ts-blog-card-link">Book Now</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col col-12 col-md-6 col-lg-4">
+
+                <div class="ts-blog-card">
+
+                    <div class="ts-blog-card-img">
+
+                        <img src="../../images/flag-uae.jpg" alt="Country flag" class="img-fluid ">
+
+                    </div>
+
+                    <div class="ts-blog-card-body">
+
+                        <p class="ts-blog-time">
+
+
+                            <span>Price: 8000</span>
+
+                        </p>
+
+                    </div>
+
+                    <div class="ts-blog-card-footer">
+
+                        <a href="" target="_blank" class="ts-blog-card-link">Book Now</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col col-12 col-md-6 col-lg-4">
+
+                <div class="ts-blog-card">
+
+                    <div class="ts-blog-card-img">
+
+                        <img src="../../images/flag-saudi.jpg" alt="Country flag" class="img-fluid ">
+
+                    </div>
+
+                    <div class="ts-blog-card-body">
+
+                        <p class="ts-blog-time">
+
+
+                            <span>Price: 6000</span>
+
+                        </p>
+
+                    </div>
+
+                    <div class="ts-blog-card-footer">
+
+                        <a href="" target="_blank" class="ts-blog-card-link">Book Now</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
         <!-- ********** Component :: Modify Filter  ********** -->
-        <div class="row c-modifyFilter">
+        <div class="row c-modifyFilter mt-4">
             <div class="col">
                 <!-- Modified Search Filter -->
                 <form id="frm_visa_search">
@@ -88,15 +182,15 @@ if ($country_id != '') {
                                     <select id='visa_country_filter' class="full-width js-roomCount" style="width:100%">
                                         <?php
                                         if ($country_id != '') { ?>
-                                        <option value="<?= $country_id ?>"><?= $sq_city['country_name'] ?></option>
+                                            <option value="<?= $country_id ?>"><?= $sq_city['country_name'] ?></option>
                                         <?php } ?>
                                         <option value="">Visa Country</option>
                                         <?php
                                         $sq_country = mysqlQuery("select * from country_list_master");
                                         while ($row_country = mysqli_fetch_assoc($sq_country)) {
                                         ?>
-                                        <option value="<?= $row_country['country_id'] ?>">
-                                            <?= $row_country['country_name'] ?></option>
+                                            <option value="<?= $row_country['country_id'] ?>">
+                                                <?= $row_country['country_name'] ?></option>
                                         <?php
                                         }
                                         ?>
@@ -150,9 +244,7 @@ if ($country_id != '') {
                     ));
                 }
                 ?>
-                <input type='hidden'
-                    value='<?= json_encode($visa_results_array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE) ?>'
-                    id='visa_results_array' name='visa_results_array' />
+                <input type='hidden' value='<?= json_encode($visa_results_array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE) ?>' id='visa_results_array' name='visa_results_array' />
                 <div id='visa_result_block'></div>
             </div>
         </div>
@@ -164,23 +256,23 @@ if ($country_id != '') {
 <script type="text/javascript" src="../../js/pagination.min.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL_B2C ?>/view/visa/js/index.js"></script>
 <script>
-$('#visa_country_filter').select2();
+    $('#visa_country_filter').select2();
 
-// Get Visa results data
-function get_price_filter_data(visa_results_array, type, fromRange_cost, toRange_cost) {
-    var base_url = $('#base_url').val();
-    var selected_value = document.getElementById(visa_results_array).value;
-    var JSONItems = JSON.parse(selected_value);
-    get_price_filter_data_result(JSONItems);
-}
-//Display Visa results data 
-function get_price_filter_data_result(final_arr) {
-    var base_url = $('#base_url').val();
-    $.post(base_url + 'view/visa/visa_results.php', {
-        final_arr: final_arr
-    }, function(data) {
-        $('#visa_result_block').html(data);
-    });
-}
-get_price_filter_data('visa_results_array', '3', '0', '0');
+    // Get Visa results data
+    function get_price_filter_data(visa_results_array, type, fromRange_cost, toRange_cost) {
+        var base_url = $('#base_url').val();
+        var selected_value = document.getElementById(visa_results_array).value;
+        var JSONItems = JSON.parse(selected_value);
+        get_price_filter_data_result(JSONItems);
+    }
+    //Display Visa results data 
+    function get_price_filter_data_result(final_arr) {
+        var base_url = $('#base_url').val();
+        $.post(base_url + 'view/visa/visa_results.php', {
+            final_arr: final_arr
+        }, function(data) {
+            $('#visa_result_block').html(data);
+        });
+    }
+    get_price_filter_data('visa_results_array', '3', '0', '0');
 </script>
