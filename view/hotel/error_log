@@ -1,0 +1,7 @@
+[16-May-2023 09:07:02 UTC] PHP Warning:  Unknown: Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini. in Unknown on line 0
+[16-May-2023 09:07:08 UTC] PHP Warning:  Unknown: Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini. in Unknown on line 0
+[16-May-2023 09:07:13 UTC] PHP Warning:  Unknown: Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini. in Unknown on line 0
+[18-May-2023 12:39:40 UTC] PHP Warning:  Unknown: Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini. in Unknown on line 0
+[23-May-2023 18:52:43 UTC] PHP Warning:  Unknown: Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini. in Unknown on line 0
+[25-May-2023 03:45:25 UTC] PHP Warning:  session_start(): open(/var/cpanel/php/sessions/ea-php80/sess_7e0c0790cf9f4080198f727b2dc576fc, O_RDWR) failed: No space left on device (28) in /home/jmttravel/public_html/config.php on line 10
+[25-May-2023 03:45:25 UTC] PHP Warning:  session_start(): Failed to read session data: files (path: /var/cpanel/php/sessions/ea-php80) in /home/jmttravel/public_html/config.php on line 10

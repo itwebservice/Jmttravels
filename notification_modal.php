@@ -1,4 +1,4 @@
-<?php include "../model/model.php";
+<?php include "config.php";
 $message = $_POST['message'];
 $class_name = $_POST['class_name'];
 ?>

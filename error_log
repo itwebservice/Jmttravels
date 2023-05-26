@@ -1,0 +1,75 @@
+[11-Mar-2022 10:03:22 UTC] PHP Warning:  include(../../model/model.php): Failed to open stream: No such file or directory in /home/itourscloud/public_html/B2CTheme/contact.php on line 2
+[11-Mar-2022 10:03:22 UTC] PHP Warning:  include(): Failed opening '../../model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/itourscloud/public_html/B2CTheme/contact.php on line 2
+[11-Mar-2022 10:03:22 UTC] PHP Warning:  Undefined array key "service" in /home/itourscloud/public_html/B2CTheme/contact.php on line 3
+[11-Mar-2022 10:03:22 UTC] PHP Warning:  Undefined variable $_SESSION in /home/itourscloud/public_html/B2CTheme/contact.php on line 4
+[11-Mar-2022 10:03:22 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/itourscloud/public_html/B2CTheme/contact.php on line 4
+[11-Mar-2022 10:03:22 UTC] PHP Warning:  Undefined variable $_SESSION in /home/itourscloud/public_html/B2CTheme/contact.php on line 5
+[11-Mar-2022 10:03:22 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/itourscloud/public_html/B2CTheme/contact.php on line 5
+[11-Mar-2022 10:03:22 UTC] PHP Warning:  Undefined variable $_SESSION in /home/itourscloud/public_html/B2CTheme/contact.php on line 6
+[11-Mar-2022 10:03:22 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/itourscloud/public_html/B2CTheme/contact.php on line 6
+[11-Mar-2022 10:03:22 UTC] PHP Warning:  Undefined variable $_SESSION in /home/itourscloud/public_html/B2CTheme/contact.php on line 7
+[11-Mar-2022 10:03:22 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/itourscloud/public_html/B2CTheme/contact.php on line 7
+[11-Mar-2022 10:03:22 UTC] PHP Warning:  Undefined variable $_SESSION in /home/itourscloud/public_html/B2CTheme/contact.php on line 8
+[11-Mar-2022 10:03:22 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/itourscloud/public_html/B2CTheme/contact.php on line 8
+[15-Mar-2022 14:56:55 Asia/Kolkata] PHP Fatal error:  Uncaught TypeError: sizeof(): Argument #1 ($value) must be of type Countable|array, null given in /home/itourscloud/public_html/B2CTheme/gallery.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/itourscloud/public_html/B2CTheme/gallery.php on line 22
+[22-Apr-2022 09:32:12 Asia/Kolkata] PHP Fatal error:  Uncaught TypeError: sizeof(): Argument #1 ($value) must be of type Countable|array, null given in /home/itourscloud/public_html/B2CTheme/index.php:248
+Stack trace:
+#0 {main}
+  thrown in /home/itourscloud/public_html/B2CTheme/index.php on line 248
+[22-Apr-2022 09:34:14 Asia/Kolkata] PHP Fatal error:  Uncaught TypeError: sizeof(): Argument #1 ($value) must be of type Countable|array, null given in /home/itourscloud/public_html/B2CTheme/index.php:248
+Stack trace:
+#0 {main}
+  thrown in /home/itourscloud/public_html/B2CTheme/index.php on line 248
+[22-Apr-2022 09:36:50 Asia/Kolkata] PHP Fatal error:  Uncaught TypeError: sizeof(): Argument #1 ($value) must be of type Countable|array, null given in /home/itourscloud/public_html/B2CTheme/index.php:248
+Stack trace:
+#0 {main}
+  thrown in /home/itourscloud/public_html/B2CTheme/index.php on line 248
+[22-Apr-2022 09:37:28 Asia/Kolkata] PHP Fatal error:  Uncaught TypeError: sizeof(): Argument #1 ($value) must be of type Countable|array, null given in /home/itourscloud/public_html/B2CTheme/index.php:249
+Stack trace:
+#0 {main}
+  thrown in /home/itourscloud/public_html/B2CTheme/index.php on line 249
+[22-Apr-2022 09:38:05 Asia/Kolkata] PHP Fatal error:  Uncaught TypeError: sizeof(): Argument #1 ($value) must be of type Countable|array, null given in /home/itourscloud/public_html/B2CTheme/index.php:249
+Stack trace:
+#0 {main}
+  thrown in /home/itourscloud/public_html/B2CTheme/index.php on line 249
+[22-Apr-2022 09:47:24 Asia/Kolkata] PHP Fatal error:  Uncaught TypeError: sizeof(): Argument #1 ($value) must be of type Countable|array, null given in /home/itourscloud/public_html/B2CTheme/index.php:249
+Stack trace:
+#0 {main}
+  thrown in /home/itourscloud/public_html/B2CTheme/index.php on line 249
+[22-Apr-2022 15:18:05 Asia/Kolkata] PHP Fatal error:  Uncaught TypeError: sizeof(): Argument #1 ($value) must be of type Countable|array, null given in /home/itourscloud/public_html/B2CTheme/index.php:171
+Stack trace:
+#0 {main}
+  thrown in /home/itourscloud/public_html/B2CTheme/index.php on line 171
+[22-Apr-2022 15:19:59 Asia/Kolkata] PHP Fatal error:  Uncaught TypeError: sizeof(): Argument #1 ($value) must be of type Countable|array, null given in /home/itourscloud/public_html/B2CTheme/index.php:171
+Stack trace:
+#0 {main}
+  thrown in /home/itourscloud/public_html/B2CTheme/index.php on line 171
+[02-May-2022 10:55:04 UTC] PHP Parse error:  Unclosed '{' on line 558 in /home/itourscloud/public_html/B2CTheme/index.php on line 676
+[10-May-2022 23:11:20 Asia/Kolkata] PHP Parse error:  syntax error, unexpected token ";" in /home/itourscloud/public_html/B2CTheme/layouts/header.php on line 285
+[10-May-2022 23:11:23 Asia/Kolkata] PHP Parse error:  syntax error, unexpected token ";" in /home/itourscloud/public_html/B2CTheme/layouts/header.php on line 285
+[08-May-2023 16:51:11 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to undefined function curl_init() in /home/jmttravel/public_html/layouts/header.php:14
+Stack trace:
+#0 /home/jmttravel/public_html/layouts/header.php(10): get_content('https://jmttrav...')
+#1 /home/jmttravel/public_html/index.php(13): include('/home/jmttravel...')
+#2 {main}
+  thrown in /home/jmttravel/public_html/layouts/header.php on line 14
+[08-May-2023 16:51:17 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to undefined function curl_init() in /home/jmttravel/public_html/layouts/header.php:14
+Stack trace:
+#0 /home/jmttravel/public_html/layouts/header.php(10): get_content('https://jmttrav...')
+#1 /home/jmttravel/public_html/index.php(13): include('/home/jmttravel...')
+#2 {main}
+  thrown in /home/jmttravel/public_html/layouts/header.php on line 14
+[25-May-2023 01:01:52 UTC] PHP Warning:  session_start(): open(/var/cpanel/php/sessions/ea-php80/sess_98e68fc7834835192b0c5137821f2fd3, O_RDWR) failed: No space left on device (28) in /home/jmttravel/public_html/config.php on line 10
+[25-May-2023 01:01:52 UTC] PHP Warning:  session_start(): Failed to read session data: files (path: /var/cpanel/php/sessions/ea-php80) in /home/jmttravel/public_html/config.php on line 10
+[25-May-2023 01:52:42 UTC] PHP Warning:  session_start(): open(/var/cpanel/php/sessions/ea-php80/sess_0d7b5215fc7a49f9a89d0c9bc0b7e5d7, O_RDWR) failed: No space left on device (28) in /home/jmttravel/public_html/config.php on line 10
+[25-May-2023 01:52:42 UTC] PHP Warning:  session_start(): Failed to read session data: files (path: /var/cpanel/php/sessions/ea-php80) in /home/jmttravel/public_html/config.php on line 10
+[25-May-2023 02:04:55 UTC] PHP Warning:  session_start(): open(/var/cpanel/php/sessions/ea-php80/sess_0f191eae9f2f2bddcafd52ba5584505a, O_RDWR) failed: No space left on device (28) in /home/jmttravel/public_html/config.php on line 10
+[25-May-2023 02:04:55 UTC] PHP Warning:  session_start(): Failed to read session data: files (path: /var/cpanel/php/sessions/ea-php80) in /home/jmttravel/public_html/config.php on line 10
+[25-May-2023 02:04:57 UTC] PHP Warning:  session_start(): open(/var/cpanel/php/sessions/ea-php80/sess_0f191eae9f2f2bddcafd52ba5584505a, O_RDWR) failed: No space left on device (28) in /home/jmttravel/public_html/config.php on line 10
+[25-May-2023 02:04:57 UTC] PHP Warning:  session_start(): Failed to read session data: files (path: /var/cpanel/php/sessions/ea-php80) in /home/jmttravel/public_html/config.php on line 10
+[25-May-2023 02:11:06 UTC] PHP Warning:  session_start(): open(/var/cpanel/php/sessions/ea-php80/sess_b8bf0819152a86578b9a14337392752f, O_RDWR) failed: No space left on device (28) in /home/jmttravel/public_html/config.php on line 10
+[25-May-2023 02:11:06 UTC] PHP Warning:  session_start(): Failed to read session data: files (path: /var/cpanel/php/sessions/ea-php80) in /home/jmttravel/public_html/config.php on line 10
+[25-May-2023 03:41:04 UTC] PHP Warning:  session_start(): open(/var/
