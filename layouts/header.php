@@ -571,7 +571,7 @@ foreach ($int_dest_id_arr as $int_id) {
                                         <a class="btn header-offer-btn" onclick="get_tours_data('','6')">Apply Visa</a>
                                     </li>
                                     <li class="header-btn">
-                                        <a class="btn header-offer-btn" href="<?= BASE_URL_B2C . 'offers.php' ?>">Oman Tour</a>
+                                        <a class="btn header-offer-btn" onclick="get_tours_data('74','1')">Oman Tour</a>
                                     </li>
                                 </ul>
 

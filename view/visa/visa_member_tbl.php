@@ -1,6 +1,6 @@
 <tr>
   <td><input class="css-checkbox" id="chk_visa<?= $offset ?>1"  type="checkbox" checked><label class="css-label" for="chk_visa<?= $offset ?>1"> <label></td>
-  <td><input maxlength="15" value="1" type="text" name="username" placeholder="Sr. No." class="form-control" disabled /></td>
+  <td><input maxlength="15" value="1" type="text" name="username" style="width:100px;" placeholder="Sr. No." class="form-control" disabled /></td>
   <td><input class="form-control" type="text" id="first_name<?= $offset ?>1" name="first_name<?= $offset ?>1" onchange="fname_validate(this.id)" placeholder="*First Name" title="First Name" style="width:150px;" /></td>
   <td><input class="form-control" type="text" id="middle_name<?= $offset ?>1" onchange="fname_validate(this.id)" name="middle_name<?= $offset ?>1" placeholder="Middle Name" title="Middle Name" style="width:150px;" /></td>
   <td><input class="form-control" type="text" id="last_name<?= $offset ?>1" name="last_name<?= $offset ?>1" onchange="fname_validate(this.id)" placeholder="Last Name" title="Last Name" style="width:150px;" /></td>
