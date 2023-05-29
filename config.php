@@ -19,14 +19,14 @@ $localIP = getHostByName(getHostName());
 
 // Create connection
 $servername = "localhost";
-$username = "jmttravel_crm_u";
-$password = "K[iLcILojD5V";
-$db_name = "jmttravel_crm";
+$username = "root";
+$password = "";
+$db_name = "jmt";
 global $connection;
 $connection = new mysqli($servername, $username, $password, $db_name);
 
-define('BASE_URL', 'https://jmttravels.com/crm/');
-define('BASE_URL_B2C', 'https://jmttravels.com/');
+define('BASE_URL', 'http://localhost/tours/Jmttravels/crm/');
+define('BASE_URL_B2C', 'http://localhost/tours/Jmttravels/');
 mysqli_query($connection,"SET SESSION sql_mode = ''");
 // mysqli_set_charset($connection,'utf8');
 //**********Global Variables start**************//

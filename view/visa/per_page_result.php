@@ -165,7 +165,7 @@ if (sizeof($visa_results_array) > 0) {
                         </div>
                         <div class="clearfix text-right">
                             <button type="button" class="c-button md" id='<?= $visa_results_array[$visa_i]['country_id'] ?>' onclick='enq_to_action_page("6",this.id,<?= json_encode($visa_enq_data) ?>)'><i class="fa fa-phone-square" aria-hidden="true"></i> Enquiry</button>
-                            <button type="button" class="c-button md" id='' onclick=''><i class="fa fa-check-square" aria-hidden="true"></i> Book Now</button>
+                            <button type="button" class="c-button md" id='' onclick="openBookingModal(`<?= $visa_results_array[$visa_i]['country_id'] ?>`)"><i class="fa fa-check-square" aria-hidden="true"></i> Book Now</button>
                         </div>
                         <!-- ***** Visa Info Tabs End***** -->
                     </div>

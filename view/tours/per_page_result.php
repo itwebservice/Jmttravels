@@ -114,7 +114,7 @@ if (sizeof($tours_result_array) > 0) {
                                 <a class="nav-link" id="inclusion-tab" data-toggle="tab" href="#inclusion-tab<?= $tours_result_array[$i]['package_id'] ?>" role="tab" aria-controls="inclusion" aria-selected="true">INCLUSIONS/EXCLUSIONS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="visa-details-tab" data-toggle="tab" href="#visa-details-tab" role="tab" aria-controls="visa" aria-selected="true">Visa Details</a>
+                                <a class="nav-link" id="visa-details-tab" data-toggle="tab" href="#visa-details-tab<?= $tours_result_array[$i]['package_id'] ?>" role="tab" aria-controls="visa" aria-selected="true">Visa Details</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="costing-tab" data-toggle="tab" href="#costing-tab<?= $tours_result_array[$i]['package_id'] ?>" role="tab" aria-controls="costing" aria-selected="true">Costing</a>
@@ -305,6 +305,32 @@ if (sizeof($tours_result_array) > 0) {
                             <!-- **** Tab itenary End **** -->
 
                             <!-- **** Tab Tours Car **** -->
+
+                            
+
+                            <div class="tab-pane fade" id="visa-details-tab<?= $tours_result_array[$i]['package_id'] ?>" role="tabpanel" aria-labelledby="visa-details-tab<?= $tours_result_array[$i]['package_id'] ?>">
+                            <div class="clearfix m20-btm">
+                                    <div class="row">
+                                        <div class="col-12 m20-btm">
+                                            <h3 class="c-heading">
+                                                Visa Details
+                                            </h3>
+                                        </div>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <?php
+                                            $packageId = $tours_result_array[$i]['package_id'];
+                                            $visaDetail = mysqli_fetch_array(mysqlQuery("SELECT note FROM `custom_package_master` where package_id='$packageId'"));
+                                            echo $note = !empty($visaDetail['note']) ? $visaDetail['note'] : "";
+                                            ?>
+                                        </div>
+                                    </div>
+                            </div>
+                        
+                        
+                        </div>
+
                             <div class="tab-pane fade" id="travel-tab<?= $tours_result_array[$i]['package_id'] ?>" role="tabpanel" aria-labelledby="travel-tab">
                                 <!-- **** Tab Hotel Car **** -->
                                 <div class="clearfix m20-btm">

@@ -79,26 +79,22 @@ if ($country_id != '') {
                 <div class="ts-blog-card">
 
                     <div class="ts-blog-card-img">
-
+                                <a onclick="showVisa(164)">
                         <img src="../../images/flag-oman.jpg" alt="Country flag" class="img-fluid ">
-
+                        </a>
                     </div>
 
                     <div class="ts-blog-card-body">
                         <span class="ts-blog-card-title">Oman Visa</span>
-                        <p class="ts-blog-time">
-
-                            <span>Price: 5000</span>
-
-                        </p>
+                    
 
                     </div>
 
-                    <div class="ts-blog-card-footer">
+                    <!-- <div class="ts-blog-card-footer">
 
                         <a href="" target="_blank" class="ts-blog-card-link">Book Now</a>
 
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -109,27 +105,28 @@ if ($country_id != '') {
                 <div class="ts-blog-card">
 
                     <div class="ts-blog-card-img">
+                    <a onclick="showVisa(226)">
 
                         <img src="../../images/flag-uae.jpg" alt="Country flag" class="img-fluid ">
-
+                    </a>
                     </div>
 
                     <div class="ts-blog-card-body">
                         <span class="ts-blog-card-title">Uae Visa</span>
-                        <p class="ts-blog-time">
+                        <!-- <p class="ts-blog-time">
 
 
                             <span>Price: 8000</span>
 
-                        </p>
+                        </p> -->
 
                     </div>
 
-                    <div class="ts-blog-card-footer">
+                    <!-- <div class="ts-blog-card-footer">
 
                         <a href="" target="_blank" class="ts-blog-card-link">Book Now</a>
 
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -140,26 +137,27 @@ if ($country_id != '') {
                 <div class="ts-blog-card">
 
                     <div class="ts-blog-card-img">
+                    <a onclick="showVisa(190)">
 
                         <img src="../../images/flag-saudi.jpg" alt="Country flag" class="img-fluid ">
-
+                    </a>
                     </div>
 
                     <div class="ts-blog-card-body">
                         <span class="ts-blog-card-title">Saudi Visa</span>
-                        <p class="ts-blog-time">
+                        <!-- <p class="ts-blog-time">
 
                             <span>Price: 6000</span>
 
-                        </p>
+                        </p> -->
 
                     </div>
 
-                    <div class="ts-blog-card-footer">
+                    <!-- <div class="ts-blog-card-footer">
 
                         <a href="" target="_blank" class="ts-blog-card-link">Book Now</a>
 
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -244,6 +242,7 @@ if ($country_id != '') {
                 ?>
                 <input type='hidden' value='<?= json_encode($visa_results_array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE) ?>' id='visa_results_array' name='visa_results_array' />
                 <div id='visa_result_block'></div>
+                <div id='visa_booking_block'></div>
             </div>
         </div>
     </div>
@@ -273,4 +272,15 @@ if ($country_id != '') {
         });
     }
     get_price_filter_data('visa_results_array', '3', '0', '0');
+    function showVisa(value)
+    {
+        $('#visa_country_filter').val(value).trigger('change');
+        $('#frm_visa_search').submit();
+
+    }
+    function openBookingModal(visaId) {
+        $.post('booking.php',{},function(data){
+                $('#visa_booking_block').html(data);
+        });
+    }
 </script>
