@@ -38,7 +38,7 @@ $branch_status = $sq['branch_status'];
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" name="" id="cust_birth_date" class="form-control app_datepicker">
+                            <input type="text" name="" id="cust_birth_date" placeholder="*Date Of Birth" title="Date Of Birth" class="form-control app_datepicker">
                         </div>
                         <div class="col-md-4">
                             <input type="email" name="" id="cust_email_id" placeholder="*Email ID" title="Email ID" class="form-control">
