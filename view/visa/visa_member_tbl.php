@@ -18,7 +18,7 @@
       ?>
     </select>
   </td>
-  <td><select class="form-control" name="visa_type<?= $offset ?>1" id="visa_type<?= $offset ?>1" title="Visa Type" style="width:150px;" onchange="reflect_cost(this.id)">
+  <td><select class="form-control" name="visa_type<?= $offset ?>1" id="visa_type<?= $offset ?>1" title="Visa Type" style="width:150px;" onchange="reflect_cost(this.id);">
       <option value="">*Visa Type</option>
       <?php
       $sq_visa_type = mysqlQuery("select * from visa_type_master");

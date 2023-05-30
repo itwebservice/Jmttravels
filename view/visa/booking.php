@@ -74,12 +74,13 @@ $branch_status = $sq['branch_status'];
                             <label for="" class="form-label">Sub Total:</label>
                             <input type="number" name="" id="visa_issue_amount" placeholder="Sub Total" title="Sub Total" class="form-control" disabled>
                         </div>
-                   
-                            <input type="hidden"  id="markup" >
-                        
+
+                        <input type="hidden" id="markup">
+
                         <div class="col-md-4">
                             <label for="" class="form-label">Tax:</label>
-                            <input type="number" name="" id="tax" placeholder="Tax" title="Tax" class="form-control" disabled>
+                            <input type="text" id="total_tax" class="form-control disabled" disabled>
+
                         </div>
                         <div class="col-md-4">
                             <label for="" class="form-label">Total:</label>
@@ -87,16 +88,17 @@ $branch_status = $sq['branch_status'];
                             <input type="hidden" id="due_date" value="<?= date('Y-m-d') ?>">
                             <input type="hidden" id="booking_date" value="<?= date('Y-m-d') ?>">
                             <input type="hidden" id="payment_date" value="<?= date('Y-m-d') ?>">
+                            <input type="hidden" id="tax_ledger">
                         </div>
                     </div>
-                        
+
                 </form>
 
 
 
             </div>
             <div class="modal-footer text-right">
-            <button type="button" onclick="saveData()" class="btn btn-primary">Save</button>
+                <button type="button" onclick="saveData()" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>
@@ -157,12 +159,15 @@ $branch_status = $sq['branch_status'];
             var amount = isNaN(parseFloat(json_data.amount)) ? 0.00 : parseFloat(json_data.amount);
             var service_charge = isNaN(parseFloat(json_data.service)) ? 0.00 : parseFloat(json_data.service);
             $('#visa_cost' + offset).val(amount + '-' + service_charge);
-            alltable_visa_cost('tbl_dynamic_visa');
+            alltable_visa_cost();
+            get_tax2('visa_country_name1', 'visa_issue_amount', 'Visa');
         });
     }
 
-    function alltable_visa_cost(id) {
-        var table = document.getElementById(id);
+    function alltable_visa_cost() {
+        var table = document.getElementById('tbl_dynamic_visa');
+        var total_tax = $('#total_tax').val();
+
         $('#visa_issue_amount').val(0);
         $('#markup').val(0);
         var rowCount = table.rows.length;
@@ -179,15 +184,222 @@ $branch_status = $sq['branch_status'];
         }
         if (isNaN(total_amt)) total_amt = 0;
         if (isNaN(total_markup)) total_markup = 0;
+        var total_cost = total_amt + total_markup;
         $('#visa_issue_amount').val(total_amt + total_markup);
+       
+        //
+        //Calculating tax amount
+        var taxes = total_tax && total_tax.split(',');
+        var tax_amount = 0;
+        for (var i = 0; i < taxes.length; i++) {
+
+            var single_tax = taxes[i].split(':');
+            tax_amount += parseFloat(single_tax[1]);
+        }
+
+        var grand_cost = parseFloat(total_cost) + parseFloat(tax_amount);
+        $('#visa_total_cost').val(parseFloat(grand_cost).toFixed(2));
+        //
+
+
         $('#visa_issue_amount').trigger('change');
         $('#markup').val(total_markup);
         $('#markup').trigger('change');
     }
 
+    //tax
 
+    function get_tax2(state_id, total_cost1, travel_type) {
 
-    
+        var cust_state = $('#' + state_id).val();
+        var total_cost = $('#' + total_cost1).val();
+        var tax_string = '';
+        const rules = get_other_rules2(travel_type);
+        var applied_taxes = rules && get_service_tax2(rules, cust_state);
+        applied_taxes = applied_taxes.split(',');
+        if (applied_taxes.length !== 0) {
+            var taxes = applied_taxes[0].split('+');
+            for (var i = 0; i < taxes.length; i++) {
+                if (taxes[i] != '') {
+
+                    var single_tax = taxes[i].split(':');
+                    tax_string += single_tax[0];
+                    if (single_tax[2] == 'Percentage') {
+                        var tax_amount = parseFloat(total_cost) * (parseFloat(single_tax[1]) / 100);
+                        tax_string += ':' + (tax_amount).toFixed(2) + ' (' + single_tax[1] + '%) ';
+                    } else {
+                        var tax_amount = parseFloat(single_tax[1]);
+                        tax_string += ':' + (tax_amount).toFixed(2) + ' (' + single_tax[1] + ')';
+                    }
+                    if (i != (taxes.length - 1)) {
+                        tax_string += ', ';
+                    }
+                }
+            }
+            $('#tax_ledger').val(applied_taxes[1]);
+        } else {
+            $('#tax_ledger').val(parseFloat(0));
+        }
+        $('#total_tax').val(tax_string);
+        alltable_visa_cost();
+    }
+
+    function get_other_rules2(travel_type) {
+
+        var today = get_today_date2();
+        var data = new Date(today);
+        let month = data.getMonth() + 1;
+        let day = data.getDate();
+        let year = data.getFullYear();
+        if (day <= 9)
+            day = '0' + day;
+        if (month < 10)
+            month = '0' + month;
+        invoice_date = year + '-' + month + '-' + day;
+
+        var cache_rules = JSON.parse($('#cache_currencies').val());
+        var taxes = [];
+        taxes = (cache_rules.filter((el) =>
+            el.entry_id !== '' && el.rule_id === undefined && el.entry_id !== undefined && el.currency_id === undefined
+        ));
+
+        //Taxes
+        var taxes1 = taxes.filter((tax) => {
+            return tax['status'] === 'Active';
+        });
+
+        //Tax Rules
+        var tax_rules = [];
+        tax_rules = (cache_rules.filter((el) =>
+            el.rule_id !== '' && el.rule_id !== undefined
+        ));
+
+        invoice_date = new Date(invoice_date).getTime();
+        var tax_rules1 = tax_rules.filter((rule) => {
+            var from_date = new Date(rule['from_date']).getTime();
+            var to_date = new Date(rule['to_date']).getTime();
+
+            return (
+                rule['status'] === 'Active' &&
+                (rule['travel_type'] === travel_type || rule['travel_type'] === 'All') &&
+                (rule['validity'] == 'Permanent' || (invoice_date >= from_date && invoice_date <= to_date))
+            );
+        });
+
+        var result = taxes1.concat(tax_rules1);
+        return result;
+    }
+
+    function get_service_tax2(result, cust_state) {
+
+        //////////////////////////////
+        var taxes_result = result && result.filter((rule) => {
+            var {
+                entry_id,
+                rule_id
+            } = rule;
+            return entry_id !== '' && !rule_id;
+        });
+        //////////////////////////////
+        var final_taxes_rules = [];
+        taxes_result &&
+            taxes_result.filter((tax_rule) => {
+                var tax_rule_array = [];
+                result &&
+                    result.forEach((rule) => {
+                        if (parseInt(tax_rule['entry_id']) === parseInt(rule['entry_id']) && rule['rule_id'])
+                            tax_rule_array.push(rule);
+                    });
+                final_taxes_rules.push({
+                    entry_id: tax_rule['entry_id'],
+                    tax_rule_array
+                });
+            });
+        ///////////////////////////
+        let applied_rules = [];
+        final_taxes_rules &&
+            final_taxes_rules.map((tax) => {
+                var entry_id_rules = tax['tax_rule_array'];
+                var flag = false;
+                var conditions_flag_array = [];
+                entry_id_rules &&
+                    entry_id_rules.forEach((rule) => {
+
+                        if (rule['applicableOn'] == '1')
+                            return;
+                        var condition = JSON.parse(rule['conditions']);
+                        condition &&
+                            condition.forEach((cond) => {
+                                var condition = cond.condition;
+                                var for1 = cond.for1;
+                                var value = cond.value;
+                                if (condition === "1") {
+                                    var place_flag = null;
+                                    place_flag_array = [];
+                                    switch (for1) {
+                                        case '!=':
+                                            if (cust_state !== value) place_flag = true;
+                                            else place_flag = false;
+                                            break;
+                                        case '==':
+                                            if (cust_state === value) place_flag = true;
+                                            else place_flag = false;
+                                            break;
+                                        default:
+                                            place_flag = false;
+                                    }
+                                    flag = place_flag;
+                                }
+                            })
+                        if (flag === true) applied_rules.push(rule);
+                    });
+            });
+        ////////////////////////////////////////
+        var applied_taxes = '';
+        var ledger_posting = '';
+        applied_rules && applied_rules.map((rule) => {
+            var tax_data = taxes_result.find((entry_id_tax) => entry_id_tax['entry_id'] === rule['entry_id']);
+            var {
+                ledger1,
+                ledger2,
+                name1,
+                name2,
+                amount1,
+                amount2
+            } = tax_data;
+            var {
+                name
+            } = rule;
+            if (applied_taxes == '') {
+                applied_taxes = name1 + ':' + amount1 + ':' + 'Percentage';
+                ledger_posting = ledger1;
+                if (name2 != '') {
+                    applied_taxes += '+' + name2 + ':' + amount2 + ':' + 'Percentage';
+                    ledger_posting += '+' + ledger2;
+                }
+            } else {
+                applied_taxes += name1 + ':' + amount1 + ':' + 'Percentage';
+                ledger_posting = ledger_posting + '+' + ledger1;
+                if (name2 != '') {
+                    applied_taxes += '+' + name2 + ':' + amount2 + ':' + 'Percentage';
+                    ledger_posting += '+' + ledger2;
+                }
+            }
+        });
+        return applied_taxes + ',' + ledger_posting;
+    }
+    //taxt
+    function get_today_date2() {
+
+        // convert date to y/m/data
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '/' + mm + '/' + dd;
+        return today;
+    }
 </script>
 <script src="<?php echo BASE_URL ?>js/app/footer_scripts.js"></script>
 <script src="<?php echo BASE_URL ?>js/app/validation.js"></script>
