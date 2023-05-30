@@ -12,57 +12,59 @@ global $app_contact_no;
 
 ?>
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
 <!-- ********** Component :: Page Title ********** -->
 
 <div class="c-pageTitleSect ts-pageTitleSect">
 
-<div class="container">
+    <div class="container">
 
-  <div class="row">
+        <div class="row">
 
-    <div class="col-md-7 col-12">
+            <div class="col-md-7 col-12">
 
 
 
-      <!-- *** Search Head **** -->
+                <!-- *** Search Head **** -->
 
-      <div class="searchHeading">
+                <div class="searchHeading">
 
-        <span class="pageTitle mb-0">Contact Us</span>
+                    <span class="pageTitle mb-0">Contact Us</span>
 
-      </div>
+                </div>
 
-      <!-- *** Search Head End **** -->
+                <!-- *** Search Head End **** -->
+
+            </div>
+
+
+
+            <div class="col-md-5 col-12 c-breadcrumbs">
+
+                <ul>
+
+                    <li>
+
+                        <a href="<?= BASE_URL_B2C ?>">Home</a>
+
+                    </li>
+
+                    <li class="st-active">
+
+                        <a href="javascript:void(0)">Contact Us</a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+        </div>
 
     </div>
-
-
-
-    <div class="col-md-5 col-12 c-breadcrumbs">
-
-      <ul>
-
-        <li>
-
-          <a href="<?= BASE_URL_B2C ?>">Home</a>
-
-        </li>
-
-        <li class="st-active">
-
-          <a href="javascript:void(0)">Contact Us</a>
-
-        </li>
-
-      </ul>
-
-    </div>
-
-
-
-  </div>
-
-</div>
 
 </div>
 
@@ -93,6 +95,8 @@ global $app_contact_no;
 <!-- Contact Section Start -->
 
 <section class="ts-contact-section">
+
+    <div id="map"></div>
 
     <div class="container">
 
@@ -218,59 +222,59 @@ global $app_contact_no;
 
                         </li>
 
-                        <?php }
+                    <?php }
 
-                        if ($social_media[0]->tw != '') { ?>
+                    if ($social_media[0]->tw != '') { ?>
 
-                            <li class="ts-social-media-item">
+                        <li class="ts-social-media-item">
 
-                                <a target="_blank" href="<?= $social_media[0]->tw ?>" class="ts-social-media-link">
+                            <a target="_blank" href="<?= $social_media[0]->tw ?>" class="ts-social-media-link">
 
-                                    <span class="ts-contact-info-icon">
+                                <span class="ts-contact-info-icon">
 
-                                        <i class="fa fa-twitter"></i>
+                                    <i class="fa fa-twitter"></i>
 
-                                    </span>
+                                </span>
 
-                                </a>
+                            </a>
 
-                            </li> 
+                        </li>
 
-                        <?php }
+                    <?php }
 
-                        if ($social_media[0]->yu != '') { ?>
+                    if ($social_media[0]->yu != '') { ?>
 
-                            <li class="ts-social-media-item">
+                        <li class="ts-social-media-item">
 
-                                <a target="_blank" href="<?= $social_media[0]->yu ?>" class="ts-social-media-link">
+                            <a target="_blank" href="<?= $social_media[0]->yu ?>" class="ts-social-media-link">
 
-                                    <span class="ts-contact-info-icon">
+                                <span class="ts-contact-info-icon">
 
-                                        <i class="fa fa-youtube"></i>
+                                    <i class="fa fa-youtube"></i>
 
-                                    </span>
+                                </span>
 
-                                </a>
+                            </a>
 
-                            </li>
-                            
-                        <?php }
+                        </li>
 
-                        if ($social_media[0]->li != '') { ?>
+                    <?php }
 
-                            <li class="ts-social-media-item">
+                    if ($social_media[0]->li != '') { ?>
 
-                                <a target="_blank" href="<?= $social_media[0]->li ?>" class="ts-social-media-link">
+                        <li class="ts-social-media-item">
 
-                                    <span class="ts-contact-info-icon">
+                            <a target="_blank" href="<?= $social_media[0]->li ?>" class="ts-social-media-link">
 
-                                        <i class="fa fa-linkedin"></i>
+                                <span class="ts-contact-info-icon">
 
-                                    </span>
+                                    <i class="fa fa-linkedin"></i>
 
-                                </a>
+                                </span>
 
-                            </li>
+                            </a>
+
+                        </li>
 
                     <?php } ?>
 
@@ -344,7 +348,7 @@ global $app_contact_no;
 
                             <label for="InputMessage">Message*</label>
 
-                            <textarea id="inputMessage" name="inputMessage" rows="8" class="form-control" placeholder="Message" required ></textarea>
+                            <textarea id="inputMessage" name="inputMessage" rows="8" class="form-control" placeholder="Message" required></textarea>
 
                         </div>
 
@@ -370,7 +374,7 @@ global $app_contact_no;
 
 <?php
 
-if($cached_array[0]->cms_data[0]->google_map_script!=''){?>
+if ($cached_array[0]->cms_data[0]->google_map_script != '') { ?>
 
     <section class="ts-map-section">
 
@@ -384,94 +388,133 @@ if($cached_array[0]->cms_data[0]->google_map_script!=''){?>
 
 <a href="#" class="scrollup">Scroll</a>
 
+<style>
+    #map {
+        height: 400px;
+    }
+</style>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 <script>
+    // Initialize the map
+    var map = L.map('map').setView([24.42593, 56.61137], 7);
 
-// Example starter JavaScript for disabling form submissions if there are invalid fields
+    // Add the tile layer (same as before)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'JMT Branches'
+    }).addTo(map);
 
-(function() {
-
-  'use strict';
-
-  window.addEventListener('load', function() {
-
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-
-    var forms = document.getElementsByClassName('needs-validation');
-
-    // Loop over them and prevent submission
-
-    var validation = Array.prototype.filter.call(forms, function(form) {
-
-      form.addEventListener('submit', function(event) {
-
-        if (form.checkValidity() === false) {
-
-          event.preventDefault();
-
-          event.stopPropagation();
-
+    // Define an array of branch locations
+    var branches = [{
+            name: 'Oman Branch',
+            coordinates: [24.42593, 56.61137]
+        },
+        {
+            name: 'Oman Branch 2',
+            coordinates: [24.28393, 55.77296]
+        },
+        {
+            name: 'Dubai Branch',
+            coordinates: [25.282, 55.355]
         }
+    ];
 
-        form.classList.add('was-validated');
-
-      }, false);
-
+    // Add markers for each branch location
+    branches.forEach(function(branch) {
+        var marker = L.marker(branch.coordinates).addTo(map);
+        marker.bindTooltip(branch.name).openTooltip();
     });
-
-  }, false);
-
-})();
-
+    setTimeout(function() {
+        window.dispatchEvent(new Event("resize"));
+    }, 500);
 </script>
 
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+
+    (function() {
+
+        'use strict';
+
+        window.addEventListener('load', function() {
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+
+            var forms = document.getElementsByClassName('needs-validation');
+
+            // Loop over them and prevent submission
+
+            var validation = Array.prototype.filter.call(forms, function(form) {
+
+                form.addEventListener('submit', function(event) {
+
+                    if (form.checkValidity() === false) {
+
+                        event.preventDefault();
+
+                        event.stopPropagation();
+
+                    }
+
+                    form.classList.add('was-validated');
+
+                }, false);
+
+            });
+
+        }, false);
+
+    })();
+</script>
+
+<!-- Custom Map script-->
 
 
-<?php include 'layouts/footer.php';?>
+<?php include 'layouts/footer.php'; ?>
 
 <script type="text/javascript" src="js/scripts.js"></script>
 
 <script>
+    $(document).ready(function() {
 
-    $( document ).ready(function() {    
 
-    
 
-      var service = '<?php echo $service; ?>';
+        var service = '<?php echo $service; ?>';
 
-      if(service && (service !== '' || service !== undefined)){
+        if (service && (service !== '' || service !== undefined)) {
 
-        var checkLink = $('.c-searchContainer .c-search-tabs li');
+            var checkLink = $('.c-searchContainer .c-search-tabs li');
 
-        var checkTab = $('.c-searchContainer .search-tab-content .tab-pane');
+            var checkTab = $('.c-searchContainer .search-tab-content .tab-pane');
 
-        checkLink.each(function(){
+            checkLink.each(function() {
 
-          var child = $(this).children('.nav-link');
+                var child = $(this).children('.nav-link');
 
-          if(child.data('service') === service){
+                if (child.data('service') === service) {
 
-            $(this).siblings().children('.nav-link').removeClass('active');
+                    $(this).siblings().children('.nav-link').removeClass('active');
 
-            child.addClass('active');
+                    child.addClass('active');
 
-          }
+                }
 
-        });
+            });
 
-        checkTab.each(function(){
+            checkTab.each(function() {
 
-          if($(this).data('service') === service){
+                if ($(this).data('service') === service) {
 
-            $(this).addClass('active show').siblings().removeClass('active show');
+                    $(this).addClass('active show').siblings().removeClass('active show');
 
-          }
+                }
 
-        })
+            })
 
-      }
+        }
 
-      
+
 
     });
-
 </script>
