@@ -1105,4 +1105,12 @@
 		<description>Training</description>
 		<menu_icon>fa fa-picture-o</menu_icon>
 	</menu_desc>
+	<menu_desc>
+		<name>Ask Gayatri</name>
+		<link>ask_gayatri/index.php</link>
+		<rank>18</rank>
+		<priority>1</priority>
+		<description>Ask Gayatri</description>
+		<menu_icon>fa fa-bullhorn</menu_icon>
+	</menu_desc>
 </menu>
