@@ -112,22 +112,22 @@ function display_modal(format_list){
 	var base_url = $('#base_url').val();
 
 	if(format == 2){
-		window.open('https://itourscloud.com/quotation_format_images/quot_pdf/Landscape-Standard-Pdf', '_blank'); return false;
+		window.open('https://itwebservices.co/quotation_format_images/quot_pdf/Landscape-Standard-Pdf', '_blank'); return false;
 	}
 	else if(format == 3){
-		window.open('https://itourscloud.com/quotation_format_images/quot_pdf/Landscape-Creative-Pdf', '_blank'); return false;
+		window.open('https://itwebservices.co/quotation_format_images/quot_pdf/Landscape-Creative-Pdf', '_blank'); return false;
 	}
 	else if(format == 4){
-		window.open('https://itourscloud.com/quotation_format_images/quot_pdf/Portrait-Creative-Pdf', '_blank'); return false;
+		window.open('https://itwebservices.co/quotation_format_images/quot_pdf/Portrait-Creative-Pdf', '_blank'); return false;
 	}
 	else if(format == 5){
-		window.open('https://itourscloud.com/quotation_format_images/quot_pdf/Portrait-Advanced-Pdf', '_blank'); return false;
+		window.open('https://itwebservices.co/quotation_format_images/quot_pdf/Portrait-Advanced-Pdf', '_blank'); return false;
 	}
 	else if(format == 6){
-		window.open('https://itourscloud.com/quotation_format_images/quot_pdf/Landscape-Advanced-Pdf', '_blank'); return false;
+		window.open('https://itwebservices.co/quotation_format_images/quot_pdf/Landscape-Advanced-Pdf', '_blank'); return false;
 	}
 	else{
-		window.open('https://itourscloud.com/quotation_format_images/quot_pdf/Portiat-Standard-Pdf', '_blank'); return false;
+		window.open('https://itwebservices.co/quotation_format_images/quot_pdf/Portiat-Standard-Pdf', '_blank'); return false;
 	}
 }
 

@@ -14,7 +14,7 @@ $service_name = $_GET['service_name'];
 $basic_cost1 = $_GET['basic_cost'];
 $service_charge = $_GET['service_charge'];
 $service_tax_per = $_GET['service_tax_per'];
-$service_tax = $_GET['service_tax'];
+
 $net_amount = $_GET['net_amount'];
 $bank_name = $_GET['bank_name'];
 $total_paid = $_GET['total_paid'];

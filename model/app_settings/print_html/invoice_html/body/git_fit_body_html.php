@@ -46,7 +46,7 @@ $plane_service_tax_subtotal = $_GET['plane_service_tax_subtotal'];
 $cruise_service_tax_subtotal = $_GET['cruise_service_tax_subtotal'];
 $visa_service_tax_subtotal = $_GET['visa_service_tax_subtotal'];
 $insuarance_service_tax_subtotal = $_GET['insuarance_service_tax_subtotal'];
-$tour_service_tax_subtotal = $_GET['tour_service_tax_subtotal'];
+
 $sac_code = $_GET['sac_code'];
 $credit_card_charges = $_GET['credit_card_charges'];
 $tcs_tax = $_GET['tcs_tax'];

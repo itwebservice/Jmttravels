@@ -93,7 +93,7 @@ $sq_customer = mysqli_fetch_assoc(mysqlQuery("select * from customer_master wher
     <!-- landingPage -->
     <section class="landingSec main_block">
         <div class="landingPageTop main_block">
-            <img src="https://itourscloud.com/quotation_format_images/Landscape-Standard-Creative/13.jpg" class="img-responsive">
+            <img src="https://itwebservices.co/quotation_format_images/Landscape-Standard-Creative/13.jpg" class="img-responsive">
         </div>
         <div class="ladingPageBottom main_block side_pad">
 

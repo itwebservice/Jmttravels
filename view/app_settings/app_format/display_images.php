@@ -3,19 +3,19 @@ include "../../../model/model.php";
 $format = $_POST['format'];
 if($format == 2){
   $count = 129;
-  $dir = 'https://itourscloud.com/quotation_format_images/Landscape-Standard-Creative/';
+  $dir = 'https://itwebservices.co/quotation_format_images/Landscape-Standard-Creative/';
 }
-else if($format == 3){ $count = 129; $dir = 'https://itourscloud.com/quotation_format_images/Landscape-Standard-Creative/';
+else if($format == 3){ $count = 129; $dir = 'https://itwebservices.co/quotation_format_images/Landscape-Standard-Creative/';
 }
-else if($format == 1){ $count = 10; $dir = 'https://itourscloud.com/quotation_format_images/Portrait-Standard/';
+else if($format == 1){ $count = 10; $dir = 'https://itwebservices.co/quotation_format_images/Portrait-Standard/';
 }
-else if($format == 5){ $count = 52; $dir = 'https://itourscloud.com/quotation_format_images/Portrait-Advanced/';
+else if($format == 5){ $count = 52; $dir = 'https://itwebservices.co/quotation_format_images/Portrait-Advanced/';
 }
-else if($format == 6){ $count = 98; $dir = 'https://itourscloud.com/quotation_format_images/Landscape-Advanced/';
+else if($format == 6){ $count = 98; $dir = 'https://itwebservices.co/quotation_format_images/Landscape-Advanced/';
 }
 else{ //Format : 4
   $count = 65;
-  $dir = 'https://itourscloud.com/quotation_format_images/Portrait-Creative/';
+  $dir = 'https://itwebservices.co/quotation_format_images/Portrait-Creative/';
 }
 for($i = 1; $i<=$count; $i++){
   $image_path = $dir.$i.'.jpg';
