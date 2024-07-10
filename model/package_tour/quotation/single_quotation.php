@@ -78,7 +78,7 @@ $sq_terms = mysqli_fetch_assoc(mysqlQuery("select * from terms_and_conditions wh
 
     <meta property="og:title" content="Tour Operator Software - iTours" />
     <meta property="og:description"
-        content="Welcome to tiTOurs leading tour operator software, CRM, Accounting, Billing, Invocing, B2B, B2C Online Software for all small scale & large scale companies" />
+        content="JMT Travel and Tourism  specializes in visas, tours, flight tickets, and customizable tour packages,  and memorable travel experiences." />
     <meta property="og:url" content="http://www.itouroperatorsoftware.com" />
     <meta property="og:site_name" content="iTour Operator Software" />
     <meta property="og:image"
