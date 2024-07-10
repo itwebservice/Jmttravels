@@ -841,6 +841,11 @@ $currency_amount1 = currency_conversion($currency,$sq_quotation['currency_code']
       </section>
     </section>
     <section>
+      <?php
+      $sq_bank_details=mysqli_fetch_assoc(mysqlQuery("select * from bank_master where active_flag='Active' Limit 1"));
+      
+      
+      ?>
     <section class="pageSection main_block">
       <div class="row constingBankingPanelRow">
         <!-- Bank Detail -->
@@ -848,32 +853,32 @@ $currency_amount1 = currency_conversion($currency,$sq_quotation['currency_code']
             <h3 class="costBankTitle text-center">BANK DETAILS</h3>
             <div class="col-md-4 text-center mg_bt_30">
               <div class="icon"><img src="<?= BASE_URL ?>images/quotation/p4/bankName.png" class="img-responsive"></div>
-              <h4 class="no-marg"><?= ($bank_name_setting != '') ? $bank_name_setting : 'NA' ?></h4>
+              <h4 class="no-marg"><?= ($sq_bank_details['bank_name'] != '') ? $sq_bank_details['bank_name'] : 'NA' ?></h4>
               <p>BANK NAME</p>
             </div>
             <div class="col-md-4 text-center mg_bt_30">
               <div class="icon"><img src="<?= BASE_URL ?>images/quotation/p4/branchName.png" class="img-responsive">      </div>
-              <h4 class="no-marg"><?= ($bank_branch_name!= '') ? $bank_branch_name : 'NA' ?>(<?= ($bank_ifsc_code != '') ? $bank_ifsc_code : 'NA' ?>)</h4>
+              <h4 class="no-marg"><?= ($sq_bank_details['branch_name']!= '') ? $sq_bank_details['branch_name'] : 'NA' ?>(<?= ($sq_bank_details['ifsc_code'] != '') ? $sq_bank_details['ifsc_code'] : 'NA' ?>)</h4>
               <p>BRANCH</p>
             </div>
             <div class="col-md-4 text-center mg_bt_30">
               <div class="icon"><img src="<?= BASE_URL ?>images/quotation/p4/accName.png" class="img-responsive"></div>
-              <h4 class="no-marg"><?= ($acc_name != '') ? $acc_name : 'NA' ?></h4>
+              <h4 class="no-marg"><?= ($sq_bank_details['account_type'] != '') ? $sq_bank_details['account_type'] : 'NA' ?></h4>
               <p>A/C TYPE</p>
             </div>
             <div class="col-md-4 text-center mg_bt_30">
               <div class="icon"><img src="<?= BASE_URL ?>images/quotation/p4/accNumber.png" class="img-responsive"></div>
-              <h4 class="no-marg"><?= ($bank_acc_no != '') ? $bank_acc_no : 'NA' ?></h4>
+              <h4 class="no-marg"><?= ($sq_bank_details['account_no'] != '') ? $sq_bank_details['account_no'] : 'NA' ?></h4>
               <p>A/C NO</p>
             </div>
             <div class="col-md-4 text-center mg_bt_30">
               <div class="icon"><img src="<?= BASE_URL ?>images/quotation/p4/code.png" class="img-responsive"></div>
-              <h4 class="no-marg"><?= ($bank_account_name != '') ? $bank_account_name : 'NA' ?></h4>
+              <h4 class="no-marg"><?= ($sq_bank_details['account_name'] != '') ? $sq_bank_details['account_name'] : 'NA' ?></h4>
               <p>BANK ACCOUNT NAME</p>
             </div>
             <div class="col-md-4 text-center mg_bt_30">
               <div class="icon"><img src="<?= BASE_URL ?>images/quotation/p4/code.png" class="img-responsive"></div>
-              <h4 class="no-marg"><?= ($bank_swift_code != '') ? $bank_swift_code : 'NA' ?></h4>
+              <h4 class="no-marg"><?= ($sq_bank_details['swift_code'] != '') ? $sq_bank_details['swift_code'] : 'NA' ?></h4>
               <p>SWIFT CODE</p>
             </div>
             <?php if(check_qr()) { ?>
