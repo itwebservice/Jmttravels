@@ -1,0 +1,20 @@
+[01-Jun-2024 12:44:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/view/activities/activities-search.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/view/activities/activities-search.php on line 47
+[01-Jun-2024 18:46:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/view/activities/activities-search.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/view/activities/activities-search.php on line 47
+[01-Jun-2024 20:24:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/view/activities/activities-search.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/view/activities/activities-search.php on line 47
+[02-Jun-2024 11:05:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/view/activities/activities-search.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/view/activities/activities-search.php on line 47
+[27-Jun-2024 19:44:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/view/activities/activities-search.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/view/activities/activities-search.php on line 47

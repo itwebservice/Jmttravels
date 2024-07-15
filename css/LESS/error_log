@@ -1,0 +1,180 @@
+[29-Sep-2023 16:44:43 Asia/Kolkata] PHP Fatal error:  Uncaught Error: mysqli object is already closed in /home/jmttravel/public_html/crm/model/model.php:39
+Stack trace:
+#0 /home/jmttravel/public_html/crm/model/model.php(39): mysqli_query(Object(mysqli), 'SET SESSION sql...')
+#1 /home/jmttravel/public_html/css/LESS/itours-styles.php(2): include('/home/jmttravel...')
+#2 {main}
+  thrown in /home/jmttravel/public_html/crm/model/model.php on line 39
+[07-Nov-2023 13:10:56 Asia/Kolkata] PHP Fatal error:  Uncaught Error: mysqli object is already closed in /home/jmttravel/public_html/crm/model/model.php:39
+Stack trace:
+#0 /home/jmttravel/public_html/crm/model/model.php(39): mysqli_query(Object(mysqli), 'SET SESSION sql...')
+#1 /home/jmttravel/public_html/css/LESS/itours-styles.php(2): include('/home/jmttravel...')
+#2 {main}
+  thrown in /home/jmttravel/public_html/crm/model/model.php on line 39
+[31-May-2024 11:23:15 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 11:23:15 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 11:23:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[31-May-2024 11:23:23 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 11:23:23 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 11:23:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[31-May-2024 11:23:25 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 11:23:25 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 11:23:25 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[31-May-2024 11:23:26 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 11:23:26 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 11:23:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[31-May-2024 11:23:27 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 11:23:27 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 11:23:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[31-May-2024 11:23:28 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 11:23:28 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 11:23:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[31-May-2024 12:43:14 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 12:43:14 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 12:43:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[31-May-2024 12:43:30 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 12:43:30 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[31-May-2024 12:43:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[01-Jun-2024 08:10:50 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 08:10:50 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 08:10:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[01-Jun-2024 08:10:59 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 08:10:59 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 08:10:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[01-Jun-2024 08:11:16 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 08:11:16 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 08:11:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[01-Jun-2024 12:47:23 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 12:47:23 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 12:47:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[01-Jun-2024 16:27:05 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 16:27:05 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 16:27:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[01-Jun-2024 21:02:19 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 21:02:19 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 21:02:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[01-Jun-2024 23:22:02 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 23:22:02 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[01-Jun-2024 23:22:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[02-Jun-2024 02:59:39 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 02:59:39 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 02:59:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[02-Jun-2024 04:03:02 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 04:03:02 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 04:03:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[02-Jun-2024 04:04:34 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 04:04:34 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 04:04:34 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[02-Jun-2024 04:43:19 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 04:43:19 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 04:43:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[02-Jun-2024 04:50:54 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 04:50:54 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 04:50:54 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[02-Jun-2024 05:29:55 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 05:29:55 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 05:29:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[02-Jun-2024 07:24:58 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 07:24:58 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 07:24:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[02-Jun-2024 09:47:28 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 09:47:28 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 09:47:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[02-Jun-2024 10:53:08 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 10:53:08 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 10:53:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[02-Jun-2024 11:58:55 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 11:58:55 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 11:58:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[02-Jun-2024 13:14:09 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 13:14:09 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 13:14:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[02-Jun-2024 16:16:21 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 16:16:21 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 16:16:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
+[02-Jun-2024 16:16:25 UTC] PHP Warning:  include(../../crm/model/model.php): Failed to open stream: No such file or directory in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 16:16:25 UTC] PHP Warning:  include(): Failed opening '../../crm/model/model.php' for inclusion (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 2
+[02-Jun-2024 16:16:25 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysqlQuery() in /home/jmttravel/public_html/css/LESS/itours-styles.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/jmttravel/public_html/css/LESS/itours-styles.php on line 3
